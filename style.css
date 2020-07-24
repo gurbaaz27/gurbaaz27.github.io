@@ -1,10 +1,10 @@
 @font-face {
-    src: url(fonts/Montserrat-Regular.ttf);
-    font-family: 'Montserrat';
+    src: url(fonts/JosefinSans-Regular.ttf);
+    font-family: 'JosefinSans';
 }
 @font-face {
-    src: url(fonts/LibreBaskerville-Regular.ttf);
-    font-family: 'Libre Baskerville';
+    src: url(fonts/Lato-Regular.ttf);
+    font-family: 'Lato';
 }
 
 html
@@ -14,18 +14,18 @@ html
 
 body
 {
-    font-family: 'Libre Baskerville',sans-serif, Arial;;
-    font-size: 18px;
+    font-family: 'Lato',sans-serif, Arial;;
+    font-size: 20px;
     line-height: 35px;
     font-weight: 400;
-    letter-spacing: -1px;
+    letter-spacing: 0px;
     color: #404040;
     background-color: #fff;
 }
 
-.montserrat
+.JosefinSans
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
 }
 
 body a
@@ -196,10 +196,10 @@ input, textarea, select
 
 .search-field
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     width: 100%;
     height: 100px;
-    font-size: 18px;
+    font-size: 20px;
     padding-left: 50px;
     background-color: #2D2D2D;
     color: #5B5B5B;
@@ -208,24 +208,24 @@ input, textarea, select
 
 .search-field::-webkit-input-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #5B5B5B;
 }
 .search-field::-moz-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #5B5B5B;
     opacity: 1;
 }
 .search-field:-ms-input-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #5B5B5B;
     opacity: 1;
 }
 .search-field:-moz-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #5B5B5B;
     opacity: 1;
 }
@@ -238,9 +238,9 @@ input, textarea, select
 
 .site-title
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #fff;
-    font-size: 30px;
+    font-size: 35px;
     line-height: 38px;
     font-weight: 700;
     padding: 20px 0;
@@ -248,16 +248,16 @@ input, textarea, select
 
 .site-description
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #848484;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 23px;
     max-width: 200px;
 }
 
 #header-main-menu
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     padding-left: 50px;
     padding-top: 80px;
 }
@@ -289,7 +289,7 @@ input, textarea, select
 {
     color: #848484;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .menu-right-part
@@ -402,7 +402,7 @@ input, textarea, select
 
 .social-list a:hover
 {
-    color: #797979;
+    color: #ffffff;
 }
 
 .site-content
@@ -475,7 +475,7 @@ body.open .site-content
 
 .blog-item-holder .entry-content .entry-title
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     font-size: 30px;
     line-height: 30px;
     padding-top: 35px;
@@ -503,7 +503,7 @@ body.open .site-content
 
 .load-more-holder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     font-size: 18px;
     font-weight: 700;
     color: #c0d3d3;
@@ -547,9 +547,9 @@ body.open .site-content
 
 .cat-links
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -578,7 +578,7 @@ body.open .site-content
 
 .published
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     display: inline-block;
     font-size: 14px;
     text-transform: uppercase;
@@ -596,7 +596,7 @@ body.open .site-content
 
 .blog .excerpt
 {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 28px;
     color: #5d5d5d;
 }
@@ -707,7 +707,7 @@ body.open .site-content
 
 .full-screen-scroll h2.entry-title
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     font-size: 50px;
     line-height: 54px;
     margin-top: 150px;
@@ -733,7 +733,7 @@ body.open .site-content
 
 .single-post h1.entry-title
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     margin-bottom: 30px;
     -ms-word-wrap: break-word;
     word-wrap: break-word;
@@ -749,7 +749,7 @@ body.open .site-content
 
 .post-info
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     padding-bottom: 70px;
 }
 /* END SINGLE POST */
@@ -777,7 +777,7 @@ body.open .site-content
 
 .page h1.entry-title
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     font-size: 22px;
     line-height: 35px;
 }
@@ -807,23 +807,23 @@ body.open .site-content
 
 .team-holder .member-name
 {
-    font-family: 'Montserrat', sans-serif, Arial;
-    font-size: 20px;
+    font-family: 'JosefinSans', sans-serif, Arial;
+    font-size: 30px;
     line-height: 28px;
     padding: 40px 60px 0px 60px;
 }
 
 .team-holder .member-position
 {
-    font-family: 'Montserrat', sans-serif, Arial;
-    font-size: 14px;
+    font-family: 'JosefinSans', sans-serif, Arial;
+    font-size: 20px;
     line-height: 22px;
     padding: 10px 60px 0px 60px;
 }
 
 .team-holder .member-content
 {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 27px;
     color: #404040;
     padding: 40px 60px 40px 60px;
@@ -869,7 +869,7 @@ body.open .site-content
     margin: 30px 0;
     height: 28px;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     width: 100%;
     line-height: 25px;
 }
@@ -896,7 +896,7 @@ body.open .site-content
     vertical-align: middle;
     text-decoration: none;
     background: transparent;
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     font-weight: 700;
     width: 100%;
     font-size: 20px;
@@ -909,7 +909,7 @@ body.open .site-content
 
 .contact-form input[type=text]::-webkit-input-placeholder, .contact-form input[type=email]::-webkit-input-placeholder, .contact-form textarea::-webkit-input-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #404040;
     font-weight: 700;
     font-size: 20px;
@@ -918,7 +918,7 @@ body.open .site-content
 }
 .contact-form input[type=text]::-moz-placeholder, .contact-form input[type=email]::-moz-placeholder, .contact-form textarea::-moz-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #404040;
     font-weight: 700;
     font-size: 20px;
@@ -928,7 +928,7 @@ body.open .site-content
 }
 .contact-form input[type=text]:-ms-input-placeholder, .contact-form input[type=email]:-ms-input-placeholder, .contact-form textarea:-ms-input-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #404040;
     font-weight: 700;
     font-size: 20px;
@@ -937,7 +937,7 @@ body.open .site-content
 }
 .contact-form input[type=text]:-moz-placeholder, .contact-form input[type=email]:-moz-placeholder, .contact-form textarea:-moz-placeholder
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     color: #404040;
     font-weight: 700;
     font-size: 20px;
@@ -953,7 +953,7 @@ body.open .site-content
 
 .footer-info
 {
-    font-family: 'Montserrat', sans-serif, Arial;
+    font-family: 'JosefinSans', sans-serif, Arial;
     padding-top: 150px;
     padding-left: 50px;
     padding-right: 30px;
