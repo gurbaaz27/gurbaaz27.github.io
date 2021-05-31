@@ -62,6 +62,10 @@
     
       <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
     
+      <link rel="stylesheet" href="/assets/css/skin-switch.css">
+    
+      <link rel="stylesheet" href="/assets/css/demo.css">
+    
   
 
   
@@ -78,7 +82,7 @@
   <meta property="og:description" content="{% assign date_format = site.date_format | default: &quot;%B %-d, %Y&quot; %} {%- capture site_tags -%} {%- for tag in site.tags -%} {{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%} {%- endfor -%} {%- endcapture -%} {%- assign tags_list = site_tags | split:',' | sort -%} {%- for tag...">
 
   
-  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  <meta property="og:image" content="http://localhost:4000/assets/img/pfp.png">
   
 
   
@@ -90,14 +94,14 @@
   
   <meta name="twitter:card" content="summary">
   
-  <meta name="twitter:site" content="@daattali">
-  <meta name="twitter:creator" content="@daattali">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
 
   <meta property="twitter:title" content="Tag Index">
   <meta property="twitter:description" content="{% assign date_format = site.date_format | default: &quot;%B %-d, %Y&quot; %} {%- capture site_tags -%} {%- for tag in site.tags -%} {{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%} {%- endfor -%} {%- endcapture -%} {%- assign tags_list = site_tags | split:',' | sort -%} {%- for tag...">
 
   
-  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/pfp.png">
   
 
   
@@ -106,6 +110,8 @@
   
 
   
+
+  <link rel="shortcut icon" type="image/jpg" href="/assets/img/favicon.jpg"/>
 
 </head>
 
@@ -124,26 +130,30 @@
           <li class="nav-item">
             <a class="nav-link" href="/aboutme">About Me</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="https://beautifuljekyll.com">Beautiful Jekyll</a>
-                  <a class="dropdown-item" href="https://www.markdowntutorial.com/">Learn markdown</a>
-            </div>
-          </li>
-        
           <li class="nav-item">
-            <a class="nav-link" href="https://deanattali.com">Author's home</a>
+            <a class="nav-link" href="/blogs">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/assets/docs/Resume.pdf">Resume</a>
           </li></ul>
   </div>
 
+  
+
+  <div id="change-skin" title="Toggle Night Mode">
+    <span class="skin-btn dark-mode">🌙</span>
+    <span class="skin-btn light-mode">☀️</span>
+  </div>
   
 
   
     <div class="avatar-container">
       <div class="avatar-img-border">
         <a href="http://localhost:4000/">
-          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/pfp.png" />
         </a>
       </div>
     </div>
@@ -187,14 +197,32 @@
     <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
       
 
-      <a href="#test" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;test&nbsp;(1)</a><div id="full-tags-list"><h2 id="test" class="linked-section">
+      <a href="#deployment" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;deployment&nbsp;(1)</a><a href="#docker" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;docker&nbsp;(1)</a><a href="#tech" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;tech&nbsp;(1)</a><div id="full-tags-list"><h2 id="deployment" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
-        &nbsp;test&nbsp;(1)
+        &nbsp;deployment&nbsp;(1)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <a href="/2020-02-28-test-markdown/">Sample blog post</a>
+                <a href="/2021-05-30-demystifying-the-docker/">Demystifying the Docker 🐳</a>
                 <div class="entry-date">
-                    <time datetime="2020-02-28T00:00:00-05:00">February 28, 2020</time>
+                    <time datetime="2021-05-30T00:00:00+00:00">May 30, 2021</time>
+                </div>
+            </div></div><h2 id="docker" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;docker&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/2021-05-30-demystifying-the-docker/">Demystifying the Docker 🐳</a>
+                <div class="entry-date">
+                    <time datetime="2021-05-30T00:00:00+00:00">May 30, 2021</time>
+                </div>
+            </div></div><h2 id="tech" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;tech&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/2021-05-30-demystifying-the-docker/">Demystifying the Docker 🐳</a>
+                <div class="entry-date">
+                    <time datetime="2021-05-30T00:00:00+00:00">May 30, 2021</time>
                 </div>
             </div></div></div>
 
@@ -221,7 +249,7 @@
       <span class="sr-only">RSS</span>
     </a>
   </li><li class="list-inline-item">
-    <a href="mailto:someone@example.com" title="Email me">
+    <a href="mailto:gurbaaz@iitk.ac.in" title="Email me">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
@@ -229,7 +257,7 @@
       <span class="sr-only">Email me</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://www.facebook.com/deanattali" title="Facebook">
+    <a href="https://www.facebook.com/gurbaaz.nandra" title="Facebook">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
@@ -237,7 +265,7 @@
       <span class="sr-only">Facebook</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://github.com/daattali" title="GitHub">
+    <a href="https://github.com/gurbaaz27" title="GitHub">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -245,29 +273,21 @@
       <span class="sr-only">GitHub</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://twitter.com/daattali" title="Twitter">
+    <a href="https://linkedin.com/in/gurbaaznandra" title="LinkedIn">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
       </span>
-      <span class="sr-only">Twitter</span>
+      <span class="sr-only">LinkedIn</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://www.youtube.com/c/daattali" title="YouTube">
+    <a href="https://www.instagram.com/gurbaaz_singh27" title="Instagram">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
       </span>
-      <span class="sr-only">YouTube</span>
+      <span class="sr-only">Instagram</span>
    </a>
-  </li><li class="list-inline-item">
-    <a href="https://patreon.com/DeanAttali" title="Patreon">
-      <span class="fa-stack fa-lg" aria-hidden="true">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-patreon fa-stack-1x fa-inverse"></i>
-      </span>
-      <span class="sr-only">Patreon</span>
-    </a>
   </li></ul>
 
       
@@ -281,7 +301,7 @@
       
         &nbsp;&bull;&nbsp;
         <span class="author-site">
-          <a href="http://localhost:4000/">MyWebsite.com</a>
+          <a href="http://localhost:4000/">gurbaaz27.github.io</a>
         </span>
       
 
@@ -321,6 +341,11 @@
     <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
     
       <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/demo.js"></script>
     
   
 

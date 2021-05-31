@@ -1,16 +1,26 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: A non-exhaustive snippet describing me.
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+Hailing from Jalandhar, Punjab, I am currently pursuing B.Tech. in Computer Science and Engineering from IIT Kanpur (*typical Indian stereotypical vibes….r8?*). I love to meet different people, talk over various indulging topics, ranging from philosophy to gaming, from latest trends academics to the recent of memes, from praising a piece of work to criticising the hell out of it. I am ever-ready to collaborate on a team-project.
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+Nowadays I am exploring Deep Learning and particularly inclined towards it, though I share enthusiasm in CP and puzzles, and have a fair exposure to App and Web Development (*pythonic, not javascript. JS is my nightmare*). I love reading books and learn interesting concepts. I do love astronomy and stuff, and, *insert self-promotion*, currently one of the 4 coordinators of [Astronomy Club](https://astroclubiitk.github.io) at IIT Kanpur!
 
-What else do you need?
+Formalities apart, I am a lowkey roaster :P.
 
-### My story
+### Education
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+<i class="fa fa-graduation-cap"></i>
+BTech in Computer Science and Engineering, 2019 - *present*<br>
+*IIT Kanpur*
+
+<i class="fa fa-graduation-cap"></i>
+Senior Secondary Education, 2019<br>
+*MGN Public School, Jalandhar*
+
+<i class="fa fa-graduation-cap"></i>
+Senior Secondary Education, 2019<br>
+*MGN Public School, Jalandhar*
+

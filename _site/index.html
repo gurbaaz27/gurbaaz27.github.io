@@ -62,6 +62,10 @@
     
       <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
     
+      <link rel="stylesheet" href="/assets/css/skin-switch.css">
+    
+      <link rel="stylesheet" href="/assets/css/demo.css">
+    
   
 
   
@@ -78,7 +82,7 @@
   <meta property="og:description" content="This is where I will tell my friends way too much about me">
 
   
-  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  <meta property="og:image" content="http://localhost:4000/assets/img/pfp.png">
   
 
   
@@ -90,14 +94,14 @@
   
   <meta name="twitter:card" content="summary">
   
-  <meta name="twitter:site" content="@daattali">
-  <meta name="twitter:creator" content="@daattali">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
 
   <meta property="twitter:title" content="Gurbaaz Singh">
   <meta property="twitter:description" content="This is where I will tell my friends way too much about me">
 
   
-  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/pfp.png">
   
 
   
@@ -106,6 +110,8 @@
   
 
   
+
+  <link rel="shortcut icon" type="image/jpg" href="/assets/img/favicon.jpg"/>
 
 </head>
 
@@ -124,26 +130,30 @@
           <li class="nav-item">
             <a class="nav-link" href="/aboutme">About Me</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="https://beautifuljekyll.com">Beautiful Jekyll</a>
-                  <a class="dropdown-item" href="https://www.markdowntutorial.com/">Learn markdown</a>
-            </div>
-          </li>
-        
           <li class="nav-item">
-            <a class="nav-link" href="https://deanattali.com">Author's home</a>
+            <a class="nav-link" href="/blogs">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/assets/docs/Resume.pdf">Resume</a>
           </li></ul>
   </div>
 
+  
+
+  <div id="change-skin" title="Toggle Night Mode">
+    <span class="skin-btn dark-mode">🌙</span>
+    <span class="skin-btn light-mode">☀️</span>
+  </div>
   
 
   
     <div class="avatar-container">
       <div class="avatar-img-border">
         <a href="http://localhost:4000/">
-          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/pfp.png" />
         </a>
       </div>
     </div>
@@ -203,34 +213,46 @@
 
     
 
-    <a href="http://localhost:4000/2020-02-28-test-markdown/">
-      <h2 class="post-title">Sample blog post</h2>
+    <a href="http://localhost:4000/2021-05-30-demystifying-the-docker/">
+      <h2 class="post-title">Demystifying the Docker 🐳</h2>
 
       
         <h3 class="post-subtitle">
-        Each post also has a subtitle
+        A Learning Curve
         </h3>
       
     </a>
 
     <p class="post-meta">
       
-      Posted on February 28, 2020
+      Posted on May 30, 2021
     </p>
 
     
+    <div class="post-image post-image-small">
+      <a href="http://localhost:4000/2021-05-30-demystifying-the-docker/" aria-label="Thumbnail">
+        <img src="http://localhost:4000/assets/img/blogs/docker.png" alt="Post thumbnail">
+      </a>
+    </div>
+    
 
     
+    
+    <div class="post-image post-image-short">
+      <a href="http://localhost:4000/2021-05-30-demystifying-the-docker/" aria-label="Thumbnail">
+        <img src="http://localhost:4000/assets/img/blogs/docker.png" alt="Post thumbnail">
+      </a>
+    </div>
     
 
     <div class="post-entry">
       
-      This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc.
+      How to write Dockerfile
 
 
       
       
-        <a href="http://localhost:4000/2020-02-28-test-markdown/" class="post-read-more">[Read&nbsp;More]</a>
+        <a href="http://localhost:4000/2021-05-30-demystifying-the-docker/" class="post-read-more">[Read&nbsp;More]</a>
       
     </div>
     
@@ -239,7 +261,11 @@
     <div class="blog-tags">
       <span>Tags:</span>
       
-      <a href="http://localhost:4000/tags#test">test</a>
+      <a href="http://localhost:4000/tags#docker">docker</a>
+      
+      <a href="http://localhost:4000/tags#tech">tech</a>
+      
+      <a href="http://localhost:4000/tags#deployment">deployment</a>
       
     </div>
     
@@ -273,7 +299,7 @@
       <span class="sr-only">RSS</span>
     </a>
   </li><li class="list-inline-item">
-    <a href="mailto:someone@example.com" title="Email me">
+    <a href="mailto:gurbaaz@iitk.ac.in" title="Email me">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
@@ -281,7 +307,7 @@
       <span class="sr-only">Email me</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://www.facebook.com/deanattali" title="Facebook">
+    <a href="https://www.facebook.com/gurbaaz.nandra" title="Facebook">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
@@ -289,7 +315,7 @@
       <span class="sr-only">Facebook</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://github.com/daattali" title="GitHub">
+    <a href="https://github.com/gurbaaz27" title="GitHub">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -297,29 +323,21 @@
       <span class="sr-only">GitHub</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://twitter.com/daattali" title="Twitter">
+    <a href="https://linkedin.com/in/gurbaaznandra" title="LinkedIn">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
       </span>
-      <span class="sr-only">Twitter</span>
+      <span class="sr-only">LinkedIn</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://www.youtube.com/c/daattali" title="YouTube">
+    <a href="https://www.instagram.com/gurbaaz_singh27" title="Instagram">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
       </span>
-      <span class="sr-only">YouTube</span>
+      <span class="sr-only">Instagram</span>
    </a>
-  </li><li class="list-inline-item">
-    <a href="https://patreon.com/DeanAttali" title="Patreon">
-      <span class="fa-stack fa-lg" aria-hidden="true">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-patreon fa-stack-1x fa-inverse"></i>
-      </span>
-      <span class="sr-only">Patreon</span>
-    </a>
   </li></ul>
 
       
@@ -333,7 +351,7 @@
       
         &nbsp;&bull;&nbsp;
         <span class="author-site">
-          <a href="http://localhost:4000/">MyWebsite.com</a>
+          <a href="http://localhost:4000/">gurbaaz27.github.io</a>
         </span>
       
 
@@ -373,6 +391,11 @@
     <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
     
       <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/demo.js"></script>
     
   
 

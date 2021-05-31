@@ -10,18 +10,18 @@
     {% if js contains 'jquery' %}
       <script>
         if (typeof jQuery == 'undefined') {
-          document.write('<script src="{{ js | relative_url }}"></scr' + 'ipt>');
+          document.write('<script src="{{ site.baseurl }}{{ js }}"></scr' + 'ipt>');
         }
       </script>
     {% else %}
-      <script src="{{ js | relative_url }}"></script>
+      <script src="{{ site.baseurl }}{{ js }}"></script>
     {% endif %}
   {% endfor %}
 {% endif %}
 
 {% if site.site-js %}
   {% for js in site.site-js %}
-    <script src="{{ js | relative_url }}"></script>
+    <script src="{{ site.baseurl }}{{ js }}"></script>
   {% endfor %}
 {% endif %}
 
@@ -33,6 +33,6 @@
 
 {% if page.js %}
   {% for js in page.js %}
-    <script src="{{ js | relative_url }}"></script>
+    <script src="{{ site.baseurl }}{{ js }}"></script>
   {% endfor %}
 {% endif %}
