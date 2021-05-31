@@ -15,20 +15,7 @@
         <title>Demystifying the Docker 🐳</title>
         <description>
           A Learning Curve - 
-          How to write Dockerfile
-
-Docker compose
-
-What is network in Docker
-
-References
-
-
-  Learn Docker in 7 Easy Steps - Full Beginner’s Tutorial
-  How is docker changing things?
-
-
-
+          You wake up one day to build some cool web app or an ML model, motivate yourself a step further to deploy it or atleast share with your friends. On googling what to do now, you are bombarded with various methodologies and terminologeies. Amidst popular terms like Github, AWS, Heroku,...
         </description>
         <pubDate>Sun, 30 May 2021 00:00:00 +0000</pubDate>
         <link>http://localhost:4000/2021-05-30-demystifying-the-docker/</link>

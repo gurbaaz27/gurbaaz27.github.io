@@ -211,19 +211,147 @@
       
 
       <article role="main" class="blog-post">
-        <h2 id="how-to-write-dockerfile">How to write Dockerfile</h2>
+        <p>You wake up one day to build some cool web app or an ML model, motivate yourself a step further to deploy it or atleast share with your friends. On googling what to do now, you are bombarded with various methodologies and terminologeies. Amidst popular terms like Github, AWS, Heroku, Azure, you suddenly come across a possibly new word, <code class="language-plaintext highlighter-rouge">Docker</code>. You read that it is some industry-level standard and popularly used tool, and get excited. You try to install it, understand it but the whole concept goes over the head. You don’t even understand why it exists in the first place. So this blog, made as an effort in response to the same challenge, tries to make you understand and get started with Docker.</p>
 
-<h2 id="docker-compose">Docker compose</h2>
+<h2 id="so-what-is-docker">So, what is Docker?</h2>
 
-<h2 id="what-is-network-in-docker">What is network in Docker</h2>
+<p>Docker is a tool that can package software into containers which can reliably on any system or environment. The issue of portability might not seem an issue during small-scaled self projects, but the hassle of running and testing the code on different machines quickly increase as the project expands. So ultimately, how do we create the environment to run the software and its dependencies on any given machine? That is what Docker answers. But it wasn’t the first one to do that. Earlier, virtual machines were used where each app uses a Guest OS on top of the Host OS to allocate resources for the dependencies and building up the app.</p>
+
+<figure>
+    <img src="/assets/img/blogs/vm.png" />
+    <figcaption style="text-align: center;">VM approach [1]</figcaption>
+</figure>
+<!-- ![Virtual Machine approach](/assets/img/blogs/vm.png) -->
+<p>But each VM needs to be allocated substantial amount of resources in terms of RAM and CPU to run its OS. This makes the process bulky, slow and leading to a wastage of resources. Docker makes a slight change here by only virtualising the OS and not the hardware again and again, hence all different apps (or containers) are run by a single kernel. We get shared resources for CPU and RAM, which speeds up the process and makes it efficient.</p>
+
+<figure>
+    <img src="/assets/img/blogs/docker-structure.png" />
+    <figcaption style="text-align: center;">Docker approach [1]</figcaption>
+</figure>
+
+<h2 id="installation">Installation</h2>
+
+<p>On linux, install Docker Engine from <a href="https://docs.docker.com/engine/install/">here</a>. For Windows/Mac, Docker Desktop is the recommended way as “The Docker Desktop installation includes Docker Engine, Docker CLI client, Docker Compose, Notary, Kubernetes, and Credential Helper”.</p>
+
+<p>Once installed, it is important to understand 3 important concepts related to Docker.</p>
+<ul>
+  <li>Dockerfile</li>
+  <li>Docker Image</li>
+  <li>Docker Container</li>
+</ul>
+
+<figure>
+    <img src="/assets/img/blogs/docker-concepts.png" />
+    <figcaption style="text-align: center;">Fundamental concepts in Docker [1]</figcaption>
+</figure>
+
+<p>Dockerfile contains set of instructions/code to build a Docker image, which in turn is a snapshot of requirements and dependencies (similar to a .iso file for OS). A docker container is a running instance of a Docker image.</p>
+
+<h2 id="how-to-write-a-dockerfile">How to write a Dockerfile?</h2>
+
+<p>Dockerfile is the most crucial aspect to run a container, hence keep it at the top level of your project directory. An example of writing to a Dockerfile could be</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>Project
+<span class="nb">touch </span>Dockerfile
+vim Dockerfile
+</code></pre></div></div>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM ubuntu
+
+MAINTAINER gurbaaz
+
+RUN apt<span class="p">-</span><span class="nb">get</span> <span class="k">update</span>
+
+CMD <span class="p">[</span><span class="s2">"echo"</span><span class="p">,</span> <span class="s2">"Hello Docker!"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h2 id="building-and-running-our-container">Building and Running our Container</h2>
+
+<p>To build our image, simply use the <code class="language-plaintext highlighter-rouge">docker build</code> command</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> myapp <span class="nb">.</span>  <span class="c"># -t is name tag for the docker image</span>
+</code></pre></div></div>
+<p>You should see some output like this</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM ubuntu
+latest: Pulling from library/ubuntu
+345e3491a907: Pull <span class="nb">complete 
+</span>57671312ef6f: Pull <span class="nb">complete 
+</span>5e9250ddb7d0: Pull <span class="nb">complete 
+</span>Digest: sha256:adf73ca014822ad8237623d388cedf4d5346aa72c270c5acc01431cc93e18e2d
+Status: Downloaded newer image <span class="k">for </span>ubuntu:latest
+ <span class="nt">---</span><span class="o">&gt;</span> 7e0aa2d69a15
+Step 2/4 : MAINTAINER gurbaaz
+ <span class="nt">---</span><span class="o">&gt;</span> Running <span class="k">in </span>84b0b8867652
+Removing intermediate container 84b0b8867652
+ <span class="nt">---</span><span class="o">&gt;</span> 44e2daa67feb
+Step 3/4 : RUN apt-get update
+ <span class="nt">---</span><span class="o">&gt;</span> Running <span class="k">in </span>0cebc3a5cb2c
+Get:1 http://archive.ubuntu.com/ubuntu focal InRelease <span class="o">[</span>265 kB]
+<span class="nb">.</span>
+<span class="nb">.</span>
+<span class="nb">.</span>
+Fetched 17.8 MB <span class="k">in </span>9s <span class="o">(</span>2005 kB/s<span class="o">)</span>
+Reading package lists...
+Removing intermediate container 0cebc3a5cb2c
+ <span class="nt">---</span><span class="o">&gt;</span> 7b76fc7b5bff
+Step 4/4 : CMD <span class="o">[</span><span class="s2">"echo"</span>, <span class="s2">"Hello Docker!"</span><span class="o">]</span>
+ <span class="nt">---</span><span class="o">&gt;</span> Running <span class="k">in </span>eaeafffd3930
+Removing intermediate container eaeafffd3930
+ <span class="nt">---</span><span class="o">&gt;</span> 69be9a583d7b
+Successfully built 69be9a583d7b
+Successfully tagged myapp:latest
+</code></pre></div></div>
+
+<p class="box-note"><strong>Docker-Hub:</strong> To access tons of resources and help other developers, there exists a similar thing to Github called dockerhub, where you can create an account and then push your local images in the docker repository. Hence try to keep your tag-name meaningful like <strong>{dockerhub-username}/{app-name}:{version}</strong>.</p>
+
+<p>Now, with the image ready, we can ship it anywhere and run the container, using <code class="language-plaintext highlighter-rouge">docker run</code> command.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run myapp
+<span class="o">&gt;&gt;&gt;</span> Hello Docker!
+</code></pre></div></div>
+
+<p>To re-run the container after making some changes, you need to stop and remove the container, rebuild the image and run it as dicussed above.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps <span class="c"># to get container id of myapp</span>
+docker stop &lt;container-id&gt;
+docker <span class="nb">rm</span> <span class="o">&gt;</span>container-id&gt;
+</code></pre></div></div>
+
+<h2 id="create-network-in-docker">Create network in Docker</h2>
+<p>Till now we did’nt leverage the full capability of Docker, which is to run more than one apps. For an example, it could be running a backend Django Server and a MySQL server, and allowing them to communicate with each other. Docker does this by having separate isolated container for each app, and enabling communication between them via a network.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network create &lt;app-name&gt;
+docker run -&lt;flags&gt; <span class="nt">--network</span> &lt;app-name&gt; image1
+</code></pre></div></div>
+
+<h2 id="docker-compose">Docker Compose</h2>
+<p>Docker compose allows one to define different services of the multi-container apps is via writing a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file. A typical YAML file could look like</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2'</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">web</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span> <span class="s">.</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">8000:8000"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">.:/code</span>
+  <span class="na">db</span><span class="pi">:</span> <span class="s">mysql</span>
+    <span class="s">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">.:db-data/foo</span>
+</code></pre></div></div>
+<p>Now run the application using the command</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up <span class="nt">-d</span>
+</code></pre></div></div>
+<p>To brind the container down, type</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose down
+</code></pre></div></div>
+
+<p>Thats it! You have familiarised yourself with one of the intimidating topics of software world. This blog is merely my own knowledge, but rather a channelisation of what I read and learnt from different resources on the internet. Do check out the references section for them.</p>
 
 <h3 id="references">References</h3>
 
-<ul>
+<ol>
   <li><a href="https://www.youtube.com/watch?v=gAkwW2tuIqE">Learn Docker in 7 Easy Steps - Full Beginner’s Tutorial</a></li>
-  <li><a href="https://vamsibrp.github.io/How-is-Docker-changing-things/">How is docker changing things?</a>
-<!-- - []() --></li>
-</ul>
+  <li><a href="https://vamsibrp.github.io/How-is-Docker-changing-things/">How is docker changing things?</a></li>
+  <li><a href="https://phoenixnap.com/kb/create-docker-images-with-dockerfile">Create Docker Images with Dockerfile</a></li>
+</ol>
 
       </article>
 
