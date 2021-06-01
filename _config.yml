@@ -17,7 +17,7 @@ author: Gurbaaz Singh Nandra
 
 navbar-links:
   About Me: "aboutme"
-  Blogs: "blogs"
+  Blog: "blog"
   Projects: "projects"
   Resume: "/assets/docs/Resume.pdf"
   #  Resources:
