@@ -105,7 +105,7 @@ To re-run the container after making some changes, you need to stop and remove t
 ```bash
 docker ps # to get container id of myapp
 docker stop <container-id>
-docker rm >container-id>
+docker rm <container-id>
 ```
 
 ## Create network in Docker
@@ -127,7 +127,7 @@ services:
       - "8000:8000"
     volumes:
       - .:/code
-  db: mysql
+  db: "mysql"
     volumes:
       - .:db-data/foo
 ```
@@ -141,6 +141,8 @@ docker-compose down
 ```
 
 Thats it! You have familiarised yourself with one of the intimidating topics of software world. This blog is merely my own knowledge, but rather a channelisation of what I read and learnt from different resources on the internet. Do check out the references section for them.
+
+Till next time!
 
 
 ### References

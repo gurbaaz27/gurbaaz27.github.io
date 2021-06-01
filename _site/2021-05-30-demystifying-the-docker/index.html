@@ -312,7 +312,7 @@ Successfully tagged myapp:latest
 <p>To re-run the container after making some changes, you need to stop and remove the container, rebuild the image and run it as dicussed above.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps <span class="c"># to get container id of myapp</span>
 docker stop &lt;container-id&gt;
-docker <span class="nb">rm</span> <span class="o">&gt;</span>container-id&gt;
+docker <span class="nb">rm</span> &lt;container-id&gt;
 </code></pre></div></div>
 
 <h2 id="create-network-in-docker">Create network in Docker</h2>
@@ -332,8 +332,8 @@ docker run -&lt;flags&gt; <span class="nt">--network</span> &lt;app-name&gt; ima
       <span class="pi">-</span> <span class="s2">"</span><span class="s">8000:8000"</span>
     <span class="na">volumes</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">.:/code</span>
-  <span class="na">db</span><span class="pi">:</span> <span class="s">mysql</span>
-    <span class="s">volumes</span><span class="pi">:</span>
+  <span class="na">db</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mysql"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">.:db-data/foo</span>
 </code></pre></div></div>
 <p>Now run the application using the command</p>
@@ -344,6 +344,8 @@ docker run -&lt;flags&gt; <span class="nt">--network</span> &lt;app-name&gt; ima
 </code></pre></div></div>
 
 <p>Thats it! You have familiarised yourself with one of the intimidating topics of software world. This blog is merely my own knowledge, but rather a channelisation of what I read and learnt from different resources on the internet. Do check out the references section for them.</p>
+
+<p>Till next time!</p>
 
 <h3 id="references">References</h3>
 
