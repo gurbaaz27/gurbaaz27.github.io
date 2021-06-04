@@ -133,7 +133,7 @@ footer-link-col: "#404040"
 # --- Web Analytics Section --- #
 
 # Fill in your Google Analytics gtag.js ID to track your website using gtag
-#gtag: ""
+gtag: "UA-173145540-1"
 
 # Fill in your Google Analytics ID to track your website using Google Analytics
 #google_analytics: ""
@@ -231,6 +231,7 @@ exclude:
   - screenshot.png
   - docs/
   - _posts/2020-02-28-test-markdown.md
+  - _posts/2021-06-03-the-pain-of-deplyment.md
 
 plugins:
   - jekyll-paginate
