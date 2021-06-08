@@ -231,7 +231,7 @@ exclude:
   - screenshot.png
   - docs/
   - _posts/2020-02-28-test-markdown.md
-  - _posts/2021-06-03-the-pain-of-deplyment.md
+  - _posts/2021-06-03-the-pain-of-deployment.md
 
 plugins:
   - jekyll-paginate
