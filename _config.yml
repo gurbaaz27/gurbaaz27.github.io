@@ -19,7 +19,7 @@ navbar-links:
   About Me: "aboutme"
   Blog: "blog"
   Projects: "projects"
-  Resume: "/assets/docs/Resume.pdf"
+  Resume: "/assets/docs/cv.pdf"
   #  Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
   #  - Learn markdown: "https://www.markdowntutorial.com/"
