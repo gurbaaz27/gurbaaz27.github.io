@@ -1,6 +1,6 @@
 # Personal Homepage
 
-Visit [gurbaaz27.github.io](gurbaaz27.github.io) for the hosted homepage.
+Visit [gurbaaz27.github.io](https://gurbaaz27.github.io) for the hosted homepage.
 
 # Credits
 
