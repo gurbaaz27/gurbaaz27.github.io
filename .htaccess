@@ -1,0 +1,4 @@
+RewriteCond %{HTTP_HOST} ^gurbaaz.xyz$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.gurbaaz.xyz$
+RewriteCond %{REQUEST_URI} !_site/
+RewriteRule (.*) _site/$1 [L]
