@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Codrop: Code-and-Drop 📦</title>
+
+  
+  <meta name="author" content="Gurbaaz Singh Nandra">
+  
+
+  <meta name="description" content="A File-Sharing VSCode Extension">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="The Hawk's Nest" href="http://localhost:4000/feed.xml">
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173145540-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-173145540-1');
+</script>
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+      <link rel="stylesheet" href="/assets/css/skin-switch.css">
+    
+      <link rel="stylesheet" href="/assets/css/demo.css">
+    
+      <link rel="stylesheet" href="/assets/css/custom.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="The Hawk's Nest">
+  <meta property="og:title" content="Codrop: Code-and-Drop 📦">
+  <meta property="og:description" content="A File-Sharing VSCode Extension">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/blogs/codrop.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Gurbaaz Singh Nandra">
+  <meta property="og:article:published_time" content="2023-01-16T00:00:00+00:00">
+  <meta property="og:url" content="http://localhost:4000/2023-01-16-codrop/">
+  <link rel="canonical" href="http://localhost:4000/2023-01-16-codrop/">
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Codrop: Code-and-Drop 📦">
+  <meta property="twitter:description" content="A File-Sharing VSCode Extension">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/blogs/codrop.png">
+  
+
+  
+
+
+  
+
+  
+
+  <link rel="shortcut icon" type="image/jpg" href="/assets/img/favicon.jpg"/>
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="/">The Hawk's Nest</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/assets/docs/cv.pdf">Resume</a>
+          </li></ul>
+  </div>
+
+  
+
+  <div id="change-skin" title="Toggle Night Mode">
+    <span class="skin-btn dark-mode">🌙</span>
+    <span class="skin-btn light-mode">☀️</span>
+  </div>
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/pfp.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Codrop: Code-and-Drop 📦</h1>
+          
+            
+              <h2 class="post-subheading">A File-Sharing VSCode Extension</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on January 16, 2023</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <blockquote>
+  <p><strong>Go check out the extension <a href="https://marketplace.visualstudio.com/items?itemName=gurbaaz.codrop">here</a>. Feel free to install and use, and report bugs (if any) at gurbaazsn123 [at] gmail [dot] com</strong></p>
+</blockquote>
+
+<p>Around a month back, after the end semester examinations of my 7th semester were over and before the placement season was about to begin,  I was looking for some random inspiration to build some cool stuff. During that period, one of my friends was working on some piece of code and was facing some errors, so he used to send me the code file to help him fix it. I would edit some parts and send him back, and then he would add some stuff, face some bugs and then send me back again. This soon led to multiple rounds of to-and-fro messaging, all taking place over Whatsapp (our primary medium of chatting). We both use Visual Studio Code (VSCode) as our primary code editor, and hence it seemed redundant to me that again and again,  I had to go to Whatsapp, attach the file and send it to the other guy, and then he would download it and open it in his VSCode. And then an idea (a rather obvious idea) clicked: to make an vscode extension to simplify this process of file sharing. Also, I have never built one before so this project idea could be a good learning experience.</p>
+
+<p>However, I did not want this time for my project to just land in my pile of unfinished projects 🥲 (you know what they say :-  “<em>Ideas are Shit; Execution is Everything</em>”), so I started seriously penning down my course of action in my Notion doc. As simple as the extension sounds, I found it highly challenging since I have little to no practical experience in frontend, let alone working on Typescript. Fast forward a week, and I was able to build and test the first version of my baby; although basic and naive in retrospect, it did exactly what I wanted it to do, and I was proud of it. I reached the stage where most developers slack off:- actually deploying and publishing the stuff on web. This is the part where I also procastinated a lot, and thanks to my lack of creativity, I was not able to chose even a decent, let alone a cool name for my extension. I asked few of my friends for the same, and got codedrop as one of the suggestion. The name sticked with me, and I dropped off the “de” to arrive at the final name:- <code class="language-plaintext highlighter-rouge">codrop</code>. Thanks to AI logo generators out there and some hours of donkey-work figuring out the Azure Devops, I was able to package and publish my extension on the marketplace 🥳.</p>
+
+<p>You can find excerpts from my Notion doc below. Ignore the all-small-case style of writing; I usually do it for personal notes and documentation (too lazy to press <code class="language-plaintext highlighter-rouge">Shift</code> key to capitalise 😌). I hope my doc helps you to find motivation to complete one of your unfinished project of crazy ideas!</p>
+
+<p>Peace 🕊️</p>
+
+<hr />
+
+<h2 id="problem-">problem 📌</h2>
+
+<p>vscode has become a staple editor for most developers, ranking as one of the top developer environment tools. but quickly sharing a code file becomes a repetitive task. let’s see a general day-to-day flow when you are sharing some code files with your friend</p>
+
+<ol>
+  <li>writing your code on vscode, you encounter an error, and you seek help from your tech geek friend</li>
+  <li>you go to whatsapp (or discord or telegram or whatever) and go to send a document, navigate through your system and finally select the file, and then click on send</li>
+  <li>your friend receives the message, downloads the file, places it somewhere (or default <code class="language-plaintext highlighter-rouge">downloads</code> folder) and then opens vscode, and then opens the file</li>
+</ol>
+
+<p>as we can see, the process of transferring files from one system to another, although quick, has still a lot of steps, which can be avoided with a simple solution (and no, i am not talking about github-like places to push code to and then share it, and some live collaboration feature): link sharing</p>
+
+<h2 id="solution-">solution 💡</h2>
+
+<p>what i am proposing is a vscode extension for link-sharing, which you would be able to install from the vscode marketplace itself.</p>
+
+<p>once added, you can simply write your code, and then click on the share icon and generate a link that would get copied to your clipboard, and then share it with your friend over any communication channel.</p>
+
+<p>your friend would simply click on the link which would open the app with the required files in it. simple? i bet your ass it is.</p>
+
+<h2 id="features-and-demo">features and Demo</h2>
+
+<p>as of current version, two commands are provided in your command pallete</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Codrop: Get Shareable Link</code>: Copies a shareable link of active code file to your system’s clipboard.</li>
+  <li><code class="language-plaintext highlighter-rouge">Codrop: Add Code to Workspace</code>: Paste the link</li>
+</ul>
+
+<p>the above commands feel a bit mechanical, hence alternatively, we provide a <code class="language-plaintext highlighter-rouge">Get Shareable Link</code> button in the status bar of vscode itself, which performs the task of link-generation on click. when a user pastes the link in browser, desktop vscode application is triggered and the corresponding file gets created, filled with the required content.</p>
+
+<figure>
+    <img src="/assets/img/blogs/codrop-demo.gif" />
+    <figcaption style="text-align: center;">Extension Demo</figcaption>
+</figure>
+
+<h2 id="roadmap-️">roadmap 🛣️</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />figure out typescript and how to write a basic vscode extension</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />add a widget to obtain shareable link
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />if that doesn’t work, allow the same simply from the command palette (ctrl+shift+p)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />generate the link
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />might involve a separate backend if it’s possible with vscode extensions or i do not get much familiar with typescript (golang ftw)
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />edit: golang truly was ftw</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />copy the link to the clipboard</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />clicking on the trigger should trigger the desktop launch of the vscode application
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />if the app doesn’t exist on the client’s system, as a fallback we can have two options
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />download the code</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />open vscode in the browser</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />option to launch any other code editor</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />finalise the extension name</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />write extensions readme</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />deploy the backend and get a nice domain name</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />logo and stuff</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />publish the extension to the marketplace</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />share and publicize the tool</li>
+</ul>
+
+<p>i am looking forward to extending the same to sharing multiple files/folders at once, but let’s focus on POC first!!</p>
+
+<p>as this is my first time with this vscode extension ecosystem, i would be penning down all the tools and resources i gather along the way 💀</p>
+
+<h2 id="tools-">tools 🔨</h2>
+
+<ul>
+  <li>programming language(s)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">typescript (extension's frontend)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">golang (to build APIs)</code></li>
+    </ul>
+  </li>
+  <li>database: <code class="language-plaintext highlighter-rouge">postgres</code></li>
+  <li>server: <code class="language-plaintext highlighter-rouge">aws ec2</code></li>
+  <li>domain+SSL: <code class="language-plaintext highlighter-rouge">namecheap</code></li>
+</ul>
+
+<h2 id="resources-">resources 📚</h2>
+
+<ul>
+  <li><a href="https://code.visualstudio.com/api/get-started/your-first-extension">https://code.visualstudio.com/api/get-started/your-first-extension</a></li>
+  <li><a href="https://www.freecodecamp.org/news/making-vscode-extension/">https://www.freecodecamp.org/news/making-vscode-extension/</a></li>
+  <li><a href="https://code.visualstudio.com/api/extension-guides/overview">https://code.visualstudio.com/api/extension-guides/overview</a></li>
+  <li><a href="https://crodrigues.com/how-to-open-windows-desktop-applications-from-the-browser/">https://crodrigues.com/how-to-open-windows-desktop-applications-from-the-browser/</a></li>
+  <li>https://github.com/microsoft/vscode-extension-samples</li>
+  <li><a href="https://www.youtube.com/watch?v=a5DX5pQ9p5M&amp;ab_channel=BenAwad">https://www.youtube.com/watch?v=a5DX5pQ9p5M&amp;ab_channel=BenAwad</a></li>
+  <li>https://github.com/microsoft/vscode/issues/217</li>
+  <li>https://github.com/sindresorhus/clipboardy</li>
+  <li>https://github.com/microsoft/vscode-pull-request-github/issues/573</li>
+  <li><a href="https://github.com/microsoft/vscode-extension-samples/blob/main/uri-handler-sample/src/extension.ts">https://github.com/microsoft/vscode-extension-samples/blob/main/uri-handler-sample/src/extension.ts</a></li>
+  <li><a href="https://stackoverflow.com/questions/53073926/how-do-i-create-a-file-for-a-visual-studio-code-extension">https://stackoverflow.com/questions/53073926/how-do-i-create-a-file-for-a-visual-studio-code-extension</a></li>
+  <li><a href="https://stackoverflow.com/questions/22892120/how-to-generate-a-random-string-of-a-fixed-length-in-go">https://stackoverflow.com/questions/22892120/how-to-generate-a-random-string-of-a-fixed-length-in-go</a></li>
+  <li><a href="https://intersog.com/blog/how-to-write-a-custom-url-shortener-using-golang-and-redis/">https://intersog.com/blog/how-to-write-a-custom-url-shortener-using-golang-and-redis/</a></li>
+  <li><a href="https://jrstupkadev.medium.com/golang-url-shortener-22ba6c970792">https://jrstupkadev.medium.com/golang-url-shortener-22ba6c970792</a></li>
+  <li><a href="https://bobbyhadz.com/blog/typescript-http-request-axios">https://bobbyhadz.com/blog/typescript-http-request-axios</a></li>
+  <li><a href="https://stackoverflow.com/questions/62839519/how-convert-a-string-to-type-uint8array-in-nodejs">https://stackoverflow.com/questions/62839519/how-convert-a-string-to-type-uint8array-in-nodejs</a></li>
+  <li><a href="https://stackoverflow.com/questions/58451856/vscode-api-check-if-path-exists">https://stackoverflow.com/questions/58451856/vscode-api-check-if-path-exists</a></li>
+  <li><a href="https://www.eliostruyf.com/callback-extension-vscode/">https://www.eliostruyf.com/callback-extension-vscode/</a></li>
+  <li><a href="https://stackoverflow.com/questions/64798213/how-to-configure-axios-base-url">https://stackoverflow.com/questions/64798213/how-to-configure-axios-base-url</a></li>
+  <li><a href="https://stackoverflow.com/questions/56086972/how-do-i-run-an-extension-command-on-startup-on-vscode">https://stackoverflow.com/questions/56086972/how-do-i-run-an-extension-command-on-startup-on-vscode</a></li>
+  <li><a href="https://code.visualstudio.com/api/references/vscode-api">https://code.visualstudio.com/api/references/vscode-api</a></li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#vscode">vscode</a>
+          
+            <a href="/tags#tech">tech</a>
+          
+            <a href="/tags#file-sharing">file-sharing</a>
+          
+            <a href="/tags#extensions">extensions</a>
+          
+            <a href="/tags#utility">utility</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Codrop%3A+Code-and-Drop+%F0%9F%93%A6&url=http%3A%2F%2Flocalhost%3A4000%2F2023-01-16-codrop%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2023-01-16-codrop%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2023-01-16-codrop%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-05-30-demystifying-the-docker/" data-toggle="tooltip" data-placement="top" title="Demystifying the Docker 🐳">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:gurbaaz@iitk.ac.in" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://www.facebook.com/gurbaaz.nandra" title="Facebook">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Facebook</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/gurbaaz27" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/gurbaaznandra" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://www.instagram.com/gurbaaz_singh27" title="Instagram">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Instagram</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Gurbaaz Singh Nandra
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">gurbaaz27.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/demo.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
