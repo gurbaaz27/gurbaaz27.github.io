@@ -12,9 +12,9 @@
     
     
       <item>
-        <title>Codrop: Code-and-Drop 📦</title>
+        <title>Codrop: Code-n-Drop 📦</title>
         <description>
-          A File-Sharing &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=gurbaaz.codrop&quot; target=&quot;_blank&quot;&gt;VSCode Extension&lt;/a&gt; - 
+          A File-Sharing &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=gurbaaz.codrop&quot; target=&quot;_blank&quot;&gt;VS Code Extension&lt;/a&gt; - 
           Around a month back, after the end semester examinations of my 7th semester were over and before the placement season was about to begin, I was looking for some random inspiration to build some cool stuff. During that period, one of my friends was working on some piece of code...
         </description>
         <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
@@ -23,7 +23,7 @@
       </item>
     
       <item>
-        <title>Demystifying the Docker 🐳</title>
+        <title>Demystifying the Docker</title>
         <description>
           A Learning Curve - 
           You wake up one day to build some cool web app or an ML model, motivate yourself a step further to deploy it or atleast share with your friends. On googling what to do now, you are bombarded with various methodologies and terminologeies. Amidst popular terms like Github, AWS, Heroku,...

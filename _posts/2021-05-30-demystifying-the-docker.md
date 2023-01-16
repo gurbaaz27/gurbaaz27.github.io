@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Demystifying the Docker 🐳
+title: Demystifying the Docker
 subtitle: A Learning Curve
 # cover-img: /assets/img/blogs/docker-banner.jpg
 thumbnail-img: /assets/img/blogs/docker.png
