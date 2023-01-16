@@ -18,7 +18,7 @@ author: Gurbaaz Singh Nandra
 navbar-links:
   About Me: "aboutme"
   Blog: "blog"
-  Projects: "projects"
+  # Projects: "projects"
   Resume: "/assets/docs/cv.pdf"
   #  Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
