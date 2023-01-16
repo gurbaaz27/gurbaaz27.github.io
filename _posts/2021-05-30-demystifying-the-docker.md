@@ -6,6 +6,7 @@ subtitle: A Learning Curve
 thumbnail-img: /assets/img/blogs/docker.png
 share-img: /assets/img/blogs/docker.png
 tags: [docker, tech, deployment]
+minutes_to_read: 5
 ---
 
 You wake up one day to build some cool web app or an ML model, motivate yourself a step further to deploy it or atleast share with your friends. On googling what to do now, you are bombarded with various methodologies and terminologeies. Amidst popular terms like Github, AWS, Heroku, Azure, you suddenly come across a possibly new word, `Docker`. You read that it is some industry-level standard and popularly used tool, and get excited. You try to install it, understand it but the whole concept goes over the head. You don't even understand why it exists in the first place. So this blog, made as an effort in response to the same challenge, tries to make you understand and get started with Docker.
