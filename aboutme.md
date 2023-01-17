@@ -5,7 +5,7 @@ subtitle: A non-exhaustive snippet describing me.
 ---
 
 Hi!<br>
-I am Gurbaaz Singh Nandra. I live in Jalandhar city, an industry-centric city in the heart of Punjab, India. Currently. I am a final year undergraduate student majoring in Computer Science and Engineering from IIT Kanpur. I would be joining Quadeye Securities as a Systems Engineer, focused on designing low-latency trading systems, primarily in C++. 
+I am Gurbaaz Singh Nandra. I live in Jalandhar, an industry-centric city in the heart of Punjab, India. Currently, I am a final year undergraduate student majoring in Computer Science and Engineering from IIT Kanpur. I would be joining Quadeye Securities as a Systems Engineer, focused on designing low-latency trading systems, primarily in C++. 
 
 Over my years of stay at the institute, I had been lucky to explore variety of domains, be it technical, cultural, politics or sports. I participated in Dramatics in my freshmen year, guided and mentored junior freshers as a Student Guide and Academic Mentor in my sophomore year. I also took up management and administrative roles in the past, in the form of Coordinator at Astronomy Club and Senator at Students' Gymkhana.
 
