@@ -39,7 +39,7 @@
   <meta name="keywords" content="{{ site.keywords }}">
   {% endif %}
 
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.baseurl }}{{ '/feed.xml' }}">
 
   {% include gtag.html %}
   {% include gtm_head.html %}
@@ -105,19 +105,19 @@
   <meta property="og:description" content="{{ description }}">
 
   {% if img != "" %}
-  <meta property="og:image" content="{{ img | absolute_url }}">
+  <meta property="og:image" content="{{ site.url-pretty-abs }}{{ img }}">
   {% endif %}
 
   {% if page.id %}
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="{{ site.author }}">
   <meta property="og:article:published_time" content="{{ page.date | date_to_xmlschema }}">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:url" content="{{ site.url-pretty-abs }}{{ page.url }}">
+  <link rel="canonical" href="{{ site.url-pretty-abs }}{{ page.url }}">
   {% else %}
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ page.url | absolute_url | strip_index }}">
-  <link rel="canonical" href="{{ page.url | absolute_url | strip_index }}">
+  <meta property="og:url" content="{{ site.url-pretty-abs }}{{ page.url | strip_index }}">
+  <link rel="canonical" href="{{ site.url-pretty-abs }}{{ page.url | strip_index }}">
   {% endif %}
 
   {% if img != "" and img != site.avatar %}
@@ -132,7 +132,7 @@
   <meta property="twitter:description" content="{{ description }}">
 
   {% if img != "" %}
-  <meta name="twitter:image" content="{{ img | absolute_url }}">
+  <meta name="twitter:image" content="{{ site.url-pretty-abs }}{{ img }}">
   {% endif %}
 
   {% include matomo.html %}
