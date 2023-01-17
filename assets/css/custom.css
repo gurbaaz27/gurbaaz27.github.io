@@ -11,12 +11,12 @@ img {
 }
 
 .mark {
-    background: rgba(255, 255, 0, 0.127);
+    background: rgba(255, 255, 0, 0.349);
     color: inherit;
 }
 
 .page-dark-mode .mark {
-    background: rgba(82, 82, 79, 0.2);
+    background: rgba(82, 82, 79, 0.6);
     color: inherit;
 }
 
