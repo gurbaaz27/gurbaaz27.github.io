@@ -9,3 +9,15 @@ img {
         transform:scale(1.2);
     }
 }
+
+.mark {
+    background: rgba(255, 255, 0, 0.127);
+    color: inherit;
+}
+
+.page-dark-mode .mark {
+    background: rgba(82, 82, 79, 0.2);
+    color: inherit;
+}
+
+a.post-disable-highlight { color: inherit; } 

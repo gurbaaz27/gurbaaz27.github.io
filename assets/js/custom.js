@@ -8,3 +8,17 @@ $(function() {
     $('#change-skin').trigger('click');
   }
 });
+
+function disableHighlight() {
+  const style = document.createElement('style');
+  style.textContent = `
+      .mark {
+          background: none;
+      }
+      
+      .page-dark-mode .mark {
+        background: none;
+      }`;
+  document.head.append(style);
+  console.log('highlight disabled')
+}

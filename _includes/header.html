@@ -38,7 +38,9 @@
           {% endif %}
 
           {% if include.type == "post" %}
-            <span class="post-meta">{{ page.date | date: date_format }} | {{ page.minutes_to_read }} minutes to read</span>
+            <span class="post-meta">{{ page.date | date: date_format }} | {{ page.minutes_to_read }} minutes to read</span><br>
+            <br>
+            <span><a class="post-disable-highlight" onclick="disableHighlight()" href="#"><u>Disable the highlights</u></a></span>
             {% if page.last-updated %}
               <span class="post-meta">
                 <span class="d-none d-md-inline middot">&middot;</span>
@@ -73,6 +75,8 @@
 
           {% if include.type == "post" %}
             <span class="post-meta">{{ page.date | date: date_format }} | {{ page.minutes_to_read }} minutes to read</span>
+            <br>
+            <span><a class="post-disable-highlight" onclick="disableHighlight()" href="#"><u>Disable the highlights</u></a></span>
             {% if page.last-updated %}
               <span class="post-meta">
                 <span class="d-none d-md-inline middot">&middot;</span>

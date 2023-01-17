@@ -13,7 +13,7 @@ You wake up one day to build some cool web app or an ML model, motivate yourself
 
 ## So, what is Docker?
 
-Docker is a tool that can package software into containers which can reliably on any system or environment. The issue of portability might not seem an issue during small-scaled self projects, but the hassle of running and testing the code on different machines quickly increase as the project expands. So ultimately, how do we create the environment to run the software and its dependencies on any given machine? That is what Docker answers. But it wasn't the first one to do that. Earlier, virtual machines were used where each app uses a Guest OS on top of the Host OS to allocate resources for the dependencies and building up the app.
+Docker is a tool that can package software into containers which can reliably on any system or environment. The issue of portability might not seem an issue during small-scaled self projects, but the hassle of running and testing the code on different machines quickly increase as the project expands. <span class="mark">So ultimately, how do we create the environment to run the software and its dependencies on any given machine? That is what Docker answers. But it wasn't the first one to do that.</span> Earlier, virtual machines were used where each app uses a Guest OS on top of the Host OS to allocate resources for the dependencies and building up the app.
 
 {% include image.html url="/assets/img/blogs/vm.png" description="VM approach [1]" %}
 <!-- ![Virtual Machine approach]({{ site.baseurl }}/assets/img/blogs/vm.png) -->
@@ -32,7 +32,7 @@ Once installed, it is important to understand 3 important concepts related to Do
 
 {% include image.html url="/assets/img/blogs/docker-concepts.png" description="Fundamental concepts in Docker [1]" %}
 
-Dockerfile contains set of instructions/code to build a Docker image, which in turn is a snapshot of requirements and dependencies (similar to a .iso file for OS). A docker container is a running instance of a Docker image.
+<span class="mark">Dockerfile contains set of instructions/code to build a Docker image, which in turn is a snapshot of requirements and dependencies (similar to a .iso file for OS). A docker container is a running instance of a Docker image.</span>
 
 ## How to write a Dockerfile?
 

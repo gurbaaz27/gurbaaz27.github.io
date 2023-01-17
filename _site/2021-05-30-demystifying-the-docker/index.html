@@ -193,6 +193,8 @@
 
           
             <span class="post-meta">May 30, 2021 | 5 minutes to read</span>
+            <br>
+            <span><a class="post-disable-highlight" onclick="disableHighlight()" href="#"><u>Disable the highlights</u></a></span>
             
             
           
@@ -220,7 +222,7 @@
 
 <h2 id="so-what-is-docker">So, what is Docker?</h2>
 
-<p>Docker is a tool that can package software into containers which can reliably on any system or environment. The issue of portability might not seem an issue during small-scaled self projects, but the hassle of running and testing the code on different machines quickly increase as the project expands. So ultimately, how do we create the environment to run the software and its dependencies on any given machine? That is what Docker answers. But it wasn’t the first one to do that. Earlier, virtual machines were used where each app uses a Guest OS on top of the Host OS to allocate resources for the dependencies and building up the app.</p>
+<p>Docker is a tool that can package software into containers which can reliably on any system or environment. The issue of portability might not seem an issue during small-scaled self projects, but the hassle of running and testing the code on different machines quickly increase as the project expands. <span class="mark">So ultimately, how do we create the environment to run the software and its dependencies on any given machine? That is what Docker answers. But it wasn’t the first one to do that.</span> Earlier, virtual machines were used where each app uses a Guest OS on top of the Host OS to allocate resources for the dependencies and building up the app.</p>
 
 <figure>
     <img src="/assets/img/blogs/vm.png" />
@@ -250,7 +252,7 @@
     <figcaption style="text-align: center;">Fundamental concepts in Docker [1]</figcaption>
 </figure>
 
-<p>Dockerfile contains set of instructions/code to build a Docker image, which in turn is a snapshot of requirements and dependencies (similar to a .iso file for OS). A docker container is a running instance of a Docker image.</p>
+<p><span class="mark">Dockerfile contains set of instructions/code to build a Docker image, which in turn is a snapshot of requirements and dependencies (similar to a .iso file for OS). A docker container is a running instance of a Docker image.</span></p>
 
 <h2 id="how-to-write-a-dockerfile">How to write a Dockerfile?</h2>
 
@@ -460,14 +462,6 @@ docker run -&lt;flags&gt; <span class="nt">--network</span> &lt;app-name&gt; ima
       <span class="sr-only">RSS</span>
     </a>
   </li><li class="list-inline-item">
-    <a href="mailto:gurbaazsn123@gmail.com" title="Email me">
-      <span class="fa-stack fa-lg" aria-hidden="true">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-      </span>
-      <span class="sr-only">Email me</span>
-   </a>
-  </li><li class="list-inline-item">
     <a href="https://www.facebook.com/gurbaaz.nandra" title="Facebook">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
@@ -556,7 +550,7 @@ docker run -&lt;flags&gt; <span class="nt">--network</span> &lt;app-name&gt; ima
   
     <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
     
-      <script src="/assets/js/demo.js"></script>
+      <script src="/assets/js/custom.js"></script>
     
   
 

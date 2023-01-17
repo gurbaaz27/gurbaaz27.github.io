@@ -4,16 +4,19 @@ title: About me
 subtitle: A non-exhaustive snippet describing me.
 ---
 
-Hailing from Jalandhar, Punjab, I am currently pursuing B.Tech. in Computer Science and Engineering from IIT Kanpur. I love to meet different people, talk over various indulging topics, ranging from philosophy to gaming, from latest trends academics to the recent of memes, from praising a piece of work to criticising the hell out of it. I am ever-ready to collaborate on a team-project.
+Hi!<br>
+I am Gurbaaz Singh Nandra. I live in Jalandhar city, an industry-centric city in the heart of Punjab, India. Currently. I am a final year undergraduate student majoring in Computer Science and Engineering from IIT Kanpur. I would be joining Quadeye Securities as a Systems Engineer, focused on designing low-latency trading systems, primarily in C++. 
 
-Nowadays I am exploring Docker and K8s, much dreaded but key concepts for scability and containerisation. I have got quite an experience in Deep Learning and particularly inclined towards it, though I also share enthusiasm in CP and puzzles, and have a fair exposure to App dev in Flutter and Web Development in Django and React. I plan to dive peer into 2 domains which intrigue me a lot but I have kept aside for much time: cryptocurrency and cybersecurity. I enjoying reading books and learning interesting concepts. I do love astronomy and stuff, and, *insert club promotion*, currently one of the 4 coordinators of [Astronomy Club](https://astroclubiitk.github.io) at IIT Kanpur. I recently learnt cubing, and currently just manage to clock 3*3 rubiks cube to 1:30 min. _Not that bad, right?_ Still, a long way to go...
+Over my years of stay at the institute, I had been lucky to explore variety of domains, be it technical, cultural, politics or sports. I participated in Dramatics in my freshmen year, guided and mentored junior freshers as a Student Guide and Academic Mentor in my sophomore year. I also took up management and administrative roles in the past, in the form of Coordinator at Astronomy Club and Senator at Students' Gymkhana.
 
-Formalities apart, I am a lowkey roaster :P, more or less ever-ready for a "_bulla_" session.
+My technical interests are manifold, primarly focused on low-level systems programming and different programming paradigms. I have fair share of experience in Machine Learning and AI, building models and software tools utilising Computer Vision and NLP. I enjoy Backend Engineering and DevOps, always looking to transform a stream of thoughts and ideas into reality. I have built a fair share of discord bots and crawlers as part of freelancing.
+
+As my tech hobbies, I love to read about latest developments in the open-source community, watch videos on system-design and explore different programming languages and tech stacks. In indoor sports, I play pool and table tennis, or fiddle around with Rubik's cube in my free time. Nowadays I am trying to get comfortable in snooker. This year I am also putting a conscious effort to develop a habit of reading books regularly. Occasionally, I like to pen down my thoughts and ideas in notion.
 
 ### Education
 
 <i class="fa fa-graduation-cap"></i>
-BTech in Computer Science and Engineering, 2019 - *present*<br>
+B.Tech. in Computer Science and Engineering, 2019 - 2023<br>
 *IIT Kanpur*
 
 <i class="fa fa-graduation-cap"></i>
@@ -23,4 +26,10 @@ Senior Secondary Education, 2019<br>
 <i class="fa fa-graduation-cap"></i>
 Secondary Education, 2017<br>
 *MGN Public School, Jalandhar*
+
+### Contact
+
+You can reach me out at <br>
+<span class="mark">gurbaazsn123 [at] gmail [dot] com</span>, or <br>
+<span class="mark">gurbaaz [at] iitk [dot] ac [dot] in</span>
 
