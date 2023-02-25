@@ -519,12 +519,12 @@ footer .footer-custom-content {
   height: 12rem;
   width: 12rem;
 }
-.post-preview .post-image {
+/* .post-preview .post-image {
   filter: grayscale(40%);
 }
 .post-preview .post-image:hover {
   filter: grayscale(0%);
-}
+} */
 .post-preview .post-image img {
   max-height: 100%;
   max-width: 100%;

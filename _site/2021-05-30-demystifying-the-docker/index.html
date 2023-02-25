@@ -192,7 +192,7 @@
           
 
           
-            <span class="post-meta">May 30, 2021 | 5 minutes to read</span>
+            <span class="post-meta">May 30, 2021 | 5 minutes read</span>
             <br>
             <span><a class="post-disable-highlight" onclick="disableHighlight()" href="#"><u>Disable the highlights</u></a></span>
             
@@ -224,16 +224,16 @@
 
 <p>Docker is a tool that can package software into containers which can reliably on any system or environment. The issue of portability might not seem an issue during small-scaled self projects, but the hassle of running and testing the code on different machines quickly increase as the project expands. <span class="mark">So ultimately, how do we create the environment to run the software and its dependencies on any given machine? That is what Docker answers. But it wasn’t the first one to do that.</span> Earlier, virtual machines were used where each app uses a Guest OS on top of the Host OS to allocate resources for the dependencies and building up the app.</p>
 
-<figure>
-    <img src="/assets/img/blogs/vm.png" />
-    <figcaption style="text-align: center;">VM approach [1]</figcaption>
+<figure style="text-align: center;">
+    <img src="/assets/img/blogs/vm.png" height="" />
+    <figcaption>VM approach [1]</figcaption>
 </figure>
 <!-- ![Virtual Machine approach](/assets/img/blogs/vm.png) -->
 <p>But each VM needs to be allocated substantial amount of resources in terms of RAM and CPU to run its OS. This makes the process bulky, slow and leading to a wastage of resources. Docker makes a slight change here by only virtualising the OS and not the hardware again and again, hence all different apps (or containers) are run by a single kernel. We get shared resources for CPU and RAM, which speeds up the process and makes it efficient.</p>
 
-<figure>
-    <img src="/assets/img/blogs/docker-structure.png" />
-    <figcaption style="text-align: center;">Docker approach [1]</figcaption>
+<figure style="text-align: center;">
+    <img src="/assets/img/blogs/docker-structure.png" height="" />
+    <figcaption>Docker approach [1]</figcaption>
 </figure>
 
 <h2 id="installation">Installation</h2>
@@ -247,9 +247,9 @@
   <li>Docker Container</li>
 </ul>
 
-<figure>
-    <img src="/assets/img/blogs/docker-concepts.png" />
-    <figcaption style="text-align: center;">Fundamental concepts in Docker [1]</figcaption>
+<figure style="text-align: center;">
+    <img src="/assets/img/blogs/docker-concepts.png" height="" />
+    <figcaption>Fundamental concepts in Docker [1]</figcaption>
 </figure>
 
 <p><span class="mark">Dockerfile contains set of instructions/code to build a Docker image, which in turn is a snapshot of requirements and dependencies (similar to a .iso file for OS). A docker container is a running instance of a Docker image.</span></p>
