@@ -260,7 +260,7 @@
          <span class="nb">super</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
-  <li><span class="mark">Iterate over the payload dictionary and set all values to <code class="language-plaintext highlighter-rouge">user</code> object using <code class="language-plaintext highlighter-rouge">setattr</code>.&lt;/span`&gt;</span></li>
+  <li><span class="mark">Iterate over the payload dictionary and set all values to <code class="language-plaintext highlighter-rouge">user</code> object using <code class="language-plaintext highlighter-rouge">setattr</code>.</span></li>
   <li>Finally, save the user data to the database using <code class="language-plaintext highlighter-rouge">user.save()</code>.</li>
 </ol>
 
@@ -299,7 +299,7 @@ DETAIL: Key <span class="o">(</span>email<span class="o">)=()</span> already exi
   <p><strong>But when am I creating two users accidentally?</strong></p>
 </blockquote>
 
-<p>This is because of the way I have written the code. <code class="language-plaintext highlighter-rouge">user: User = User.objects.create()</code> creates an empty user with some <code class="language-plaintext highlighter-rouge">id</code> (the primary key). When I set different attributes from the payload dictionary and call <code class="language-plaintext highlighter-rouge">user.save()</code>, this <code class="language-plaintext highlighter-rouge">user</code> now has a different email, and hence the save method creates a new user with this actual user data. So in the back of my mind, I was hoping that the same user’s fields would get updated and stored in the database, which was not the case.</p>
+<p>This is because of the way I have written the code. <code class="language-plaintext highlighter-rouge">user: User = User.objects.create()</code> creates an empty user with some <code class="language-plaintext highlighter-rouge">id</code> (the primary key). When I set different attributes from the payload dictionary and call <code class="language-plaintext highlighter-rouge">user.save()</code>, this <code class="language-plaintext highlighter-rouge">user</code> now has a different email, and hence the save method creates a new user with this actual user data. <span class="mark">So in the back of my mind, I was hoping that the same user’s fields would get updated and stored in the database, which was not the case.</span></p>
 
 <blockquote>
   <p><strong>But I had NOT NULL constraint on email field. So shouldn’t creating a user with empty email not be allowed in the first place?</strong></p>
