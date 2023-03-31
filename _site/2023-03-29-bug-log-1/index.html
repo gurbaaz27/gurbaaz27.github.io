@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>bug.log.1</title>
+
+  
+  <meta name="author" content="Gurbaaz | ਗੁਰਬਾਜ਼">
+  
+
+  <meta name="description" content="Starting a series where I would be compiling some of the bugs I run into during my software development projects. These bugs have usually given me a hard time since there seems to be nothing wrong at face value, but on deeper analysis, they expose some conceptual mistake on my...">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173145540-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-173145540-1');
+</script>
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+      <link rel="stylesheet" href="/assets/css/skin-switch.css">
+    
+      <link rel="stylesheet" href="/assets/css/demo.css">
+    
+      <link rel="stylesheet" href="/assets/css/custom.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  <meta property="og:title" content="bug.log.1">
+  <meta property="og:description" content="Starting a series where I would be compiling some of the bugs I run into during my software development projects. These bugs have usually given me a hard time since there seems to be nothing wrong at face value, but on deeper analysis, they expose some conceptual mistake on my...">
+
+  
+  <meta property="og:image" content="https://gurbaaz.xyz/assets/img/blogs/bug-log-1.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Gurbaaz | ਗੁਰਬਾਜ਼">
+  <meta property="og:article:published_time" content="2023-03-29T00:00:00+00:00">
+  <meta property="og:url" content="https://gurbaaz.xyz/2023-03-29-bug-log-1/">
+  <link rel="canonical" href="https://gurbaaz.xyz/2023-03-29-bug-log-1/">
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="bug.log.1">
+  <meta property="twitter:description" content="Starting a series where I would be compiling some of the bugs I run into during my software development projects. These bugs have usually given me a hard time since there seems to be nothing wrong at face value, but on deeper analysis, they expose some conceptual mistake on my...">
+
+  
+  <meta name="twitter:image" content="https://gurbaaz.xyz/assets/img/blogs/bug-log-1.png">
+  
+
+  
+
+
+  
+
+  
+
+  <link rel="shortcut icon" type="image/jpg" href="/assets/img/favicon.png"/>
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/assets/docs/cv.pdf">Resume</a>
+          </li></ul>
+  </div>
+
+  
+
+  <div id="change-skin" title="Toggle Night Mode">
+    <span class="skin-btn dark-mode">🌙</span>
+    <span class="skin-btn light-mode">☀️</span>
+  </div>
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/pfp.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>bug.log.1</h1>
+          
+
+          
+            <span class="post-meta">March 29, 2023 | 4 minutes read</span>
+            <br>
+            <span><a class="post-disable-highlight" onclick="disableHighlight()" href="javascript:;"><u>Disable the highlights</u></a></span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Starting a series where I would be compiling some of the bugs I run into during my software development projects. These bugs have usually given me a hard time since there seems to be nothing wrong at face value, but on deeper analysis, they expose some conceptual mistake on my part or some clever way the system works which was not known to me.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>As part of a bigger project involving the management and billing of real estate projects, I was building a system for user management. I often use Django+DRF or FastAPI if I am using python for the backend task, but this time I thought of trying <a href="https://django-ninja.rest-framework.com/">Django Ninja</a>, a tool for building APIs with Django and Python 3.6+ type hints, along with Pydantic and async support, and automatic OpenAPI docs generation. So in a way, it brings the good parts of FastAPI to django ecosystem.</p>
+
+<p>For the endpoint where a superuser can create a new user, the flow was simple:</p>
+<ol>
+  <li>Accept a <code class="language-plaintext highlighter-rouge">CreateUserSchema</code> in the payload.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">CreateUserSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+     <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
+     <span class="n">company_name</span><span class="p">:</span> <span class="nb">str</span>
+     <span class="n">name_of_person_in_charge</span><span class="p">:</span> <span class="nb">str</span>
+     <span class="n">person_in_charge_title</span><span class="p">:</span> <span class="nb">str</span>
+     <span class="n">contact</span><span class="p">:</span> <span class="n">PhoneNumber</span> <span class="o">=</span> <span class="bp">None</span>
+     <span class="n">avatar</span><span class="p">:</span> <span class="n">HttpUrl</span> <span class="o">=</span> <span class="bp">None</span>
+     <span class="n">address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">None</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Check if the user with the given email does not already exist.</li>
+  <li>Create a user object using <code class="language-plaintext highlighter-rouge">User.objects.create()</code>, and assign it a random password.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">AbstractBaseUser</span><span class="p">,</span> <span class="n">PermissionsMixin</span><span class="p">):</span>
+     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="p">.</span><span class="n">uuid4</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+     <span class="n">company_name</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">"Company Name"</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+     <span class="n">name_of_person_in_charge</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">"Name of Person in Charge"</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+     <span class="n">person_in_charge_title</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">"Person in Charge Title"</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+     <span class="n">contact</span> <span class="o">=</span> <span class="n">PhoneNumberField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">"Contact"</span><span class="p">),</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+     <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">"email"</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+     <span class="n">address</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">"Address"</span><span class="p">),</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+     <span class="n">avatar</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">URLField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">"Avatar"</span><span class="p">),</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+     <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+     <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+     <span class="n">is_staff</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+     <span class="n">is_admin</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+     <span class="n">objects</span> <span class="o">=</span> <span class="n">UserManager</span><span class="p">()</span>
+
+     <span class="n">EMAIL_FIELD</span> <span class="o">=</span> <span class="s">"email"</span>
+     <span class="n">USERNAME_FIELD</span> <span class="o">=</span> <span class="s">"email"</span>
+     <span class="n">REQUIRED_FIELDS</span> <span class="o">=</span> <span class="p">[</span><span class="s">"company_name"</span><span class="p">]</span>
+
+     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="nb">super</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li><span class="mark">Iterate over the payload dictionary and set all values to <code class="language-plaintext highlighter-rouge">user</code> object using <code class="language-plaintext highlighter-rouge">setattr</code>.&lt;/span`&gt;</span></li>
+  <li>Finally, save the user data to the database using <code class="language-plaintext highlighter-rouge">user.save()</code>.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">router</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">"/user"</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="p">{</span><span class="mi">200</span><span class="p">:</span> <span class="n">SuccessSchema</span><span class="p">,</span> <span class="mi">400</span><span class="p">:</span> <span class="n">ErrorSchema</span><span class="p">})</span>
+<span class="k">def</span> <span class="nf">superuser_post_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">CreateUserSchema</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">email</span>
+
+    <span class="k">if</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">).</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="mi">400</span><span class="p">,</span> <span class="p">{</span><span class="s">"message"</span><span class="p">:</span> <span class="s">"User with given email already exists"</span><span class="p">}</span>
+
+    <span class="n">user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">make_random_password</span><span class="p">()</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="p">.</span><span class="nb">dict</span><span class="p">().</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s">"message"</span><span class="p">:</span> <span class="s">"User creation success"</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>At first glance, the function to handle this POST request seems to be correct. On the first hit to the endpoint, things went fine. But on any subsequent call, an error popped up</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint <span class="s2">"account_user_email_key"</span>
+DETAIL: Key <span class="o">(</span>email<span class="o">)=()</span> already exists.
+</code></pre></div></div>
+
+<h2 id="issue">Issue</h2>
+
+<ul>
+  <li>Without carefully looking at the error message, I jumped to the immediate conclusion that the user email might be a duplicate. But I was indeed checking if a <code class="language-plaintext highlighter-rouge">User</code> with the given email already exists or not.</li>
+  <li>On inspecting the database, I got to know that apart from the user we wanted to create, an extra user with all fields empty (apart from <code class="language-plaintext highlighter-rouge">id</code> field) is also created.</li>
+  <li>And somehow, on all subsequent calls to the API endpoint, this empty user creation is again called, but since we already have a user with an empty email, it invokes a violation of the unique constraint on email, explaining the error encountered above (<code class="language-plaintext highlighter-rouge">DETAIL: Key (email)=() already exists.</code>).</li>
+</ul>
+
+<blockquote>
+  <p><strong>But when am I creating two users accidentally?</strong></p>
+</blockquote>
+
+<p>This is because of the way I have written the code. <code class="language-plaintext highlighter-rouge">user: User = User.objects.create()</code> creates an empty user with some <code class="language-plaintext highlighter-rouge">id</code> (the primary key). When I set different attributes from the payload dictionary and call <code class="language-plaintext highlighter-rouge">user.save()</code>, this <code class="language-plaintext highlighter-rouge">user</code> now has a different email, and hence the save method creates a new user with this actual user data. So in the back of my mind, I was hoping that the same user’s fields would get updated and stored in the database, which was not the case.</p>
+
+<blockquote>
+  <p><strong>But I had NOT NULL constraint on email field. So shouldn’t creating a user with empty email not be allowed in the first place?</strong></p>
+</blockquote>
+
+<p>This was something that bugged me a lot. The line <code class="language-plaintext highlighter-rouge">user: User = User.objects.create()</code> should have thrown an error in the first place since <code class="language-plaintext highlighter-rouge">email</code> had <code class="language-plaintext highlighter-rouge">null=False</code> in the model class. On some googling, I got to know about this weird behaviour from <a href="https://stackoverflow.com/questions/39176618/django-charfield-null-false-integrity-error-not-raised">here</a></p>
+
+<p class="box-note">No default Django behavior will save CHAR or TEXT types as Null - it will always use an empty string (‘’). null=False does not affect these types of fields.
+blank=False means that the field will be required by default when the model is used to render a ModelForm. It does not prevent you from manually saving a model instance without that value.</p>
+
+<p class="box-note">Avoid using null on string-based fields such as CharField and TextField. If a string-based field has null=True, that means it has two possible values for “no data”: NULL, and the empty string. In most cases, it’s redundant to have two possible values for “no data;” the Django convention is to use the empty string, not NULL. One exception is when a CharField has both unique=True and blank=True set. In this situation, null=True is required to avoid unique constraint violations when saving multiple objects with blank values.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Hence the correct modified code is as follows,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">router</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">"/user"</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="p">{</span><span class="mi">200</span><span class="p">:</span> <span class="n">SuccessSchema</span><span class="p">,</span> <span class="mi">400</span><span class="p">:</span> <span class="n">ErrorSchema</span><span class="p">})</span>
+<span class="k">def</span> <span class="nf">superuser_post_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">CreateUserSchema</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">email</span>
+
+    <span class="k">if</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">).</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="mi">400</span><span class="p">,</span> <span class="p">{</span><span class="s">"message"</span><span class="p">:</span> <span class="s">"User with given email already exists"</span><span class="p">}</span>
+
+    <span class="n">user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">make_random_password</span><span class="p">()</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="p">.</span><span class="nb">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s">"email"</span><span class="p">:</span> <span class="p">...}).</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s">"message"</span><span class="p">:</span> <span class="s">"User creation success"</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>This can be further condensed as follows</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">router</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">"/user"</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="p">{</span><span class="mi">200</span><span class="p">:</span> <span class="n">SuccessSchema</span><span class="p">,</span> <span class="mi">400</span><span class="p">:</span> <span class="n">ErrorSchema</span><span class="p">})</span>
+<span class="k">def</span> <span class="nf">superuser_post_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">CreateUserSchema</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">email</span>
+
+    <span class="k">if</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">).</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="mi">400</span><span class="p">,</span> <span class="p">{</span><span class="s">"message"</span><span class="p">:</span> <span class="s">"User with given email already exists"</span><span class="p">}</span>
+
+    <span class="n">user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">.</span><span class="nb">dict</span><span class="p">())</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">make_random_password</span><span class="p">()</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s">"message"</span><span class="p">:</span> <span class="s">"User creation success"</span><span class="p">}</span>
+</code></pre></div></div>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#bug">bug</a>
+          
+            <a href="/tags#backend">backend</a>
+          
+            <a href="/tags#tech">tech</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=bug.log.1&url=http%3A%2F%2Flocalhost%3A4000%2F2023-03-29-bug-log-1%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2023-03-29-bug-log-1%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2023-03-29-bug-log-1%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2023-02-20-japan/" data-toggle="tooltip" data-placement="top" title="A  Journey to Japan 🇯🇵">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/gurbaaz27" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/gurbaaznandra" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://www.instagram.com/_gur.baaz_" title="Instagram">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Instagram</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Gurbaaz | ਗੁਰਬਾਜ਼
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="">gurbaaz.xyz</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/custom.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

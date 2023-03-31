@@ -238,7 +238,12 @@
   .page-dark-mode .box-warning,
   .page-dark-mode .box-error,
   .page-dark-mode .box-success {
-    color: #404040;
+    color: #fff;
+    border: 1px solid #444;
+  }
+  .page-dark-mode .box-note {
+    background-color: #444;
+    border-left-color: #2980b9;
   }
   .page-dark-mode .blog-post .caption {
     color: #aaa;

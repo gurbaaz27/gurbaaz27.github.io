@@ -10,6 +10,17 @@
     
     
       <item>
+        <title>bug.log.1</title>
+        <description>
+          
+          Starting a series where I would be compiling some of the bugs I run into during my software development projects. These bugs have usually given me a hard time since there seems to be nothing wrong at face value, but on deeper analysis, they expose some conceptual mistake on my...
+        </description>
+        <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2023-03-29-bug-log-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023-03-29-bug-log-1/</guid>
+      </item>
+    
+      <item>
         <title>A  Journey to Japan 🇯🇵</title>
         <description>
           井の中の蛙大海を知らず。 - 
