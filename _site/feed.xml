@@ -12,7 +12,7 @@
       <item>
         <title>bug.log.1</title>
         <description>
-          
+          the safe way to model object creation with django-ninja - 
           Starting a series where I would be compiling some of the bugs I run into during my software development projects. These bugs have usually given me a hard time since there seems to be nothing wrong at face value, but on deeper analysis, they expose some conceptual mistake on my...
         </description>
         <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
