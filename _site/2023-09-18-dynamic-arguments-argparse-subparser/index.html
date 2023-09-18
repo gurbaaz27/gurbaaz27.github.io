@@ -15,7 +15,7 @@
   <meta name="author" content="Gurbaaz | ਗੁਰਬਾਜ਼">
   
 
-  <meta name="description" content="A basic guide to manipulating python&apos;s ArgumentParser object at your will">
+  <meta name="description" content="A basic guide to manipulating python&apos;s ArgumentParser object to your will">
 
   
 
@@ -92,7 +92,7 @@
   
 
   <meta property="og:title" content="Dynamic arguments in argparse subparser">
-  <meta property="og:description" content="A basic guide to manipulating python&apos;s ArgumentParser object at your will">
+  <meta property="og:description" content="A basic guide to manipulating python&apos;s ArgumentParser object to your will">
 
   
   <meta property="og:image" content="https://gurbaaz.xyz/assets/img/blogs/python-argparse.png">
@@ -113,7 +113,7 @@
   <meta name="twitter:creator" content="@">
 
   <meta property="twitter:title" content="Dynamic arguments in argparse subparser">
-  <meta property="twitter:description" content="A basic guide to manipulating python&apos;s ArgumentParser object at your will">
+  <meta property="twitter:description" content="A basic guide to manipulating python&apos;s ArgumentParser object to your will">
 
   
   <meta name="twitter:image" content="https://gurbaaz.xyz/assets/img/blogs/python-argparse.png">
@@ -192,7 +192,7 @@
           <h1>Dynamic arguments in argparse subparser</h1>
           
             
-              <h2 class="post-subheading">A basic guide to manipulating python's ArgumentParser object at your will</h2>
+              <h2 class="post-subheading">A basic guide to manipulating python's ArgumentParser object to your will</h2>
             
           
 
@@ -375,9 +375,12 @@
 Namespace<span class="o">(</span><span class="nb">command</span><span class="o">=</span><span class="s1">'foo'</span>, <span class="nv">n</span><span class="o">=</span>3, <span class="nv">entry1</span><span class="o">=</span><span class="s1">'abc'</span>, <span class="nv">entry2</span><span class="o">=</span><span class="s1">'def'</span>, <span class="nv">entry3</span><span class="o">=</span><span class="s1">'ghi'</span><span class="o">)</span>
 </code></pre></div></div>
 
-<p>I encourage you to play and tweak with parser, adjust it according to your need. Though the final solution is elegant, it took me a while to get at it since I could not find anything very specific to my use case on the internet (in the actual tool, I had to add dynamic arguments inside subparser inside another subparser, so I got perplexed in that for quite some time 🫠). Accessing these undocumented attributes like <code class="language-plaintext highlighter-rouge">_actions</code> is ofcourse a bit risky, since the internal workings can change any day. But the goal is to present you an idea on how to tackle with these stuff. But I hope this helps someone out, stuck in a similar situation.</p>
+<p>I encourage you to play and tweak with parser, adjust it according to your need. Though the final solution is elegant, it took me a while to get at it since I could not find anything very specific to my use case on the internet (in the actual tool, I had to add dynamic arguments inside subparser inside another subparser, so I got perplexed in that for quite some time).</p>
 
-<p>Regards</p>
+<p>Lastly, accessing these undocumented attributes like <code class="language-plaintext highlighter-rouge">_actions</code> is ofcourse a bit risky, since the internal workings of the module can change any day. But the goal is to present you an idea on how to tackle with these stuff. But I hope this helps someone out, stuck in a similar situation.</p>
+
+<p>Regards,
+Your average python scripter</p>
 
       </article>
 
@@ -388,6 +391,8 @@ Namespace<span class="o">(</span><span class="nb">command</span><span class="o">
             <a href="/tags#python">python</a>
           
             <a href="/tags#scripting">scripting</a>
+          
+            <a href="/tags#cli">cli</a>
           
             <a href="/tags#tech">tech</a>
           
@@ -445,6 +450,10 @@ Namespace<span class="o">(</span><span class="nb">command</span><span class="o">
           <a class="page-link" href="/2023-03-29-bug-log-1/" data-toggle="tooltip" data-placement="top" title="bug.log.1">&larr; Previous Post</a>
         </li>
         
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2023-09-18-tally-and-nextjs-app-router/" data-toggle="tooltip" data-placement="top" title="Integrating Tally forms with Next.js App Router">Next Post &rarr;</a>
+        </li>
         
       </ul>
       

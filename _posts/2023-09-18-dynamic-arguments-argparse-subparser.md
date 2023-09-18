@@ -2,10 +2,10 @@
 
 layout: post
 title: "Dynamic arguments in argparse subparser"
-subtitle: "A basic guide to manipulating python's ArgumentParser object at your will"
+subtitle: "A basic guide to manipulating python's ArgumentParser object to your will"
 thumbnail-img: /assets/img/blogs/python-argparse.png
 share-img: /assets/img/blogs/python-argparse.png
-tags: [python, scripting, tech]
+tags: [python, scripting, cli, tech]
 minutes_to_read: 4
 ---
 
@@ -171,6 +171,9 @@ which outputs
 Namespace(command='foo', n=3, entry1='abc', entry2='def', entry3='ghi')
 ```
 
-I encourage you to play and tweak with parser, adjust it according to your need. Though the final solution is elegant, it took me a while to get at it since I could not find anything very specific to my use case on the internet (in the actual tool, I had to add dynamic arguments inside subparser inside another subparser, so I got perplexed in that for quite some time 🫠). Accessing these undocumented attributes like `_actions` is ofcourse a bit risky, since the internal workings can change any day. But the goal is to present you an idea on how to tackle with these stuff. But I hope this helps someone out, stuck in a similar situation.
+I encourage you to play and tweak with parser, adjust it according to your need. Though the final solution is elegant, it took me a while to get at it since I could not find anything very specific to my use case on the internet (in the actual tool, I had to add dynamic arguments inside subparser inside another subparser, so I got perplexed in that for quite some time).
 
-Regards
+Lastly, accessing these undocumented attributes like `_actions` is ofcourse a bit risky, since the internal workings of the module can change any day. But the goal is to present you an idea on how to tackle with these stuff. But I hope this helps someone out, stuck in a similar situation.
+
+Regards,
+Your average python scripter

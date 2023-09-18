@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Integrating Tally forms with Next.js App Router</title>
+
+  
+  <meta name="author" content="Gurbaaz | ਗੁਰਬਾਜ਼">
+  
+
+  <meta name="description" content="Typeform killer? Yes.">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173145540-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-173145540-1');
+</script>
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB Garamond">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+      <link rel="stylesheet" href="/assets/css/skin-switch.css">
+    
+      <link rel="stylesheet" href="/assets/css/demo.css">
+    
+      <link rel="stylesheet" href="/assets/css/custom.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  <meta property="og:title" content="Integrating Tally forms with Next.js App Router">
+  <meta property="og:description" content="Typeform killer? Yes.">
+
+  
+  <meta property="og:image" content="https://gurbaaz.xyz/assets/img/blogs/tally.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Gurbaaz | ਗੁਰਬਾਜ਼">
+  <meta property="og:article:published_time" content="2023-09-18T00:00:00+00:00">
+  <meta property="og:url" content="https://gurbaaz.xyz/2023-09-18-tally-and-nextjs-app-router/">
+  <link rel="canonical" href="https://gurbaaz.xyz/2023-09-18-tally-and-nextjs-app-router/">
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Integrating Tally forms with Next.js App Router">
+  <meta property="twitter:description" content="Typeform killer? Yes.">
+
+  
+  <meta name="twitter:image" content="https://gurbaaz.xyz/assets/img/blogs/tally.png">
+  
+
+  
+
+
+  
+
+  
+
+  <link rel="shortcut icon" type="image/jpg" href="/assets/img/favicon.png"/>
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/assets/docs/cv.pdf">Resume</a>
+          </li></ul>
+  </div>
+
+  
+
+  <div id="change-skin" title="Toggle Night Mode">
+    <span class="skin-btn dark-mode">🌙</span>
+    <span class="skin-btn light-mode">☀️</span>
+  </div>
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/pfp.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Integrating Tally forms with Next.js App Router</h1>
+          
+            
+              <h2 class="post-subheading">Typeform killer? Yes.</h2>
+            
+          
+
+          
+            <span class="post-meta">September 18, 2023 | 9 minutes read</span>
+            <br>
+            <span><a class="post-disable-highlight" onclick="disableHighlight()" href="javascript:;"><u>Disable the highlights</u></a></span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>After almost 3 months of successful launch of <a href="https://puzzledquant.com">PuzzledQuant</a>, an online learning platform to help you enhance your quant skills, we started thinking more ways to connect to our audience, and understand the demographics. As a first step, this meant collecting basic user needs, which would ideally involve a popup form as soon as the user lands our page. <span class="mark">We only had 2 basic needs, a sleek UI, and ability to populate our existing postgres database with user responses without any manual intervention.</span></p>
+
+<p>As a full-time engineer nowadays, it becomes hard to take out time to work on side ventures, let alone build something like this from scratch with something like <a href="https://react-hook-form.com/">react hook form</a> and build all the necessary logic and APIs. Neither we wanted a solution like google form, where we can embed the form and then have a cronjob at midnight to add entries to database from google sheets (also google forms UI is a bit of let-down). So we starting looking for alternatives.</p>
+
+<h2 id="the-issue-with-typeform">The issue with Typeform</h2>
+
+<p>We were already using typeform on our <a href="https://www.puzzledquant.com/contribute">Contribute</a> page, and its <a href="https://www.typeform.com/developers/webhooks/">Webhooks API</a> seemed promising to fetch user response, process it and add it to our database. Typeform’s UI is beautiful and interactive, and we were ready to go for it. But! We realised we were using Typeform’s free tier, which only allowed 10 responses per month. Even 25 USD/month allows just 100 monthly responses. That was a shame, as spending such a hefty amount of money for such a basic task didn’t justify much. Other modern form builders like Jotform, etc. had a similar story.</p>
+
+<p>Pondering over should I start building from scratch, a core memory unlocked as I got reminded of some free form builder I saw on Product Hunt a couple of months ago. I immediately started searching my gmail looking for a mail from Product Hunt, and found exactly what we were looking for - <a href="https://tally.so/">Tally</a>.</p>
+
+<h2 id="journey-with-tally">Journey with Tally</h2>
+
+<p>As Tally is almost free, I was a bit skeptical if it would have webhooks. But not just that, it does have a <a href="https://tally.so/help/features">ton of features</a>. It has very clean UI (Notion-like) and using powerful <a href="https://tally.so/help/conditional-form-logic">conditional blocks</a>, we were able to quickly a build a form covering different use cases of our audience.</p>
+
+<h2 id="initial-approach---webhooks">Initial Approach - Webhooks</h2>
+
+<p>The initial approach was simple, embed the form on our page and add the webhook url. The POST method at webhook url receives the json payload as an array of entries, with unique identifier and label for fields and the selected option ids, which was easy to parse (<em>Note that the webhook url cannot be a localhost, which was a bit disappointing since that made dev testing a bit harder</em>). Tally offers elegant ways of embedding, and we chose popup in center on page reload.</p>
+
+<figure style="text-align: center;">
+    <img src="/assets/img/blogs/tally-1.png" height="" />
+    <figcaption>Different embed options [1]</figcaption>
+</figure>
+<figure style="text-align: center;">
+    <img src="/assets/img/blogs/tally-2.png" height="" />
+    <figcaption>Code snippet builder [2]</figcaption>
+</figure>
+
+<p><span class="mark">But there was a problem, we didn’t know the user who filled the form when processing the response from webhook.</span> We could have asked for email of user in the form, and then used it to query user from db, but it is very well possible that user enters an email different from with which they created the account on our page. This doesn’t make a good user experience. Still, we started the integration process.</p>
+
+<h2 id="working-with-nextjs-app-router">Working with Next.js app router</h2>
+
+<p>Tally generated the following code snippet to be added to <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> section of our website.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"https://tally.so/widgets/embed.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">TallyConfig</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">formId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">xxxxxx</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">popup</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">emoji</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">👋</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">animation</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">wave</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">layout</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">modal</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Since PuzzledQuant is built on the new Next.js v13 with app router, we didn’t get much help online, aside from a community resource by <a href="https://nesin.io/blog/tally-so-form-embed-next-js-integration">Ashik Nesin</a>. But this was relatively simple since it showed how to work with iframe embedding (Standard embed in [1]). Anyways, we achieved the following as follows :-</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// app/layout.tsx</span>
+<span class="k">import</span> <span class="nx">TallyForm</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/components/TallyForm</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">RootLayout</span><span class="p">({</span>
+  <span class="nx">children</span><span class="p">,</span>
+<span class="p">}:</span> <span class="p">{</span>
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">ReactNode</span>
+<span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">currentUser</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getCurrentUser</span><span class="p">()</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="p">=</span><span class="s">"en"</span> <span class="na">suppressHydrationWarning</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">script</span>
+          <span class="na">async</span>
+          <span class="na">src</span><span class="p">=</span><span class="s">"https://tally.so/widgets/embed.js"</span>
+        <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="p">(</span><span class="nx">currentUser</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">currentUser</span><span class="p">.</span><span class="nx">filledUserSurvey</span><span class="p">)</span> 
+            <span class="p">?</span> <span class="p">&lt;</span><span class="nc">TallyForm</span> <span class="p">/&gt;</span> 
+            <span class="p">:</span> <span class="p">&lt;&gt;&lt;/&gt;</span><span class="si">}</span>
+        <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here the <code class="language-plaintext highlighter-rouge">currentUser.filledUserSurvey</code> boolean is fetched from db and checks if the user has already filled the form, and helps in conditionally rendering the form.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// components/TallyForm.tsx</span>
+<span class="dl">"</span><span class="s2">use client</span><span class="dl">"</span>
+
+<span class="kd">const</span> <span class="nx">TallyForm</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">window</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">undefined</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// @ts-ignore</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">TallyConfig</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">formId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">3xMgpr</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">popup</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">emoji</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">👋</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">animation</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">wave</span><span class="dl">"</span>
+                <span class="p">},</span>
+                <span class="dl">"</span><span class="s2">layout</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">modal</span><span class="dl">"</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;&gt;&lt;/&gt;</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">TallyForm</span>
+</code></pre></div></div>
+
+<p><span class="mark">Working with typescript, <code class="language-plaintext highlighter-rouge">@ts-ignore</code> is important otherwise you would get the error <code class="language-plaintext highlighter-rouge">Property 'TallyConfig' does not exist on type 'Window &amp; typeof globalThis'</code>. Also, <code class="language-plaintext highlighter-rouge">typeof window !== "undefined"</code> is an <a href="https://stackoverflow.com/questions/32598971/whats-the-purpose-of-if-typeof-window-undefined">idiomatic check</a> to see if the script is being run in a web-page inside a web-browser or not.</span> Note that you can also use script tag with <code class="language-plaintext highlighter-rouge">dangerouslySetInnerHTML</code> and insert the window.TallyConfig object configuration.</p>
+
+<p>This seemed to work, but still the issue of somehow getting the information of logged-in user was left.</p>
+
+<figure style="text-align: center;">
+    <img src="/assets/img/blogs/tally-3.jpeg" height="" />
+    <figcaption></figcaption>
+</figure>
+
+<h3 id="perfect-solution---utilising-the-handy-windowtally-object">Perfect Solution - Utilising the handy window.Tally object</h3>
+
+<p><span class="mark">In addition to just specifying configuration of popup with <code class="language-plaintext highlighter-rouge">TallyConfig</code> object in window, they also provide a <code class="language-plaintext highlighter-rouge">Tally</code> object to open and close popups using JavaScript.</span> Citing their documentation,</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Include the Tally widget script in the &lt;head&gt; section of your page</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://tally.so/widgets/embed.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="c1">// Open the popup</span>
+<span class="nx">Tally</span><span class="p">.</span><span class="nx">openPopup</span><span class="p">(</span><span class="nx">formId</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+
+<span class="c1">// Available options</span>
+<span class="nx">type</span> <span class="nx">PopupOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">key</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nx">layout</span><span class="p">?:</span> <span class="dl">'</span><span class="s1">default</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">modal</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">width</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="nx">alignLeft</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nx">hideTitle</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nx">overlay</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nx">emoji</span><span class="p">?:</span> <span class="p">{</span>
+    <span class="na">text</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">animation</span><span class="p">:</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">wave</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">tada</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">heart-beat</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">spin</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">flash</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">bounce</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">rubber-band</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">head-shake</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="nx">autoClose</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="nx">showOnce</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nx">doNotShowAfterSubmit</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nx">customFormUrl</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nx">hiddenFields</span><span class="p">?:</span> <span class="p">{</span>
+    <span class="p">[</span><span class="na">key</span><span class="p">:</span> <span class="nx">string</span><span class="p">]:</span> <span class="nx">any</span><span class="p">,</span>
+  <span class="p">};</span>
+  <span class="nx">onOpen</span><span class="p">?:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+  <span class="nx">onClose</span><span class="p">?:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+  <span class="nx">onPageView</span><span class="p">?:</span> <span class="p">(</span><span class="na">page</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+  <span class="nx">onSubmit</span><span class="p">?:</span> <span class="p">(</span><span class="na">payload</span><span class="p">:</span> <span class="nx">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>And then it clicked! We can use the <code class="language-plaintext highlighter-rouge">onSubmit</code> function to directly send the payload to our backend API. With this, the current user session information is not lost, and we also eliminate the use of webhooks. Hence, we changed the front-end logic to</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// components/TallyForm.tsx</span>
+<span class="dl">"</span><span class="s2">use client</span><span class="dl">"</span>
+<span class="k">import</span> <span class="nx">axios</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">axios</span><span class="dl">"</span>
+
+<span class="kd">const</span> <span class="nx">TallyForm</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">window</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">undefined</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// @ts-ignore</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">Tally</span><span class="p">.</span><span class="nx">openPopup</span><span class="p">(</span><span class="dl">"</span><span class="s2">xxxxxx</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">layout</span><span class="p">:</span> <span class="dl">"</span><span class="s2">modal</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">width</span><span class="p">:</span> <span class="nx">popupWidth</span><span class="p">,</span>
+            <span class="na">autoClose</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+            <span class="na">emoji</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">text</span><span class="p">:</span> <span class="dl">"</span><span class="s2">👋</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">animation</span><span class="p">:</span> <span class="dl">"</span><span class="s2">wave</span><span class="dl">"</span>
+            <span class="p">},</span>
+            <span class="na">onSubmit</span><span class="p">:</span> <span class="p">(</span><span class="na">payload</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/tally</span><span class="dl">"</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="c1">// @testing purpose</span>
+                    <span class="p">})</span>
+                    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="c1">// @testing purpose</span>
+                    <span class="p">})</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;&gt;&lt;/&gt;</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">TallyForm</span>
+</code></pre></div></div>
+
+<p>and the server-side API logic</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// app/api/tally/route.ts</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NextRequest</span><span class="p">,</span> <span class="nx">NextResponse</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">next/server</span><span class="dl">"</span>
+
+<span class="k">import</span> <span class="nx">getCurrentUser</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/actions/getCurrentUser</span><span class="dl">"</span>
+
+<span class="kr">interface</span> <span class="nx">IAnswer</span> <span class="p">{</span>
+    <span class="nl">value</span><span class="p">:</span> <span class="kr">string</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">IField</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">string</span>
+    <span class="nx">title</span><span class="p">:</span> <span class="kr">string</span>
+    <span class="kd">type</span><span class="p">:</span> <span class="kr">string</span>
+    <span class="nx">answer</span><span class="p">:</span> <span class="nx">IAnswer</span> <span class="o">|</span> <span class="kc">null</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">IBody</span> <span class="p">{</span>
+    <span class="nl">fields</span><span class="p">:</span> <span class="nx">IField</span><span class="p">[]</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">POST</span><span class="p">(</span>
+    <span class="nx">request</span><span class="p">:</span> <span class="nx">NextRequest</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">body</span><span class="p">:</span> <span class="nx">IBody</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getCurrentUser</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">NextResponse</span><span class="p">.</span><span class="nx">error</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">entry</span><span class="p">:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">field</span> <span class="k">of</span> <span class="nx">body</span><span class="p">.</span><span class="nx">fields</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="nx">answer</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">entry</span><span class="p">[</span><span class="nx">field</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">entry</span><span class="p">[</span><span class="nx">field</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">field</span><span class="p">.</span><span class="nx">answer</span><span class="p">?.</span><span class="nx">value</span> <span class="o">||</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// use entry to create new row in database,</span>
+    <span class="c1">// and mark user.filledUserSurvey as true</span>
+
+    <span class="k">return</span> <span class="nx">NextResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ok</span><span class="dl">"</span> <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>And solution is working nice and seamlessly.</p>
+
+<h3 id="ending-note">Ending note</h3>
+
+<p>Some might argue that this integration may have took us more time, but now once the flow is figured out, it is just a minutes setup to integrate it all. I don’t think I will be doing any building from scratch for forms for any of my small to medium sized projects from now. I really loved Tally, and appreciate the team behind it to create such a feature-rich tool, and that too practically free (unless you want to remove Tally branding, or add custom domain for form etc.). Hope this helps as a guide to others looking out to build something similar, and increase awareness of awesome UX and DX-friendly tools like Tally.</p>
+
+<p>Signing out,<br />
+Dev@PuzzledQuant</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#nextjs">nextjs</a>
+          
+            <a href="/tags#tally">tally</a>
+          
+            <a href="/tags#api">api</a>
+          
+            <a href="/tags#integration">integration</a>
+          
+            <a href="/tags#tech">tech</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Integrating+Tally+forms+with+Next.js+App+Router&url=http%3A%2F%2Flocalhost%3A4000%2F2023-09-18-tally-and-nextjs-app-router%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2023-09-18-tally-and-nextjs-app-router%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2023-09-18-tally-and-nextjs-app-router%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2023-09-18-dynamic-arguments-argparse-subparser/" data-toggle="tooltip" data-placement="top" title="Dynamic arguments in argparse subparser">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="gurbaaz27/gurbaaz27.github.io"
+        issue-term="title"
+        theme="github-light"
+        label="blog-comments"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/gurbaaz27" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/gurbaaznandra" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://www.instagram.com/_gur.baaz_" title="Instagram">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Instagram</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Gurbaaz | ਗੁਰਬਾਜ਼
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="">gurbaaz.xyz</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/custom.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="gurbaaz" data-description="Support me on Buy me a coffee!" data-message="" data-color="#fd0" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+
+</body>
+</html>
