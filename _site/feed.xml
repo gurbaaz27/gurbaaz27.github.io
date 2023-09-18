@@ -15,9 +15,9 @@
           A basic guide to manipulating python&apos;s ArgumentParser object at your will - 
           Past month, while working on some command-line tool written in python based on argparse, I was faced with task of adding some new arguments to extend some functionality. The only problem was the number and name of arguments were dynamic, i.e., they depended on the value supplied to some other...
         </description>
-        <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2023-03-29-dynamic-arguments-argparse-subparser/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-03-29-dynamic-arguments-argparse-subparser/</guid>
+        <pubDate>Mon, 18 Sep 2023 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2023-09-18-dynamic-arguments-argparse-subparser/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023-09-18-dynamic-arguments-argparse-subparser/</guid>
       </item>
     
       <item>
