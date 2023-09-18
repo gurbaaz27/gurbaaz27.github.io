@@ -92,6 +92,7 @@ html {
 body {
   font-family: "EB Garamond", serif;
   font-size: 1.125rem;
+  text-align: justify;
   color: #404040;
   position: relative;
   background-color: #FFFFFF;

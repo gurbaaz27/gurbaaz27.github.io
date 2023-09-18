@@ -10,6 +10,17 @@
     
     
       <item>
+        <title>Dynamic arguments in argparse subparser</title>
+        <description>
+          A basic guide to manipulating python&apos;s ArgumentParser object at your will - 
+          Past month, while working on some command-line tool written in python based on argparse, I was faced with task of adding some new arguments to extend some functionality. The only problem was the number and name of arguments were dynamic, i.e., they depended on the value supplied to some other...
+        </description>
+        <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2023-03-29-dynamic-arguments-python-argparse/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023-03-29-dynamic-arguments-python-argparse/</guid>
+      </item>
+    
+      <item>
         <title>bug.log.1</title>
         <description>
           the safe way to model object creation with django-ninja - 
@@ -21,7 +32,7 @@
       </item>
     
       <item>
-        <title>A  Journey to Japan 🇯🇵</title>
+        <title>A Journey to Japan 🇯🇵</title>
         <description>
           井の中の蛙大海を知らず。 - 
           The phrase in the subtitle loosely translates to “a frog in the small well is unaware of the mighty ocean”, referring to the state of being trapped by one’s own narrow knowledge and ideas, and not knowing that there is a wider world out there. So on a mission to...

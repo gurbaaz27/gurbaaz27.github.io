@@ -21,6 +21,10 @@
 <lastmod>2023-03-29T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/2023-03-29-dynamic-arguments-python-argparse/</loc>
+<lastmod>2023-03-29T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/aboutme/</loc>
 </url>
 <url>
@@ -34,6 +38,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/tags/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page2/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/docs/cv.pdf</loc>
