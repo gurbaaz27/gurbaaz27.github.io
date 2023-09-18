@@ -257,11 +257,11 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 main.py foo -n 3 --entry1 abc --entry2 def --entry3 ghi
 </code></pre></div></div>
 
-<h3 id="i-partial-parsing-of-arguments-known-before-runtime">I. Partial parsing of arguments [known before runtime]</h3>
+<h2 id="i-partial-parsing-of-arguments-known-before-runtime">I. Partial parsing of arguments [known before runtime]</h2>
 
 <p>We obviously cannot add <code class="language-plaintext highlighter-rouge">--entry#i</code> arguments in <code class="language-plaintext highlighter-rouge">add_argument</code> function directly because we don’t know the number <code class="language-plaintext highlighter-rouge">n</code> beforehand. But <code class="language-plaintext highlighter-rouge">parse_args()</code> throws error on encountering arguments it doesn’t know. And also, we do want to parse these entry args once we know the value of <code class="language-plaintext highlighter-rouge">n</code> in our program.  <span class="mark">As John Hazen explains <a href="https://stackoverflow.com/questions/25317795/dynamic-arguments-for-pythons-argparse#25320537">here</a>, we can very well achieve this with partial parsing using <code class="language-plaintext highlighter-rouge">parse_known_args</code>, which only parses the arguments added via <code class="language-plaintext highlighter-rouge">add_argument</code> method, and ignore the rest.</span></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># parse_known_args returns a tuple of valid arguments namespace and remaining args.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># parse_known_args returns a tuple of valid arguments namespace and remaining args
 # we can ignore the second part for now
 </span><span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse_known_args</span><span class="p">()</span>
 </code></pre></div></div>
@@ -277,7 +277,7 @@
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse_args</span><span class="p">()</span>
 </code></pre></div></div>
 
-<h3 id="ii-extract-subparser-object-from-the-main-parser">II. Extract subparser object from the main parser</h3>
+<h2 id="ii-extract-subparser-object-from-the-main-parser">II. Extract subparser object from the main parser</h2>
 
 <p>For this, let us look at parser object. <code class="language-plaintext highlighter-rouge">print(parser)</code> returns</p>
 
@@ -323,8 +323,7 @@
     <span class="k">return</span> <span class="n">subparser</span>
 </code></pre></div></div>
 
-<h3 id="complete-code">Complete Code</h3>
-
+<h2 id="complete-code">Complete Code</h2>
 <p>Here is the complete working code implementation.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">argparse</span>

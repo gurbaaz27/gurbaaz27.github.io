@@ -45,12 +45,12 @@ The end goal is to be able to parse `--entry#i` arguments when using the subpars
 python3 main.py foo -n 3 --entry1 abc --entry2 def --entry3 ghi
 ```
 
-### I. Partial parsing of arguments [known before runtime]
+## I. Partial parsing of arguments [known before runtime]
 
 We obviously cannot add `--entry#i` arguments in `add_argument` function directly because we don't know the number `n` beforehand. But `parse_args()` throws error on encountering arguments it doesn't know. And also, we do want to parse these entry args once we know the value of `n` in our program.  <span class="mark">As John Hazen explains [here](https://stackoverflow.com/questions/25317795/dynamic-arguments-for-pythons-argparse#25320537), we can very well achieve this with partial parsing using `parse_known_args`, which only parses the arguments added via `add_argument` method, and ignore the rest.</span>
 
 ```python
-# parse_known_args returns a tuple of valid arguments namespace and remaining args.
+# parse_known_args returns a tuple of valid arguments namespace and remaining args
 # we can ignore the second part for now
 args, _ = parser.parse_known_args()
 ```
@@ -67,7 +67,7 @@ def foo(parser, args):
     args = parser.parse_args()
 ```
 
-### II. Extract subparser object from the main parser
+## II. Extract subparser object from the main parser
 
 For this, let us look at parser object. `print(parser)` returns
 
@@ -117,8 +117,7 @@ def obtain_subparser(parser, command):
     return subparser
 ```
 
-### Complete Code
-
+## Complete Code
 Here is the complete working code implementation.
 
 ```python
