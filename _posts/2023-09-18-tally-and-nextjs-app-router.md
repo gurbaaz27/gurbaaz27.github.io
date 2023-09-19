@@ -2,7 +2,7 @@
 
 layout: post
 title: "Integrating Tally forms with Next.js App Router"
-subtitle: "Typeform killer? Yes."
+subtitle: "Dive into one of the amazing DX and UX tool for web"
 thumbnail-img: /assets/img/blogs/tally.png
 share-img: /assets/img/blogs/tally.png
 tags: [nextjs, tally, api, integration, tech]
@@ -249,7 +249,7 @@ And solution is working nice and seamlessly.
 
 ### Ending note
 
-Some might argue that this integration may have took us more time, but now once the flow is figured out, it is just a minutes setup to integrate it all. I don't think I will be doing any building from scratch for forms for any of my small to medium sized projects from now. I really loved Tally, and appreciate the team behind it to create such a feature-rich tool, and that too practically free (unless you want to remove Tally branding, or add custom domain for form etc.). Hope this helps as a guide to others looking out to build something similar, and increase awareness of awesome UX and DX-friendly tools like Tally.
+Some might argue that this integration may have took us more time, but now once the flow is figured out, it is just a minutes setup to integrate it all. I don't think I will be doing any building from scratch for forms for any of my small to medium sized projects from now. I really loved Tally, and appreciate the team behind it to create such a feature-rich tool, and that too practically free (unless you want to remove Tally branding, or add custom domain for form etc.). Hope this serves as a guide to others, looking out to build something similar, and also increase awareness of underrated tools like Tally.
 
 Signing out,<br>
 Dev@PuzzledQuant
