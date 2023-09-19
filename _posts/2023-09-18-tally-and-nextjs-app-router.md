@@ -120,7 +120,7 @@ This seemed to work, but still the issue of somehow getting the information of l
 
 {% include image.html url="/assets/img/blogs/tally-3.jpeg" %}
 
-## Perfect Solution - Utilising the handy window.Tally object
+## Perfect Solution - Utilising the window.Tally object
 
 <span class="mark">In addition to just specifying configuration of popup with `TallyConfig` object in window, they also provide a `Tally` object to open and close popups using JavaScript.</span> Citing their documentation,
 
