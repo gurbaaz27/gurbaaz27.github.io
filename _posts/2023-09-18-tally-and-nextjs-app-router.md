@@ -13,7 +13,7 @@ After almost 3 months of successful launch of [PuzzledQuant](https://puzzledquan
 
 As a full-time engineer nowadays, it becomes hard to take out time to work on side ventures, let alone build something like this from scratch with something like [react hook form](https://react-hook-form.com/) and build all the necessary logic and APIs. Neither we wanted a solution like google form, where we can embed the form and then have a cronjob at midnight to add entries to database from google sheets (also google forms UI is a bit of let-down). So we starting looking for alternatives.
 
-## The issue with Typeform
+### The issue with Typeform
 
 We were already using typeform on our [Contribute](https://www.puzzledquant.com/contribute) page, and its [Webhooks API](https://www.typeform.com/developers/webhooks/) seemed promising to fetch user response, process it and add it to our database. Typeform's UI is beautiful and interactive, and we were ready to go for it. But! We realised we were using Typeform's free tier, which only allowed 10 responses per month. Even 25 USD/month allows just 100 monthly responses. That was a shame, as spending such a hefty amount of money for such a basic task didn't justify much. Other modern form builders like Jotform, etc. had a similar story.
 
@@ -120,7 +120,7 @@ This seemed to work, but still the issue of somehow getting the information of l
 
 {% include image.html url="/assets/img/blogs/tally-3.jpeg" %}
 
-### Perfect Solution - Utilising the handy window.Tally object
+## Perfect Solution - Utilising the handy window.Tally object
 
 <span class="mark">In addition to just specifying configuration of popup with `TallyConfig` object in window, they also provide a `Tally` object to open and close popups using JavaScript.</span> Citing their documentation,
 
