@@ -79,7 +79,7 @@
 /* --- General --- */
 
 html {
-  font-size: 90%
+  font-size: 100%
 }
 
 @media only screen and (min-width: 768px) {
@@ -92,7 +92,7 @@ html {
 body {
   font-family: "EB Garamond", serif;
   font-size: 1.125rem;
-  text-align: justify;
+  /* text-align: justify; */
   color: #404040;
   position: relative;
   background-color: #FFFFFF;
