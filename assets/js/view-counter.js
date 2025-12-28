@@ -141,16 +141,123 @@ function displayListingViewCounts() {
   });
 }
 
+/**
+ * Update upvote button visual state (hollow vs filled)
+ */
+function updateUpvoteButtonState(isUpvoted) {
+  const upvoteButton = document.getElementById('upvote-btn');
+  
+  if (upvoteButton) {
+    if (isUpvoted) {
+      upvoteButton.classList.add('upvoted');
+    } else {
+      upvoteButton.classList.remove('upvoted');
+    }
+  }
+}
+
+/**
+ * Toggle upvote count for the current page (increment or decrement)
+ */
+function incrementUpvote() {
+  if (!database) {
+    console.warn('Firebase not available. Upvote not recorded.');
+    return;
+  }
+
+  const pagePath = getPagePath();
+  const upvoteKey = 'upvoted_' + pagePath;
+  const hasUpvoted = localStorage.getItem(upvoteKey) === 'true';
+  
+  const upvotesRef = database.ref('upvotes/' + encodeURIComponent(pagePath));
+  
+  // Toggle: if already upvoted, decrement; otherwise increment
+  upvotesRef.transaction(function(currentUpvotes) {
+    const current = currentUpvotes || 0;
+    if (hasUpvoted) {
+      // Decrement (remove upvote)
+      return Math.max(0, current - 1);
+    } else {
+      // Increment (add upvote)
+      return current + 1;
+    }
+  }, function(error, committed, snapshot) {
+    if (error) {
+      console.error('Error updating upvote count:', error);
+    } else if (committed) {
+      const newCount = snapshot.val() || 0;
+      // Update count display immediately
+      const upvoteCountElement = document.getElementById('upvote-count');
+      if (upvoteCountElement) {
+        upvoteCountElement.textContent = newCount;
+      }
+      
+      // Toggle localStorage state
+      if (hasUpvoted) {
+        localStorage.removeItem(upvoteKey);
+        updateUpvoteButtonState(false);
+      } else {
+        localStorage.setItem(upvoteKey, 'true');
+        updateUpvoteButtonState(true);
+      }
+    }
+  });
+}
+
+/**
+ * Get and display upvote count for the current page
+ */
+function displayUpvoteCount() {
+  if (!database) {
+    return;
+  }
+
+  const pagePath = getPagePath();
+  const upvotesRef = database.ref('upvotes/' + encodeURIComponent(pagePath));
+  
+  upvotesRef.once('value', function(snapshot) {
+    const count = snapshot.val() || 0;
+    const upvoteCountElement = document.getElementById('upvote-count');
+    if (upvoteCountElement) {
+      upvoteCountElement.textContent = count;
+    }
+    
+    // Check localStorage to set initial button state
+    const upvoteKey = 'upvoted_' + pagePath;
+    const hasUpvoted = localStorage.getItem(upvoteKey) === 'true';
+    updateUpvoteButtonState(hasUpvoted);
+  }, function(error) {
+    console.error('Error reading upvote count:', error);
+  });
+}
+
+/**
+ * Initialize upvote button click handler
+ */
+function initializeUpvoteButton() {
+  const upvoteButton = document.getElementById('upvote-btn');
+  if (upvoteButton) {
+    upvoteButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      incrementUpvote();
+    });
+  }
+}
+
 // Initialize view counter when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     incrementViewCount();
     displayViewCount();
     displayListingViewCounts();
+    displayUpvoteCount();
+    initializeUpvoteButton();
   });
 } else {
   incrementViewCount();
   displayViewCount();
   displayListingViewCounts();
+  displayUpvoteCount();
+  initializeUpvoteButton();
 }
 

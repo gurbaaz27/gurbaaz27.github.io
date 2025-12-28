@@ -40,6 +40,7 @@
           {% if include.type == "post" %}
             <span class="post-meta">{{ page.date | date: date_format }} | {{ page.minutes_to_read }} minutes read</span>
             {% include view-count.html %}
+            {% include upvote-button.html %}
             <br>
             <br>
             <span><a class="post-disable-highlight" onclick="disableHighlight()" href="javascript:;"><u>Disable the highlights</u></a></span>
@@ -78,6 +79,7 @@
           {% if include.type == "post" %}
             <span class="post-meta">{{ page.date | date: date_format }} | {{ page.minutes_to_read }} minutes read</span>
             {% include view-count.html %}
+            {% include upvote-button.html %}
             <br>
             <span><a class="post-disable-highlight" onclick="disableHighlight()" href="javascript:;"><u>Disable the highlights</u></a></span>
             {% if page.last-updated %}
