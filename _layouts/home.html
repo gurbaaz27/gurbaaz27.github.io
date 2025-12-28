@@ -47,6 +47,10 @@ layout: page
     <p class="post-meta">
       {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
       {{ post.date | date: date_format }} | {{ post.minutes_to_read }} minutes read
+      <span class="post-view-count" data-post-url="{{ post.url }}" style="display: none;">
+        <span class="d-none d-md-inline middot">&middot;</span>
+        <span class="view-count-text">Loading views...</span>
+      </span>
     </p>
 
     {% if thumbnail != "" %}

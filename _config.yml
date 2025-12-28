@@ -135,6 +135,31 @@ footer-link-col: "#404040"
 # Fill in your Google Analytics gtag.js ID to track your website using gtag
 gtag: "UA-173145540-1"
 
+# --- View Counter (Firebase) --- #
+# To enable view counts on your posts, uncomment and fill in your Firebase config below.
+# Setup instructions:
+# 1. Create a Firebase project at https://console.firebase.google.com/
+# 2. Enable Realtime Database (not Firestore) in your Firebase project
+# 3. Set database rules to allow read/write:
+#    {
+#      "rules": {
+#        "views": {
+#          ".read": true,
+#          ".write": true
+#        }
+#      }
+#    }
+# 4. Get your Firebase config from Project Settings > General > Your apps > Web app
+# 5. Uncomment and fill in the firebase section below:
+firebase:
+  apiKey: "AIzaSyAFXNRAk0_lkYRG5Vipo39IgvjzewQR91A"
+  authDomain: "gurbaaz-xyz.firebaseapp.com"
+  databaseURL: "https://gurbaaz-xyz-default-rtdb.asia-southeast1.firebasedatabase.app"
+  projectId: "gurbaaz-xyz"
+  storageBucket: "gurbaaz-xyz.firebasestorage.app"
+  messagingSenderId: "826877159682"
+  appId: "1:826877159682:web:52867988a769d97507fa1b"
+
 # Fill in your Google Analytics ID to track your website using Google Analytics
 #google_analytics: ""
 
@@ -232,6 +257,9 @@ exclude:
   - _posts/2020-02-28-test-markdown.md
   - _posts/2021-06-03-the-pain-of-deployment.md
   - _posts/2023-11-30-treading-the-tales-of-turban.md
+  - misc/
+  - scripts/
+  - prd/
 
 plugins:
   - jekyll-paginate

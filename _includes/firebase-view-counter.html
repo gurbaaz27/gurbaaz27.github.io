@@ -1,0 +1,29 @@
+{% comment %} Firebase View Counter Setup This include loads Firebase SDK and
+the view counter script. Make sure to configure Firebase in _config.yml:
+firebase: apiKey: "your-api-key" authDomain: "your-project.firebaseapp.com"
+databaseURL: "https://your-project-default-rtdb.firebaseio.com" projectId:
+"your-project-id" storageBucket: "your-project.appspot.com" messagingSenderId:
+"123456789" appId: "your-app-id" {% endcomment %} {% if site.firebase and
+site.firebase.databaseURL %}
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<!-- View Counter Script -->
+<script>
+  // Initialize Firebase with config from _config.yml
+  const firebaseConfig = {
+    apiKey: "{{ site.firebase.apiKey }}",
+    authDomain: "{{ site.firebase.authDomain }}",
+    databaseURL: "{{ site.firebase.databaseURL }}",
+    projectId: "{{ site.firebase.projectId }}",
+    storageBucket: "{{ site.firebase.storageBucket }}",
+    messagingSenderId: "{{ site.firebase.messagingSenderId }}",
+    appId: "{{ site.firebase.appId }}",
+  }
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig)
+</script>
+<script src="{{ site.baseurl }}/assets/js/view-counter.js"></script>
+{% endif %}

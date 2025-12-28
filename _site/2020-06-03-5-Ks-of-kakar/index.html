@@ -198,6 +198,14 @@
 
           
             <span class="post-meta">June 3, 2020 | 3 minutes read</span>
+            
+
+<span class="post-meta view-count" style="display: none;">
+  <span class="d-none d-md-inline middot">&middot;</span>
+  <span class="view-count-text">Loading views...</span>
+</span>
+
+
             <br>
             <span><a class="post-disable-highlight" onclick="disableHighlight()" href="javascript:;"><u>Disable the highlights</u></a></span>
             
@@ -484,6 +492,31 @@
 
 
 
+
+
+
+ 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<!-- View Counter Script -->
+<script>
+  // Initialize Firebase with config from _config.yml
+  const firebaseConfig = {
+    apiKey: "AIzaSyAFXNRAk0_lkYRG5Vipo39IgvjzewQR91A",
+    authDomain: "gurbaaz-xyz.firebaseapp.com",
+    databaseURL: "https://gurbaaz-xyz-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gurbaaz-xyz",
+    storageBucket: "gurbaaz-xyz.firebasestorage.app",
+    messagingSenderId: "826877159682",
+    appId: "1:826877159682:web:52867988a769d97507fa1b",
+  }
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig)
+</script>
+<script src="/assets/js/view-counter.js"></script>
 
 
 

@@ -1,0 +1,14 @@
+# Requirements for Google Analytics View Counter Script
+# Install with: pip install -r requirements_ga.txt
+
+# For Universal Analytics (UA)
+google-api-python-client>=2.0.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=0.5.0
+
+# For Google Analytics 4 (GA4)
+google-analytics-data>=0.16.0
+
+# For parsing YAML config
+pyyaml>=6.0
+
