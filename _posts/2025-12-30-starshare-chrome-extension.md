@@ -5,7 +5,7 @@ subtitle: "A tale of WXT, better-auth quirks, and getting Arc browser to play ni
 thumbnail-img: /assets/img/blogs/star-share.png
 share-img: /assets/img/blogs/star-share.png
 tags: [chrome-extension, tech, wxt, hono, bun]
-minutes_to_read: 5
+minutes_to_read: 8
 ---
 
 > **Disclaimer:** This blog post was generated using AI. I've been lazy but wanted to share the nuances I faced while building this project — so even though it's AI-generated, the content is real and I hope it's insightful. Despite my best prompting to keep the tone light and technical, I think it went a little overboard and sassy. Still, I think it did a great job summarising my experience!
