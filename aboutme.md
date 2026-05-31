@@ -29,5 +29,5 @@ Secondary Education, 2017<br>
 
 ### Contact
 
-You can reach me out at <span class="mark">gurbaazsn123 [at] gmail [dot] com</span>
+You can reach me out at <span class="mark">hi [at] gurbaaz [dot] xyz</span>
 

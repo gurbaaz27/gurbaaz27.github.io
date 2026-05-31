@@ -13,7 +13,7 @@ Location: Jalandhar, Punjab, India
 Education: B.Tech. in Computer Science and Engineering, IIT Kanpur (2019-2023)
 Current Role: Systems Engineer at Quadeye Securities
 Focus: Low-latency trading systems, primarily in C++
-Email: gurbaazsn123@gmail.com
+Email: hi@gurbaaz.xyz
 
 # Technical Background
 - Low-level systems programming

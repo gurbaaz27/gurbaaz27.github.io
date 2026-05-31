@@ -5,8 +5,8 @@
     
     <description>Thank You for visiting my homepage.</description>
     
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link></link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
@@ -16,8 +16,8 @@
           Disclaimer: This blog post was generated using AI. I’ve been lazy but wanted to share the nuances I faced while building this project — so even though it’s AI-generated, the content is real and I hope it’s insightful. Despite my best prompting to keep the tone light and technical, I...
         </description>
         <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2025-12-30-starshare-chrome-extension/</link>
-        <guid isPermaLink="true">http://localhost:4000/2025-12-30-starshare-chrome-extension/</guid>
+        <link>/2025-12-30-starshare-chrome-extension/</link>
+        <guid isPermaLink="true">/2025-12-30-starshare-chrome-extension/</guid>
       </item>
     
       <item>
@@ -27,8 +27,8 @@
           After almost 3 months of successful launch of PuzzledQuant, an online learning platform to help you enhance your quant skills, we started thinking more ways to connect to our audience, and understand the demographics. As a first step, this meant collecting basic user needs, which would ideally involve a popup...
         </description>
         <pubDate>Mon, 18 Sep 2023 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2023-09-18-tally-and-nextjs-app-router/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-09-18-tally-and-nextjs-app-router/</guid>
+        <link>/2023-09-18-tally-and-nextjs-app-router/</link>
+        <guid isPermaLink="true">/2023-09-18-tally-and-nextjs-app-router/</guid>
       </item>
     
       <item>
@@ -38,8 +38,8 @@
           Past month, while working on some command-line tool written in python based on argparse, I was faced with task of adding some new arguments to extend some functionality. The only problem was the number and name of arguments were dynamic, i.e., they depended on the value supplied to some other...
         </description>
         <pubDate>Mon, 18 Sep 2023 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2023-09-18-dynamic-arguments-argparse-subparser/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-09-18-dynamic-arguments-argparse-subparser/</guid>
+        <link>/2023-09-18-dynamic-arguments-argparse-subparser/</link>
+        <guid isPermaLink="true">/2023-09-18-dynamic-arguments-argparse-subparser/</guid>
       </item>
     
       <item>
@@ -49,8 +49,8 @@
           Starting a series where I would be compiling some of the bugs I run into during my software development projects. These bugs have usually given me a hard time since there seems to be nothing wrong at face value, but on deeper analysis, they expose some conceptual mistake on my...
         </description>
         <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2023-03-29-bug-log-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-03-29-bug-log-1/</guid>
+        <link>/2023-03-29-bug-log-1/</link>
+        <guid isPermaLink="true">/2023-03-29-bug-log-1/</guid>
       </item>
     
       <item>
@@ -60,8 +60,8 @@
           The phrase in the subtitle loosely translates to “a frog in the small well is unaware of the mighty ocean”, referring to the state of being trapped by one’s own narrow knowledge and ideas, and not knowing that there is a wider world out there. So on a mission to...
         </description>
         <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2023-02-20-japan/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-02-20-japan/</guid>
+        <link>/2023-02-20-japan/</link>
+        <guid isPermaLink="true">/2023-02-20-japan/</guid>
       </item>
     
       <item>
@@ -71,8 +71,8 @@
           Around a month back, after the end semester examinations of my 7th semester were over and before the placement season was about to begin, I was looking for some random inspiration to build some cool stuff. During that period, one of my friends was working on some piece of code...
         </description>
         <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2023-01-16-codrop/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-01-16-codrop/</guid>
+        <link>/2023-01-16-codrop/</link>
+        <guid isPermaLink="true">/2023-01-16-codrop/</guid>
       </item>
     
       <item>
@@ -82,8 +82,8 @@
           You wake up one day to build some cool web app or an ML model, motivate yourself a step further to deploy it or atleast share with your friends. On googling what to do now, you are bombarded with various methodologies and terminologeies. Amidst popular terms like Github, AWS, Heroku,...
         </description>
         <pubDate>Sun, 30 May 2021 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2021-05-30-demystifying-the-docker/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-05-30-demystifying-the-docker/</guid>
+        <link>/2021-05-30-demystifying-the-docker/</link>
+        <guid isPermaLink="true">/2021-05-30-demystifying-the-docker/</guid>
       </item>
     
       <item>
@@ -93,8 +93,8 @@
           The motivation behind posting this on instagram was to create an awareness regarding one of the core part in the life of a “Amritdhari” or a borrowed term from the West, “baptised” Sikh. I have seen friends and strangers who get amused or wierdly astonished at the sight of my...
         </description>
         <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2020-06-03-5-Ks-of-kakar/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020-06-03-5-Ks-of-kakar/</guid>
+        <link>/2020-06-03-5-Ks-of-kakar/</link>
+        <guid isPermaLink="true">/2020-06-03-5-Ks-of-kakar/</guid>
       </item>
     
   </channel>
