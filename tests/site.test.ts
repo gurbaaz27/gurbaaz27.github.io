@@ -55,6 +55,7 @@ describe("static build", () => {
   test("keeps same-date posts in the established display order", () => {
     const home = readFileSync("dist/index.html", "utf8");
     expect(home.indexOf("tally-and-nextjs-app-router")).toBeLessThan(home.indexOf("dynamic-arguments-argparse-subparser"));
+    expect(home).not.toContain("Powered by");
   });
 
   test("publishes eight posts and excludes drafts", () => {

@@ -36,7 +36,7 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .sr-only { @apply absolute h-px w-px overflow-hidden whitespace-nowrap p-0; clip: rect(0, 0, 0, 0); }
 .text-center { text-align: center; }
 .text-muted { color: #777; }
-.content-column { width: min(100% - 2rem, 47.5rem); margin-inline: auto; }
+.content-column { width: calc(100% - 30px); max-width: 760px; margin-inline: auto; }
 .page-content { @apply flow-root; }
 .mark { background: rgb(255 255 0 / 35%); color: inherit; }
 .highlights-disabled .mark { background: none !important; }
@@ -47,7 +47,7 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
   background: var(--chrome);
   border-color: var(--border);
 }
-.nav-inner { @apply relative mx-auto flex max-w-[1140px] min-h-[51px] items-center px-4; }
+.nav-inner { @apply relative mx-auto flex min-h-[51px] w-full items-center px-4; }
 .nav-links { @apply ml-auto flex items-center; margin-right: 2.3rem; }
 .nav-links a {
   @apply px-[15px] py-[15px] text-[.8125rem] font-extrabold uppercase tracking-[.0625rem] no-underline;
@@ -158,7 +158,6 @@ footer { padding: 3.125rem 0; border-top: 1px solid var(--chrome); margin-top: 3
 .footer-links { @apply m-0 mb-[1.875rem] flex list-none justify-center gap-8 p-0 text-[1.125rem]; }
 .footer-links a { color: var(--ink); }
 .copyright { margin: 0; font-size: 1rem; }
-.theme-by { margin: .625rem 0 0; }
 footer a { color: var(--ink); }
 
 /* Dark mode */
@@ -208,10 +207,18 @@ footer a { color: var(--ink); }
 @media (max-width: 500px) {
   .post-image-short { display: none; }
   .post-image-small { display: block; }
-  .content-column { width: min(100% - 2rem, 47.5rem); }
 }
 
-@media (min-width: 768px) { html { font-size: 120%; } }
+@media (min-width: 576px) { .content-column { max-width: 540px; } }
+@media (min-width: 768px) {
+  html { font-size: 120%; }
+  .content-column { max-width: 720px; }
+}
+@media (min-width: 992px) { .content-column { max-width: 800px; } }
+@media (min-width: 1200px) {
+  .nav-inner { padding-block: 1.25rem; }
+  .content-column { max-width: 760px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
