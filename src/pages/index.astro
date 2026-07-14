@@ -1,0 +1,8 @@
+---
+import HomePage from "../components/HomePage.astro";
+import { getPosts } from "../lib/posts";
+const posts = await getPosts();
+const pageSize = 5;
+---
+
+<HomePage posts={posts.slice(0, pageSize)} page={1} totalPages={Math.ceil(posts.length / pageSize)} />

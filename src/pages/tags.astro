@@ -1,0 +1,13 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { formatDate, getPosts } from "../lib/posts";
+const posts = await getPosts();
+const tags = [...new Set(posts.flatMap((post) => post.entry.data.tags))].sort((a, b) => a.localeCompare(b));
+---
+
+<PageLayout title="Tag Index">
+  <div class="tag-buttons">{tags.map((tag) => <a href={`#${tag}`} class="tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;{tag}&nbsp;({posts.filter((post) => post.entry.data.tags.includes(tag)).length})</a>)}</div>
+  <div id="full-tags-list">
+    {tags.map((tag) => <section><h2 id={tag} class="linked-section"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;{tag}&nbsp;({posts.filter((post) => post.entry.data.tags.includes(tag)).length})</h2><div class="post-list">{posts.filter((post) => post.entry.data.tags.includes(tag)).map((post) => <div class="tag-entry"><a href={post.url}>{post.entry.data.title}</a><div class="entry-date"><time datetime={post.date.toISOString()}>{formatDate(post.date)}</time></div></div>)}</div></section>)}
+  </div>
+</PageLayout>

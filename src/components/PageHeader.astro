@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  type?: "page" | "post";
+  dateText?: string;
+  minutes?: number;
+  postUrl?: string;
+}
+const { title, subtitle = "", type = "page", dateText, minutes, postUrl } = Astro.props;
+---
+
+<header class="intro-header">
+  <div class="content-column heading-column">
+    <div class={`${type}-heading`}>
+      <h1 set:html={title}></h1>
+      {subtitle && (type === "page" ? <><hr class="small" /><span class="page-subheading" set:html={subtitle}></span></> : <h2 class="post-subheading" set:html={subtitle}></h2>)}
+      {type === "post" && (
+        <div class="post-header-meta">
+          <span class="post-meta">{dateText} | {minutes} minutes read</span>
+          <span class="post-meta view-count" hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
+          <span class="post-meta upvote-wrapper">
+            <span class="middot">·</span>
+            <button class="upvote-button" id="upvote-btn" data-post-url={postUrl} aria-label="Upvote this post">
+              <svg class="upvote-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 10h3v10h10V10h3L12 2z"></path></svg>
+            </button>
+            <span class="upvote-count" id="upvote-count">0</span>
+          </span>
+          <br />
+          <button class="post-disable-highlight" id="disable-highlights" type="button"><u>Disable the highlights</u></button>
+        </div>
+      )}
+    </div>
+  </div>
+</header>

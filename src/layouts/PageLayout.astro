@@ -1,0 +1,11 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+interface Props { title: string; subtitle?: string; description?: string }
+const { title, subtitle = "", description = subtitle } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHeader title={title} subtitle={subtitle} />
+  <div class="content-column page-content"><slot /></div>
+</BaseLayout>

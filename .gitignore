@@ -2,6 +2,12 @@
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+_site/
+
+# Astro/Bun
+node_modules/
+dist/
+.astro/
 
 # Bundler
 vendor/
@@ -20,4 +26,3 @@ Thumbs.db
 
 # Logs
 *.log
-

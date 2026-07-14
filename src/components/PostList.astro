@@ -1,0 +1,25 @@
+---
+import type { Post } from "../lib/posts";
+import { formatDate } from "../lib/posts";
+interface Props { posts: Post[] }
+const { posts } = Astro.props;
+---
+
+<div class="posts-list">
+  {posts.map((post) => {
+    const thumbnail = post.entry.data["thumbnail-img"];
+    return (
+      <article class="post-preview">
+        <a href={post.url}><h2 class="post-title">{post.entry.data.title}</h2>{post.entry.data.subtitle && <h3 class="post-subtitle" set:html={post.entry.data.subtitle}></h3>}</a>
+        <p class="post-meta">
+          {formatDate(post.date)} | {post.entry.data.minutes_to_read} minutes read
+          <span class="post-view-count" data-post-url={post.url} hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
+        </p>
+        {thumbnail && <div class="post-image post-image-small"><a href={post.url} aria-label={`Read ${post.entry.data.title}`}><img src={thumbnail} alt="Post thumbnail" /></a></div>}
+        {thumbnail && <div class="post-image post-image-short"><a href={post.url} aria-label={`Read ${post.entry.data.title}`}><img src={thumbnail} alt="Post thumbnail" /></a></div>}
+        <div class="post-entry">{post.excerpt} <a href={post.url} class="post-read-more">[Read&nbsp;More]</a></div>
+        {post.entry.data.tags.length > 0 && <div class="blog-tags"><span>Tags:</span>{post.entry.data.tags.map((tag) => <a href={`/tags/#${tag}`}>{tag}</a>)}</div>}
+      </article>
+    );
+  })}
+</div>

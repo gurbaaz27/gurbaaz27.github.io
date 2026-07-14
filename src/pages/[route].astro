@@ -1,0 +1,31 @@
+---
+import HomePage from "../components/HomePage.astro";
+import PostLayout from "../layouts/PostLayout.astro";
+import { getPosts, type Post } from "../lib/posts";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const paths: Array<{ params: { route: string }; props: { kind: "post"; post: Post; older?: Post; newer?: Post } | { kind: "page"; posts: Post[]; page: number; totalPages: number } }> = [];
+  posts.forEach((post, index) => paths.push({
+    params: { route: `${post.dateKey}-${post.slug}` },
+    props: { kind: "post", post, older: posts[index + 1], newer: posts[index - 1] },
+  }));
+  const pageSize = 5;
+  const totalPages = Math.ceil(posts.length / pageSize);
+  for (let page = 2; page <= totalPages; page++) {
+    paths.push({ params: { route: `page${page}` }, props: { kind: "page", posts: posts.slice((page - 1) * pageSize, page * pageSize), page, totalPages } });
+  }
+  return paths;
+}
+
+const props = Astro.props;
+const rendered = props.kind === "post" ? await render(props.post.entry) : undefined;
+const Content = rendered?.Content;
+---
+
+{props.kind === "page" ? (
+  <HomePage posts={props.posts} page={props.page} totalPages={props.totalPages} />
+) : Content ? (
+  <PostLayout post={props.post} older={props.older} newer={props.newer}><Content /></PostLayout>
+) : null}

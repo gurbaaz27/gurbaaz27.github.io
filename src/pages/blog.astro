@@ -1,0 +1,10 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PostList from "../components/PostList.astro";
+import { getPosts } from "../lib/posts";
+const posts = await getPosts();
+---
+
+<PageLayout title="Blog" subtitle="Penning down my thoughts and sharing some knowledge. Cause, why not?">
+  <PostList posts={posts} />
+</PageLayout>
