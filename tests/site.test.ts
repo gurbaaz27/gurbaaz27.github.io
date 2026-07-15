@@ -71,6 +71,7 @@ describe("static build", () => {
     expect(post).toContain("upvote-btn");
     expect(post).toContain("data-waline-view-path");
     expect(post).toContain("data-waline-comment-path");
+    expect(post).toContain("data-hide-when-zero");
     expect(post).toContain("data-waline-reaction-path");
     expect(post).not.toContain("firebase.initializeApp");
     expect(post).not.toContain("gstatic.com/firebasejs");

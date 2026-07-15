@@ -139,7 +139,7 @@ const loadCounters = async () => {
         const count = byPath.get(element.dataset.walineCommentPath || "") || 0;
         const text = element.querySelector<HTMLElement>(".comment-count-text");
         if (text) text.textContent = formatCommentCount(count);
-        element.hidden = false;
+        element.hidden = count === 0 && element.hasAttribute("data-hide-when-zero");
       }
     } catch (error) {
       console.error("Unable to load Waline comment counters", error);

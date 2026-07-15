@@ -22,7 +22,7 @@ const walinePath = postUrl ? normalizeWalinePath(postUrl) : undefined;
         <div class="post-header-meta">
           <span class="post-meta">{dateText}{minutes != null ? ` | ${minutes} minutes read` : ""}</span>
           <span class="post-meta view-count" data-waline-view-path={walinePath} hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
-          <span class="post-meta comment-count" data-waline-comment-path={walinePath} hidden><span class="middot">·</span> <span class="comment-count-text">Loading comments...</span></span>
+          <span class="post-meta comment-count" data-waline-comment-path={walinePath} data-hide-when-zero hidden><span class="middot">·</span> <span class="comment-count-text">Loading comments...</span></span>
           <span class="post-meta upvote-wrapper">
             <span class="middot">·</span>
             <button class="upvote-button" id="upvote-btn" data-waline-reaction-path={walinePath} aria-label="Upvote this post" aria-pressed="false">
