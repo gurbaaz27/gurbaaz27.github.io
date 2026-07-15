@@ -110,7 +110,7 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 /* Post content */
 .post-layout { width: 100%; }
 .post-outline { display: none; }
-.blog-post :is(h2, h3, h4) { scroll-margin-top: 7rem; }
+.blog-post :is(h2, h3, h4, h5, h6) { scroll-margin-top: 7rem; }
 .blog-post :first-child { margin-top: 0; }
 .blog-post ul, .blog-post ol { margin: 0 0 1rem; padding-left: 2.5rem; }
 .blog-post ul { list-style: disc; }

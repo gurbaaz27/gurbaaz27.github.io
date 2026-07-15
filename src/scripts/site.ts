@@ -44,7 +44,7 @@ const syncOutline = () => {
   if (!outlineHeadings.length) return;
   const active = [...outlineHeadings].reverse().find((heading) => heading.getBoundingClientRect().top <= 140) ?? outlineHeadings[0];
   for (const link of outlineLinks) {
-    const current = link.hash === `#${active.id}`;
+    const current = decodeURIComponent(link.hash.slice(1)) === active.id;
     if (current) link.setAttribute("aria-current", "location");
     else link.removeAttribute("aria-current");
   }
