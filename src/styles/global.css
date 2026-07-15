@@ -108,7 +108,7 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .post-preview .blog-tags { margin: .625rem 0 0; }
 
 /* Post content */
-.blog-post > :first-child { margin-top: 0; }
+.blog-post :first-child { margin-top: 0; }
 .blog-post figure { text-align: center; margin: 1.5rem auto; }
 .blog-post :is(img, video)[height] { width: auto; margin-inline: auto; }
 .blog-post :is(img, video)[height="600"] { height: 600px; }
