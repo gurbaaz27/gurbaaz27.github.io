@@ -8,22 +8,40 @@ import type { Post } from "../lib/posts";
 import { formatDate } from "../lib/posts";
 import { siteConfig } from "../config";
 
-interface Props { post: Post; older?: Post; newer?: Post }
-const { post, older, newer } = Astro.props;
+interface Heading { depth: number; slug: string; text: string }
+interface Props { post: Post; older?: Post; newer?: Post; headings?: Heading[] }
+const { post, older, newer, headings = [] } = Astro.props;
 const { data } = post.entry;
 const image = data["share-img"] ?? data["thumbnail-img"] ?? siteConfig.avatar;
 ---
 
 <BaseLayout title={data.title} description={data.subtitle || post.excerpt} image={image} article publishedTime={post.date.toISOString()}>
   <PageHeader title={data.title} subtitle={data.subtitle} type="post" dateText={formatDate(post.date)} minutes={data.minutes_to_read} postUrl={post.url} />
-  <div class="content-column page-content">
-    <article class="blog-post"><slot /></article>
-    {data.tags.length > 0 && <div class="blog-tags"><span>Tags:</span>{data.tags.map((tag) => <a href={`/tags/#${tag}`}>{tag}</a>)}</div>}
-    <SocialShare title={data.title} url={`${siteConfig.origin}${post.url}`} />
-    <Pager
-      previous={older && { url: older.url, label: "← Previous Post", title: older.entry.data.title }}
-      next={newer && { url: newer.url, label: "Next Post →", title: newer.entry.data.title }}
-    />
-    <Comments />
+  <div class:list={["post-layout", { "has-outline": headings.length > 0 }]}>
+    {headings.length > 0 && (
+      <aside class="post-outline" aria-label="Article outline">
+        <nav>
+          <p class="post-outline-title">On this page</p>
+          <ol>
+            {headings.map((heading) => (
+              <li class={`depth-${heading.depth}`}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </aside>
+    )}
+    <div class="content-column page-content">
+      <article class="blog-post"><slot /></article>
+      {data.tags.length > 0 && <div class="blog-tags"><span>Tags:</span>{data.tags.map((tag) => <a href={`/tags/#${tag}`}>{tag}</a>)}</div>}
+      <SocialShare title={data.title} url={`${siteConfig.origin}${post.url}`} />
+      <Pager
+        previous={older && { url: older.url, label: "← Previous Post", title: older.entry.data.title }}
+        next={newer && { url: newer.url, label: "Next Post →", title: newer.entry.data.title }}
+      />
+      <Comments />
+    </div>
+    <div aria-hidden="true"></div>
   </div>
 </BaseLayout>

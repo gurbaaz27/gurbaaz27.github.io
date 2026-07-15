@@ -35,6 +35,26 @@ document.querySelector("#disable-highlights")?.addEventListener("click", () => {
   document.documentElement.classList.add("highlights-disabled");
 });
 
+const outlineLinks = [...document.querySelectorAll<HTMLAnchorElement>(".post-outline a")];
+const outlineHeadings = outlineLinks
+  .map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))))
+  .filter((heading): heading is HTMLElement => Boolean(heading));
+
+const syncOutline = () => {
+  if (!outlineHeadings.length) return;
+  const active = [...outlineHeadings].reverse().find((heading) => heading.getBoundingClientRect().top <= 140) ?? outlineHeadings[0];
+  for (const link of outlineLinks) {
+    const current = decodeURIComponent(link.hash.slice(1)) === active.id;
+    if (current) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  }
+};
+
+if (outlineHeadings.length) {
+  window.addEventListener("scroll", syncOutline, { passive: true });
+  syncOutline();
+}
+
 const serverURL = siteConfig.waline.serverURL;
 const lang = "en";
 const currentPath = normalizeWalinePath(window.location.pathname);
