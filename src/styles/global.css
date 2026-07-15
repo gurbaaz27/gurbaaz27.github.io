@@ -89,8 +89,8 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 /* Post lists */
 .post-preview { @apply flow-root overflow-hidden border-b border-[#eee] py-[2.1875rem]; }
 .post-preview:last-child { border-bottom: 0; }
-.post-preview > a { color: var(--ink); font-family: "EB Garamond", serif; text-decoration: none; }
-.post-preview > a:hover, .post-preview > a:focus { color: var(--hover); }
+.post-preview a { color: var(--ink); font-family: "EB Garamond", serif; text-decoration: none; }
+.post-preview a:hover, .post-preview a:focus { color: var(--hover); }
 .post-title { font-size: 2.25rem; margin-top: 0; }
 .post-subtitle { margin: 0 0 .625rem; font-weight: 300; }
 .post-preview .post-meta { margin: 0 0 .625rem; }
