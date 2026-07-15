@@ -20,7 +20,7 @@ body {
   font-size: 1.125rem;
 }
 main { min-height: 50vh; }
-p { line-height: 1.5; margin: 1.875rem 0; }
+p { line-height: 1.5; margin: 1.25rem 0; }
 h1, h2, h3, h4, h5, h6 { font-family: "EB Garamond", serif; font-weight: 800; line-height: 1.1; }
 h1 { font-size: 2.25rem; }
 h2 { font-size: 1.875rem; }
@@ -47,7 +47,7 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
   background: var(--chrome);
   border-color: var(--border);
 }
-.nav-inner { @apply relative mx-auto flex min-h-[51px] w-full items-center px-4; }
+.nav-inner { @apply relative mx-auto flex min-h-[51px] w-full items-center px-4; transition: padding .5s ease-in-out; }
 .nav-links { @apply ml-auto flex items-center; margin-right: 2.3rem; }
 .nav-links a {
   @apply px-[15px] py-[15px] text-[.8125rem] font-extrabold uppercase tracking-[.0625rem] no-underline;
@@ -237,6 +237,7 @@ footer a { color: var(--ink); }
 @media (min-width: 992px) { .content-column { max-width: 800px; } }
 @media (min-width: 1200px) {
   .nav-inner { padding-block: 1.25rem; }
+  .site-nav.short .nav-inner { padding-block: 0; }
   .content-column { max-width: 760px; }
   .post-layout.has-outline {
     display: grid;
