@@ -49,7 +49,9 @@ describe("static build", () => {
   test("keeps canonical domain and integrations", () => {
     const post = readFileSync("dist/2025-12-30-starshare-chrome-extension/index.html", "utf8");
     expect(post).toContain('rel="canonical" href="https://gurbaaz.xyz/2025-12-30-starshare-chrome-extension/"');
-    expect(post).toContain("gurbaaz27/gurbaaz27.github.io");
+    expect(post).toContain("https://comments.gurbaaz.xyz");
+    expect(post).toContain('id="waline"');
+    expect(post).not.toContain("utteranc.es/client.js");
     expect(post).toContain("upvote-btn");
     expect(post).toContain("firebase.initializeApp");
   });

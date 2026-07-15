@@ -1,17 +1,28 @@
 ---
+import "@waline/client/style";
 import { siteConfig } from "../config";
-const attributes = {
-  repo: siteConfig.utterances.repo,
-  "issue-term": siteConfig.utterances.issueTerm,
-  theme: siteConfig.utterances.theme,
-  label: siteConfig.utterances.label,
-  crossorigin: "anonymous",
-} as Record<string, string>;
 ---
 
-<script
-  is:inline
-  src="https://utteranc.es/client.js"
-  {...attributes}
-  async>
+<div id="waline" data-server-url={siteConfig.waline.serverURL}></div>
+
+<script>
+  import { init } from "@waline/client";
+
+  const el = document.querySelector<HTMLElement>("#waline");
+  if (el?.dataset.serverUrl) {
+    init({
+      el,
+      serverURL: el.dataset.serverUrl,
+      path: window.location.pathname.replace(/\/$/, "") || "/",
+      lang: "en",
+      dark: "html.dark-mode",
+      meta: ["nick", "mail"],
+      requiredMeta: ["nick"],
+      pageSize: 10,
+    });
+  }
 </script>
+
+<style>
+  #waline { margin-top: 2rem; }
+</style>
