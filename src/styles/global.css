@@ -91,7 +91,7 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .post-preview:last-child { border-bottom: 0; }
 .post-preview a { color: var(--ink); font-family: "EB Garamond", serif; text-decoration: none; }
 .post-preview a:hover, .post-preview a:focus { color: var(--hover); }
-.post-title { font-size: 2.25rem; margin-top: 0; }
+.post-title { font-size: 2.25rem; margin: 0 0 .5rem; }
 .post-subtitle { margin: 0 0 .625rem; font-weight: 300; }
 .post-preview .post-meta { margin: 0 0 .625rem; }
 .post-entry { width: 100%; }
@@ -109,6 +109,12 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 
 /* Post content */
 .blog-post :first-child { margin-top: 0; }
+.blog-post ul, .blog-post ol { margin: 0 0 1rem; padding-left: 2.5rem; }
+.blog-post ul { list-style: disc; }
+.blog-post ol { list-style: decimal; }
+.blog-post ul ul { list-style: circle; }
+.blog-post ul ul ul { list-style: square; }
+.blog-post :is(ul, ol) :is(ul, ol) { margin-bottom: 0; }
 .blog-post figure { text-align: center; margin: 1.5rem auto; }
 .blog-post :is(img, video)[height] { width: auto; margin-inline: auto; }
 .blog-post :is(img, video)[height="600"] { height: 600px; }
