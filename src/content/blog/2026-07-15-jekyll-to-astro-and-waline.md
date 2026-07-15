@@ -2,6 +2,8 @@
 layout: post
 title: "Porting my personal website from Jekyll to Astro"
 subtitle: "Moving a Beautiful Jekyll site to Astro, then swapping Utterances for Waline"
+thumbnail-img: /assets/img/blogs/jekyll-to-astro.jpg
+share-img: /assets/img/blogs/jekyll-to-astro.jpg
 tags: [astro, jekyll, waline, bun, codex, tech]
 minutes_to_read: 11
 draft: false
