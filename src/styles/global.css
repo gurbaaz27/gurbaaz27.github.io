@@ -112,8 +112,8 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .blog-post ul, .blog-post ol { margin: 0 0 1rem; padding-left: 2.5rem; }
 .blog-post ul { list-style: disc; }
 .blog-post ol { list-style: decimal; }
-.blog-post ul ul { list-style: circle; }
-.blog-post ul ul ul { list-style: square; }
+.blog-post ul ul, .blog-post ol ul { list-style: circle; }
+.blog-post ul ul ul, .blog-post ol ul ul { list-style: square; }
 .blog-post :is(ul, ol) :is(ul, ol) { margin-bottom: 0; }
 .blog-post figure { text-align: center; margin: 1.5rem auto; }
 .blog-post :is(img, video)[height] { width: auto; margin-inline: auto; }
