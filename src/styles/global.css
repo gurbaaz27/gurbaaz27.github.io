@@ -108,6 +108,9 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .post-preview .blog-tags { margin: .625rem 0 0; }
 
 /* Post content */
+.post-layout { width: 100%; }
+.post-outline { display: none; }
+.blog-post :is(h2, h3, h4) { scroll-margin-top: 7rem; }
 .blog-post :first-child { margin-top: 0; }
 .blog-post ul, .blog-post ol { margin: 0 0 1rem; padding-left: 2.5rem; }
 .blog-post ul { list-style: disc; }
@@ -235,6 +238,59 @@ footer a { color: var(--ink); }
 @media (min-width: 1200px) {
   .nav-inner { padding-block: 1.25rem; }
   .content-column { max-width: 760px; }
+  .post-layout.has-outline {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) minmax(0, 760px) minmax(160px, 1fr);
+    gap: 1.5rem;
+    max-width: 1170px;
+    margin-inline: auto;
+  }
+  .post-outline { display: block; min-width: 0; }
+  .post-outline nav {
+    position: sticky;
+    top: 7rem;
+    max-height: calc(100vh - 9rem);
+    overflow-y: auto;
+    padding: .25rem .35rem .75rem 0;
+    scrollbar-width: thin;
+  }
+  .post-outline-title {
+    margin: 0 0 .55rem .55rem;
+    color: var(--muted);
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .post-outline ol { margin: 0; padding: 0; list-style: none; }
+  .post-outline li { margin: .1rem 0; }
+  .post-outline li.depth-3 { padding-left: .7rem; }
+  .post-outline li:is(.depth-4, .depth-5, .depth-6) { padding-left: 1.4rem; }
+  .post-outline a {
+    position: relative;
+    display: block;
+    padding: .32rem .55rem;
+    border-radius: .25rem;
+    color: var(--muted);
+    font-size: .72rem;
+    line-height: 1.25;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color .15s ease, background-color .15s ease;
+  }
+  .post-outline a:hover { background: rgb(128 128 128 / 10%); color: var(--ink); }
+  .post-outline a:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; color: var(--ink); }
+  .post-outline a[aria-current="location"] { background: rgb(0 138 255 / 9%); color: var(--link); font-weight: 700; }
+  .post-outline a[aria-current="location"]::before {
+    position: absolute;
+    top: 50%;
+    left: .12rem;
+    width: .2rem;
+    height: .2rem;
+    border-radius: 50%;
+    background: currentColor;
+    content: "";
+    transform: translateY(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

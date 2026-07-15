@@ -21,10 +21,11 @@ export async function getStaticPaths() {
 const props = Astro.props;
 const rendered = props.kind === "post" ? await render(props.post.entry) : undefined;
 const Content = rendered?.Content;
+const headings = rendered?.headings.filter(({ depth }) => depth >= 2) ?? [];
 ---
 
 {props.kind === "page" ? (
   <HomePage posts={props.posts} page={props.page} totalPages={props.totalPages} />
 ) : Content ? (
-  <PostLayout post={props.post} older={props.older} newer={props.newer}><Content /></PostLayout>
+  <PostLayout post={props.post} older={props.older} newer={props.newer} headings={headings}><Content /></PostLayout>
 ) : null}

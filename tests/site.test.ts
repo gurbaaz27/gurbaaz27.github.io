@@ -78,6 +78,14 @@ describe("static build", () => {
     expect(existsSync("dist/assets/js/view-counter.js")).toBe(false);
   });
 
+  test("adds a desktop article outline linked to Markdown headings", () => {
+    const post = readFileSync("dist/2026-07-15-jekyll-to-astro-and-waline/index.html", "utf8");
+    expect(post).toContain('class="post-outline"');
+    expect(post).toContain('aria-label="Article outline"');
+    expect(post).toContain('href="#planning-around-the-public-surface"');
+    expect(post).toContain('id="planning-around-the-public-surface"');
+  });
+
   test("keeps same-date posts in the established display order", () => {
     const home = readFileSync("dist/index.html", "utf8");
     expect(home.indexOf("tally-and-nextjs-app-router")).toBeLessThan(home.indexOf("dynamic-arguments-argparse-subparser"));
