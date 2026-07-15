@@ -1,0 +1,22 @@
+---
+import { siteConfig } from "../config";
+---
+
+<nav id="site-nav" class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <button id="nav-toggle" class="nav-toggle" type="button" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <div id="main-navbar" class="nav-links">
+      {siteConfig.nav.map(([label, href]) => <a href={href}>{label}</a>)}
+    </div>
+    <button id="change-skin" class="skin-toggle" type="button" title="Toggle Night Mode" aria-label="Toggle night mode">
+      <span class="dark-mode">🌙</span><span class="light-mode">☀️</span>
+    </button>
+    <div class="avatar-container">
+      <a href="/" class="avatar-border">
+        <img alt="Navigation bar avatar" src={siteConfig.avatar} />
+      </a>
+    </div>
+  </div>
+</nav>

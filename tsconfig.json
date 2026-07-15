@@ -1,0 +1,4 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "exclude": ["dist", "_site", "vendor", "legacy-jekyll", "public/assets/js"]
+}

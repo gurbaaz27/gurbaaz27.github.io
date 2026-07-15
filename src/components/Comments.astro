@@ -1,0 +1,17 @@
+---
+import { siteConfig } from "../config";
+const attributes = {
+  repo: siteConfig.utterances.repo,
+  "issue-term": siteConfig.utterances.issueTerm,
+  theme: siteConfig.utterances.theme,
+  label: siteConfig.utterances.label,
+  crossorigin: "anonymous",
+} as Record<string, string>;
+---
+
+<script
+  is:inline
+  src="https://utteranc.es/client.js"
+  {...attributes}
+  async>
+</script>

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-15T00:00:00.000Z",
+  "title": "Design System: Gurbaaz Singh Personal Website",
+  "extensions": {
+    "colorMeta": {
+      "accent-blue": { "role": "primary", "displayName": "Link Blue", "canonical": "#008AFF" },
+      "ink": { "role": "neutral", "displayName": "Reading Ink", "canonical": "#404040" },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#FFFFFF" }
+    },
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "xl", "value": "1200px" }
+    ],
+    "motion": [
+      { "name": "image-hover", "value": "transform 250ms ease", "purpose": "Preserves the existing image zoom interaction." }
+    ]
+  },
+  "components": [],
+  "narrative": {
+    "northStar": "The Familiar Personal Journal",
+    "overview": "Preserve the established Beautiful Jekyll character while modernizing only the implementation.",
+    "keyCharacteristics": ["Writing-first centered column", "Quiet gray chrome", "Personal imagery", "Persistent dark mode"],
+    "rules": [{ "name": "Existing Palette Rule", "body": "Preserve the recorded colors exactly during framework maintenance.", "section": "colors" }],
+    "dos": ["Preserve the existing responsive proportions and pathname behavior."],
+    "donts": ["Do not apply a generic SaaS, portfolio-template, or AI editorial redesign."]
+  }
+}

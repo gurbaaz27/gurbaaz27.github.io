@@ -1,67 +1,35 @@
 # Personal Homepage
 
-Visit [gurbaaz27.github.io](https://gurbaaz27.github.io) for the hosted homepage.
+Source for [gurbaaz.xyz](https://gurbaaz.xyz), built as a static Astro site with Bun, TypeScript, and Tailwind CSS.
 
-## Installation
+## Development
 
-This is a Jekyll-based website. To install dependencies:
-
-### Prerequisites
-
-- Ruby (version 2.5 or higher recommended)
-- RubyGems (usually comes with Ruby)
-
-### Steps
-
-1. **Install Bundler** (if not already installed):
-
-   If you encounter permission errors (common on macOS with system Ruby), install Bundler to your user directory:
-
-   ```bash
-   gem install bundler --user-install
-   ```
-
-   For older Ruby versions (< 3.2), you may need to install a compatible Bundler version:
-
-   ```bash
-   gem install bundler -v 2.4.22 --user-install
-   ```
-
-   Then add Bundler to your PATH (add this to your `~/.zshrc` or `~/.bash_profile`):
-
-   ```bash
-   export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-   ```
-
-2. **Configure Bundler** (to avoid permission issues):
-
-   ```bash
-   bundle config set --local path 'vendor/bundle'
-   ```
-
-3. **Install project dependencies**:
-   ```bash
-   bundle install
-   ```
-
-This will install all required gems including:
-
-- Jekyll (~> 3.8)
-- jekyll-paginate
-- jekyll-sitemap
-- kramdown and kramdown-parser-gfm
-- webrick (for local server)
-
-### Running the site locally
-
-After installing dependencies, you can run the site locally with:
+Install [Bun](https://bun.sh), then run:
 
 ```bash
-bundle exec jekyll serve
+bun install
+bun dev
 ```
 
-Then visit `http://localhost:4000` in your browser.
+The local site is served at `http://localhost:4321`.
 
-# Credits
+## Verification
 
-[Beautiful Jekyll](https://beautifuljekyll.com/) theme created by [Dean Attali](https://deanattali.com).
+```bash
+bun run check
+bun run test
+bun run build
+bun preview
+```
+
+`bun run test` creates the production output and checks the established routes, feeds, metadata, integrations, draft filtering, and case-sensitive post permalinks.
+
+## Content
+
+Posts live in `src/content/blog`. Their existing `YYYY-MM-DD-title.md` filenames define their dates and public URLs. Set `draft: true` in frontmatter to keep a post out of production.
+
+Static media and documents live in `public/assets`. The original Jekyll implementation is preserved in [`legacy-jekyll`](legacy-jekyll/README.md) for reference.
+
+## Deployment
+
+Pull requests run the CI workflow. Merges to `main` deploy `dist` through GitHub Pages Actions while retaining the `gurbaaz.xyz` custom domain.

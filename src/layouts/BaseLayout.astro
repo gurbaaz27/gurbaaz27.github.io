@@ -1,0 +1,65 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  publishedTime?: string;
+}
+const {
+  title = "Gurbaaz Singh",
+  description = "Welcome to my homepage. Hope you enjoy!",
+  image = siteConfig.avatar,
+  article = false,
+  publishedTime,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, siteConfig.origin).toString();
+const socialImage = new URL(image, siteConfig.origin).toString();
+const firebaseJson = JSON.stringify(siteConfig.firebase).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="author" content={siteConfig.author} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="Gurbaaz Singh" href="/feed.xml" />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:url" content={canonical} />
+    {article && <meta property="og:article:author" content={siteConfig.author} />}
+    {publishedTime && <meta property="og:article:published_time" content={publishedTime} />}
+    <meta name="twitter:card" content={image === siteConfig.avatar ? "summary" : "summary_large_image"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|JetBrains+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <script is:inline>try{document.documentElement.classList.toggle("dark-mode",localStorage.getItem("bj-dark-mode")==="true")}catch{}</script>
+    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=UA-173145540-1"></script>
+    <script is:inline>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-173145540-1");</script>
+  </head>
+  <body>
+    <Nav />
+    <main><slot /></main>
+    <Footer />
+    <script is:inline src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script is:inline src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script is:inline set:html={`window.__FIREBASE_CONFIG__=${firebaseJson};firebase.initializeApp(window.__FIREBASE_CONFIG__);`}></script>
+    <script src="../scripts/site.ts"></script>
+  </body>
+</html>

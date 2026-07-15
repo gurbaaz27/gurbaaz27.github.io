@@ -1,0 +1,16 @@
+---
+import { siteConfig } from "../config";
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="content-column footer-content">
+    <ul class="footer-links" aria-label="Social links">
+      <li><a href="/feed.xml" title="RSS"><i class="fas fa-rss" aria-hidden="true"></i><span class="sr-only">RSS</span></a></li>
+      <li><a href={siteConfig.social.github} title="GitHub"><i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">GitHub</span></a></li>
+      <li><a href={siteConfig.social.linkedin} title="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a></li>
+      <li><a href={siteConfig.social.instagram} title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
+    </ul>
+    <p class="copyright text-muted">{siteConfig.author} &nbsp;•&nbsp; {year} &nbsp;•&nbsp; <a href="/">gurbaaz.xyz</a></p>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Pager from "../components/Pager.astro";
+import SocialShare from "../components/SocialShare.astro";
+import Comments from "../components/Comments.astro";
+import type { Post } from "../lib/posts";
+import { formatDate } from "../lib/posts";
+import { siteConfig } from "../config";
+
+interface Props { post: Post; older?: Post; newer?: Post }
+const { post, older, newer } = Astro.props;
+const { data } = post.entry;
+const image = data["share-img"] ?? data["thumbnail-img"] ?? siteConfig.avatar;
+---
+
+<BaseLayout title={data.title} description={data.subtitle || post.excerpt} image={image} article publishedTime={post.date.toISOString()}>
+  <PageHeader title={data.title} subtitle={data.subtitle} type="post" dateText={formatDate(post.date)} minutes={data.minutes_to_read} postUrl={post.url} />
+  <div class="content-column page-content">
+    <article class="blog-post"><slot /></article>
+    {data.tags.length > 0 && <div class="blog-tags"><span>Tags:</span>{data.tags.map((tag) => <a href={`/tags/#${tag}`}>{tag}</a>)}</div>}
+    <SocialShare title={data.title} url={`${siteConfig.origin}${post.url}`} />
+    <Pager
+      previous={older && { url: older.url, label: "← Previous Post", title: older.entry.data.title }}
+      next={newer && { url: newer.url, label: "Next Post →", title: newer.entry.data.title }}
+    />
+    <Comments />
+  </div>
+</BaseLayout>
