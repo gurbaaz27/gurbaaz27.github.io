@@ -13,6 +13,7 @@ const routes = [
   "feed.xml",
   "robots.txt",
   "sitemap.xml",
+  "2026-07-15-jekyll-to-astro-and-waline/index.html",
   "2020-06-03-5-Ks-of-kakar/index.html",
   "2021-05-30-demystifying-the-docker/index.html",
   "2023-01-16-codrop/index.html",
@@ -62,9 +63,9 @@ describe("static build", () => {
     expect(home).not.toContain("Powered by");
   });
 
-  test("publishes eight posts and excludes drafts", () => {
+  test("publishes nine posts and excludes drafts", () => {
     const feed = readFileSync("dist/feed.xml", "utf8");
-    expect((feed.match(/<item>/g) ?? []).length).toBe(8);
+    expect((feed.match(/<item>/g) ?? []).length).toBe(9);
     expect(feed).not.toContain("Sample blog post");
     expect(feed).not.toContain("The Pain of Deployment");
     expect(feed).not.toContain("Treading the tales of Turban");
