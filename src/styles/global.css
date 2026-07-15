@@ -280,17 +280,6 @@ footer a { color: var(--ink); }
   .post-outline a:hover { background: rgb(128 128 128 / 10%); color: var(--ink); }
   .post-outline a:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; color: var(--ink); }
   .post-outline a[aria-current="location"] { background: rgb(0 138 255 / 9%); color: var(--link); font-weight: 700; }
-  .post-outline a[aria-current="location"]::before {
-    position: absolute;
-    top: 50%;
-    left: .12rem;
-    width: .2rem;
-    height: .2rem;
-    border-radius: 50%;
-    background: currentColor;
-    content: "";
-    transform: translateY(-50%);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
