@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Porting my personal website from Jekyll to Astro"
-subtitle: "Moving a Beautiful Jekyll site to Astro, then swapping Utterances for Waline"
+subtitle: "Moving a Beautiful Jekyll site to Astro, then consolidating comments and counters in Waline"
 thumbnail-img: /assets/img/blogs/jekyll-to-astro.jpg
 share-img: /assets/img/blogs/jekyll-to-astro.jpg
 tags: [astro, jekyll, waline, bun, codex, tech]
-minutes_to_read: 11
+minutes_to_read: 14
 draft: false
 ---
 
@@ -93,7 +93,7 @@ I added a small Bun test file instead of a large testing setup. It checks the es
 
 The tests did not prove visual parity, but they covered the quiet failures that are easy to ship during a rewrite. After a build, the suite reads the generated files in `dist` and checks the result a visitor or crawler will receive.
 
-Greptile reviewed the first pull request as well. Some comments were useful: sitemap pagination needed to use the shared page size, optional reading-time fields needed guards, and I had accidentally generated two sitemaps. Other suggestions did not fit the job. Moving the Firebase web config into secrets would add ceremony without hiding anything, because that configuration is intentionally public in a browser app. Changing the Utterances theme would also have violated the visual-parity requirement.
+Greptile reviewed the first pull request as well. Some comments were useful: sitemap pagination needed to use the shared page size, optional reading-time fields needed guards, and I had accidentally generated two sitemaps. Other suggestions did not fit the job. Moving the Firebase web config into secrets would add ceremony without hiding anything, because that configuration is intentionally public in a browser app. I later removed Firebase for a different reason: Waline made the extra service unnecessary. Changing the Utterances theme would also have violated the visual-parity requirement.
 
 I like review tools more when "no" remains a valid answer.
 
@@ -166,13 +166,37 @@ For now, comments publish immediately with Waline's default rate limiting and an
 
 Before merging, I checked the generated blog page for the Waline mount and server URL, searched it for any leftover `utteranc.es` request, called the API from the `www` site origin, and repeated the call from an unapproved origin. The first returned an empty comment list. The second returned `403`. I also queried Neon to confirm that my administrator account existed.
 
+## Letting Waline replace Firebase too
+
+The first Waline migration stopped at comments. Page views and upvotes still lived in Firebase Realtime Database, which meant every page loaded the Firebase SDK for two small counters. Once Waline was already serving a database-backed API on the same site, keeping Firebase around felt like paying rent on a cupboard.
+
+Waline has counters for page views and comment totals, plus an article reaction API. I used `@waline/api` directly instead of adding Waline's reaction strip. The old eye count and arrow button at the top of each post stayed exactly where they were; only their data source changed. The first reaction slot, `reaction0`, became the upvote count. Comment totals now appear beside posts as well, although the header stays quiet when a post has no comments yet.
+
+There were two bits of old behaviour worth keeping. A view had counted once per browser session, so the new code still checks `sessionStorage` before asking Waline to increment it. The old upvote button remembered its state under an `upvoted_<path>` key in `localStorage`. On a returning browser, that value is folded into Waline's `WALINE_REACTION` state so somebody who already voted does not accidentally vote twice after the migration.
+
+Paths needed more care than either counter. Comments were already using a version of the pathname without its trailing slash, while the Firebase data had accumulated both `/blog` and `/blog/`. A shared normalizer now turns both into `/blog`, preserves `/`, and is used by comments, views, reactions, post headers, and listing pages. It is dull code, which is exactly what I want from a path convention.
+
+Moving the stored numbers was a small cleanup job disguised as a database migration. Firebase contained 27 view keys. Some were leftovers under `_site/...`, and the blog index existed twice because of the trailing-slash mismatch. I discarded the generated-site keys, merged the duplicate blog paths, and ended up with 14 canonical records. Firebase views mapped to Waline's `time` column and upvotes mapped to `reaction0`.
+
+I imported those rows into Neon in one transaction before switching the frontend. After deployment, I took one more Firebase snapshot and compared it with the migration snapshot. The delta was zero, so no views or votes had arrived in the gap. I left the Firebase database untouched as a backup, but removed its browser SDK, config, runtime code, and migration scripts from the website.
+
+The regression tests grew with the integration. They now cover the shared path normalizer, the generated counter hooks, and the absence of Firebase scripts in the built pages. I also incremented and decremented a Waline reaction through the live API to verify the round trip without leaving a fake vote behind. Seven tests pass, and the production bundles contain no Firebase code.
+
+## Making Waline look like part of the site
+
+Waline's default interface is sensible, but it looked like an embedded product sitting below an older, bookish website. The aim was not to invent a custom comment client. I wanted the existing client to borrow the page's clothes.
+
+I imported Waline's meta icons, then overrode its CSS variables with the site's own tokens. The editor and comment list now use EB Garamond, the same blue links, restrained borders, small corner radii, and the paper-and-ink colours used elsewhere. The dark palette follows the site's `html.dark-mode` class through Waline's `dark` option, so the form changes at the same moment as the rest of the page. Focus states remain obvious, which matters more than making every input look antique.
+
+This was another place where keeping the integration plain helped. Waline still owns the editor, comment rendering, pagination, and moderation-friendly metadata. The site CSS handles the visual fit, while the small counter code keeps the eye, arrow, and comment totals consistent with the rest of the header. Nothing had to pretend to be a new component library.
+
 ## What the coding sessions were good at
 
 Most of the Astro component code was straightforward. The sessions earned their keep elsewhere: maintaining a running compatibility contract, comparing output, inspecting old behavior, and refusing to call a deployment complete until the public domain showed the new site.
 
 The sessions were also better when I gave concrete feedback. "The avatar animation feels abrupt" led to the delayed-visibility bug. A screenshot of a blockquote led to one wrong combinator. "The list numbers are missing" led to Tailwind's reset. These are not grand architectural problems. They are the sort of details that decide whether a rewrite feels like the same website.
 
-After the last merge, I opened the Japan post, scrolled past the images that had finally returned to their old size, and reached a Waline form instead of a GitHub login. The page did not feel newly designed. It just felt like the same website had become less annoying for me to maintain and less annoying for somebody else to comment on.
+After the last merge, I opened the Japan post, scrolled past the images that had finally returned to their old size, and reached a Waline form instead of a GitHub login. The familiar eye and arrow were still at the top, now without a Firebase bundle behind them. The page did not feel newly designed. It just felt like the same website had become less annoying for me to maintain and less annoying for somebody else to comment on.
 
 I am keeping the `legacy-jekyll` folder for now. Partly as a reference, and partly because deleting it immediately after all that CSS archaeology would feel ungrateful.
 
@@ -186,3 +210,7 @@ I am keeping the `legacy-jekyll` folder for now. Partly as a reference, and part
 6. [Waline get started guide](https://waline.js.org/en/guide/get-started/)
 7. [Waline client options](https://waline.js.org/en/reference/client/props.html)
 8. [Waline server environment variables](https://waline.js.org/en/reference/server/env.html)
+9. [Waline comment counters](https://waline.js.org/en/guide/features/comment.html)
+10. [Waline pageview counters](https://waline.js.org/en/guide/features/pageview.html)
+11. [Waline article reactions](https://waline.js.org/en/guide/features/reaction.html)
+12. [Waline style customization](https://waline.js.org/en/guide/features/style.html)
