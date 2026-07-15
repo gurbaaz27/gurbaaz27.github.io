@@ -4,6 +4,7 @@ import { makeExcerpt, parsePostId } from "./post-utils";
 export { formatViewCount, makeExcerpt, parsePostId } from "./post-utils";
 
 export type BlogEntry = CollectionEntry<"blog">;
+export const PAGE_SIZE = 5;
 
 export interface Post {
   entry: BlogEntry;

@@ -42,6 +42,8 @@ describe("post compatibility", () => {
 describe("static build", () => {
   test("emits every established public route", () => {
     for (const route of routes) expect(existsSync(`dist/${route}`), route).toBe(true);
+    expect(readFileSync("dist/sitemap.xml", "utf8")).toContain("https://gurbaaz.xyz/page2/");
+    expect(existsSync("dist/sitemap-index.xml")).toBe(false);
   });
 
   test("keeps canonical domain and integrations", () => {

@@ -12,7 +12,7 @@ const { posts } = Astro.props;
       <article class="post-preview">
         <a href={post.url}><h2 class="post-title">{post.entry.data.title}</h2>{post.entry.data.subtitle && <h3 class="post-subtitle" set:html={post.entry.data.subtitle}></h3>}</a>
         <p class="post-meta">
-          {formatDate(post.date)} | {post.entry.data.minutes_to_read} minutes read
+          {formatDate(post.date)}{post.entry.data.minutes_to_read != null ? ` | ${post.entry.data.minutes_to_read} minutes read` : ""}
           <span class="post-view-count" data-post-url={post.url} hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
         </p>
         {thumbnail && <div class="post-image post-image-small"><a href={post.url} aria-label={`Read ${post.entry.data.title}`}><img src={thumbnail} alt="Post thumbnail" /></a></div>}

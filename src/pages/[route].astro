@@ -1,7 +1,7 @@
 ---
 import HomePage from "../components/HomePage.astro";
 import PostLayout from "../layouts/PostLayout.astro";
-import { getPosts, type Post } from "../lib/posts";
+import { getPosts, PAGE_SIZE, type Post } from "../lib/posts";
 import { render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -11,10 +11,9 @@ export async function getStaticPaths() {
     params: { route: `${post.dateKey}-${post.slug}` },
     props: { kind: "post", post, older: posts[index + 1], newer: posts[index - 1] },
   }));
-  const pageSize = 5;
-  const totalPages = Math.ceil(posts.length / pageSize);
+  const totalPages = Math.ceil(posts.length / PAGE_SIZE);
   for (let page = 2; page <= totalPages; page++) {
-    paths.push({ params: { route: `page${page}` }, props: { kind: "page", posts: posts.slice((page - 1) * pageSize, page * pageSize), page, totalPages } });
+    paths.push({ params: { route: `page${page}` }, props: { kind: "page", posts: posts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE), page, totalPages } });
   }
   return paths;
 }

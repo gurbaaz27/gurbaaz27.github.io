@@ -17,7 +17,7 @@ const { title, subtitle = "", type = "page", dateText, minutes, postUrl } = Astr
       {subtitle && (type === "page" ? <><hr class="small" /><span class="page-subheading" set:html={subtitle}></span></> : <h2 class="post-subheading" set:html={subtitle}></h2>)}
       {type === "post" && (
         <div class="post-header-meta">
-          <span class="post-meta">{dateText} | {minutes} minutes read</span>
+          <span class="post-meta">{dateText}{minutes != null ? ` | ${minutes} minutes read` : ""}</span>
           <span class="post-meta view-count" hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
           <span class="post-meta upvote-wrapper">
             <span class="middot">·</span>
