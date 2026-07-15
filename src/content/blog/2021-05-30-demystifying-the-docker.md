@@ -146,7 +146,7 @@ Thats it! You have familiarised yourself with one of the intimidating topics of 
 Till next time!
 
 
-### References
+## References
 
 1. [Learn Docker in 7 Easy Steps - Full Beginner's Tutorial](https://www.youtube.com/watch?v=gAkwW2tuIqE)
 2. [How is docker changing things?](https://vamsibrp.github.io/How-is-Docker-changing-things/)

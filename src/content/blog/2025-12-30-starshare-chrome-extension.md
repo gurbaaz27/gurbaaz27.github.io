@@ -219,7 +219,7 @@ Till next time!
 
 ---
 
-### References
+## References
 
 1. [StarShare Website](https://star-share.vercel.app)
 2. [WXT — Next-gen Web Extension Framework](https://wxt.dev/)

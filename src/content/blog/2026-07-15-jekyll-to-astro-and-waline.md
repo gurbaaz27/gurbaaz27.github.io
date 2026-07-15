@@ -200,7 +200,7 @@ After the last merge, I opened the Japan post, scrolled past the images that had
 
 I am keeping the `legacy-jekyll` folder for now. Partly as a reference, and partly because deleting it immediately after all that CSS archaeology would feel ungrateful.
 
-### References
+## References
 
 1. [Astro documentation](https://docs.astro.build/)
 2. [Astro GitHub Action](https://github.com/withastro/action)

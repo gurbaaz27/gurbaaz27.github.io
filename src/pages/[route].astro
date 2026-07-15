@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const props = Astro.props;
 const rendered = props.kind === "post" ? await render(props.post.entry) : undefined;
 const Content = rendered?.Content;
-const headings = rendered?.headings.filter(({ depth }) => depth >= 2) ?? [];
+const headings = rendered?.headings.filter(({ depth }) => depth >= 1) ?? [];
 ---
 
 {props.kind === "page" ? (
