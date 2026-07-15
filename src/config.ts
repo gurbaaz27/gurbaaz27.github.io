@@ -21,10 +21,7 @@ export const siteConfig = {
     messagingSenderId: "826877159682",
     appId: "1:826877159682:web:52867988a769d97507fa1b",
   },
-  utterances: {
-    repo: "gurbaaz27/gurbaaz27.github.io",
-    issueTerm: "title",
-    theme: "github-light",
-    label: "blog-comments",
+  waline: {
+    serverURL: "https://comments.gurbaaz.xyz",
   },
 } as const;
