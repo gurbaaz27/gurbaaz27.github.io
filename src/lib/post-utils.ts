@@ -29,3 +29,12 @@ export function formatViewCount(count: number) {
   if (count >= 1_000) return `${(count / 1_000).toFixed(1)}K views`;
   return `${count} ${count === 1 ? "view" : "views"}`;
 }
+
+export function formatCommentCount(count: number) {
+  return `${count} ${count === 1 ? "comment" : "comments"}`;
+}
+
+export function normalizeWalinePath(path: string) {
+  const normalized = path.replace(/\/+$/, "");
+  return normalized || "/";
+}

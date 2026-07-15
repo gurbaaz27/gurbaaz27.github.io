@@ -1,9 +1,13 @@
 ---
 import "@waline/client/style";
+import "@waline/client/meta";
 import { siteConfig } from "../config";
+import { normalizeWalinePath } from "../lib/post-utils";
+
+const path = normalizeWalinePath(Astro.url.pathname);
 ---
 
-<div id="waline" data-server-url={siteConfig.waline.serverURL}></div>
+<div id="waline" data-server-url={siteConfig.waline.serverURL} data-path={path}></div>
 
 <script>
   import { init } from "@waline/client";
@@ -13,7 +17,7 @@ import { siteConfig } from "../config";
     init({
       el,
       serverURL: el.dataset.serverUrl,
-      path: window.location.pathname.replace(/\/$/, "") || "/",
+      path: el.dataset.path,
       lang: "en",
       dark: "html.dark-mode",
       meta: ["nick", "mail"],
@@ -23,6 +27,30 @@ import { siteConfig } from "../config";
   }
 </script>
 
-<style>
-  #waline { margin-top: 2rem; }
+<style is:global>
+  #waline {
+    --waline-font-size: 1rem;
+    --waline-theme-color: var(--link);
+    --waline-active-color: var(--hover);
+    --waline-color: var(--ink);
+    --waline-bg-color: var(--paper);
+    --waline-bg-color-light: var(--chrome);
+    --waline-bg-color-hover: var(--chrome);
+    --waline-border-color: var(--border);
+    --waline-disable-bg-color: var(--chrome);
+    --waline-disable-color: var(--muted);
+    --waline-bq-color: var(--chrome);
+    --waline-info-bg-color: var(--chrome);
+    --waline-info-color: var(--muted);
+    --waline-border: 1px solid var(--border);
+    --waline-box-shadow: none;
+    margin-top: 2rem;
+    color: var(--ink);
+    font-family: inherit;
+  }
+
+  #waline :is(.wl-container, .wl-editor, .wl-input, .wl-btn) { font-family: inherit; }
+  #waline :is(.wl-editor, .wl-input, .wl-btn, .wl-header) { border-radius: .25rem; }
+  #waline :is(.wl-editor, .wl-input)::placeholder { color: var(--ink); opacity: .75; }
+  #waline :is(a, button):focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 </style>

@@ -1,6 +1,12 @@
 import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync } from "node:fs";
-import { formatViewCount, makeExcerpt, parsePostId } from "../src/lib/post-utils";
+import {
+  formatCommentCount,
+  formatViewCount,
+  makeExcerpt,
+  normalizeWalinePath,
+  parsePostId,
+} from "../src/lib/post-utils";
 
 const routes = [
   "index.html",
@@ -37,6 +43,15 @@ describe("post compatibility", () => {
     expect(makeExcerpt("Hello **world** from [Gurbaaz](/about).", 3)).toBe("Hello world from…");
     expect(formatViewCount(1)).toBe("1 view");
     expect(formatViewCount(1_200)).toBe("1.2K views");
+    expect(formatCommentCount(1)).toBe("1 comment");
+    expect(formatCommentCount(2)).toBe("2 comments");
+  });
+
+  test("uses one Waline identifier for slash variants", () => {
+    expect(normalizeWalinePath("/")).toBe("/");
+    expect(normalizeWalinePath("/blog")).toBe("/blog");
+    expect(normalizeWalinePath("/blog/")).toBe("/blog");
+    expect(normalizeWalinePath("/post///")).toBe("/post");
   });
 });
 
@@ -54,7 +69,12 @@ describe("static build", () => {
     expect(post).toContain('id="waline"');
     expect(post).not.toContain("utteranc.es/client.js");
     expect(post).toContain("upvote-btn");
-    expect(post).toContain("firebase.initializeApp");
+    expect(post).toContain("data-waline-view-path");
+    expect(post).toContain("data-waline-comment-path");
+    expect(post).toContain("data-waline-reaction-path");
+    expect(post).not.toContain("firebase.initializeApp");
+    expect(post).not.toContain("gstatic.com/firebasejs");
+    expect(existsSync("dist/assets/js/view-counter.js")).toBe(false);
   });
 
   test("keeps same-date posts in the established display order", () => {

@@ -20,7 +20,6 @@ const {
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteConfig.origin).toString();
 const socialImage = new URL(image, siteConfig.origin).toString();
-const firebaseJson = JSON.stringify(siteConfig.firebase).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -57,9 +56,6 @@ const firebaseJson = JSON.stringify(siteConfig.firebase).replace(/</g, "\\u003c"
     <Nav />
     <main><slot /></main>
     <Footer />
-    <script is:inline src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script is:inline src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-    <script is:inline set:html={`window.__FIREBASE_CONFIG__=${firebaseJson};firebase.initializeApp(window.__FIREBASE_CONFIG__);`}></script>
     <script src="../scripts/site.ts"></script>
   </body>
 </html>

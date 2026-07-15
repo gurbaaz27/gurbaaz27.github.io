@@ -1,10 +1,15 @@
-declare const firebase: { database(): any };
-
-const formatCount = (count: number) => count >= 1_000_000
-  ? `${(count / 1_000_000).toFixed(1)}M views`
-  : count >= 1_000
-    ? `${(count / 1_000).toFixed(1)}K views`
-    : `${count} ${count === 1 ? "view" : "views"}`;
+import {
+  fetchCommentCount,
+  getArticleCounter,
+  updateArticleCounter,
+  updatePageview,
+} from "@waline/api";
+import { siteConfig } from "../config";
+import {
+  formatCommentCount,
+  formatViewCount,
+  normalizeWalinePath,
+} from "../lib/post-utils";
 
 const nav = document.querySelector<HTMLElement>("#site-nav");
 const navToggle = document.querySelector<HTMLButtonElement>("#nav-toggle");
@@ -30,52 +35,148 @@ document.querySelector("#disable-highlights")?.addEventListener("click", () => {
   document.documentElement.classList.add("highlights-disabled");
 });
 
-let database: any;
-try { database = firebase?.database(); } catch { /* third-party integration unavailable */ }
+const serverURL = siteConfig.waline.serverURL;
+const lang = "en";
+const currentPath = normalizeWalinePath(window.location.pathname);
+const viewElements = [...document.querySelectorAll<HTMLElement>("[data-waline-view-path]")];
+const commentElements = [...document.querySelectorAll<HTMLElement>("[data-waline-comment-path]")];
+const upvoteButton = document.querySelector<HTMLButtonElement>("#upvote-btn[data-waline-reaction-path]");
+const upvoteCount = document.querySelector<HTMLElement>("#upvote-count");
 
-const path = window.location.pathname;
-if (database) {
-  const viewRef = database.ref(`views/${encodeURIComponent(path)}`);
-  const viewKey = `viewed_${path}`;
-  if (!sessionStorage.getItem(viewKey) && document.querySelector(".view-count")) {
-    viewRef.transaction((count: number | null) => (count || 0) + 1, (error: unknown, committed: boolean) => {
-      if (!error && committed) sessionStorage.setItem(viewKey, "true");
-    });
+const paths = [...new Set([
+  ...viewElements.map((element) => element.dataset.walineViewPath),
+  upvoteButton?.dataset.walineReactionPath,
+].filter((path): path is string => Boolean(path)))];
+
+const commentPaths = [...new Set(commentElements
+  .map((element) => element.dataset.walineCommentPath)
+  .filter((path): path is string => Boolean(path)))];
+
+const REACTION_STORAGE_KEY = "WALINE_REACTION";
+
+const readReactionStore = () => {
+  try {
+    return JSON.parse(localStorage.getItem(REACTION_STORAGE_KEY) || "{}") as Record<string, number>;
+  } catch {
+    return {};
+  }
+};
+
+const writeReactionStore = (store: Record<string, number>) => {
+  localStorage.setItem(REACTION_STORAGE_KEY, JSON.stringify(store));
+};
+
+const migrateLegacyUpvote = () => {
+  if (!upvoteButton) return;
+  const path = upvoteButton.dataset.walineReactionPath;
+  if (!path) return;
+
+  const legacyKey = `upvoted_${window.location.pathname}`;
+  const store = readReactionStore();
+  if (store[path] == null && localStorage.getItem(legacyKey) === "true") {
+    store[path] = 0;
+    writeReactionStore(store);
+    localStorage.removeItem(legacyKey);
+  }
+};
+
+const syncUpvoteState = (count: number) => {
+  const path = upvoteButton?.dataset.walineReactionPath;
+  const active = Boolean(path && readReactionStore()[path] === 0);
+  if (upvoteCount) upvoteCount.textContent = String(count);
+  upvoteButton?.classList.toggle("upvoted", active);
+  upvoteButton?.setAttribute("aria-pressed", String(active));
+};
+
+const incrementCurrentPageview = async () => {
+  const hasCurrentCounter = viewElements.some((element) =>
+    element.classList.contains("view-count") && element.dataset.walineViewPath === currentPath
+  );
+  const viewKey = `viewed_${window.location.pathname}`;
+  if (!hasCurrentCounter || sessionStorage.getItem(viewKey)) return;
+
+  await updatePageview({ serverURL, lang, path: currentPath });
+  sessionStorage.setItem(viewKey, "true");
+};
+
+const loadCounters = async () => {
+  try {
+    await incrementCurrentPageview();
+  } catch (error) {
+    console.error("Unable to update Waline pageview", error);
   }
 
-  viewRef.once("value", (snapshot: any) => {
-    document.querySelectorAll<HTMLElement>(".view-count").forEach((element) => {
-      const text = element.querySelector<HTMLElement>(".view-count-text");
-      if (text) text.textContent = formatCount(snapshot.val() || 0);
-      element.hidden = false;
-    });
-  });
+  if (paths.length) {
+    try {
+      const counters = await getArticleCounter({
+        serverURL,
+        lang,
+        paths,
+        type: ["time", "reaction0"],
+      });
+      const byPath = new Map(paths.map((path, index) => [path, counters[index]]));
 
-  document.querySelectorAll<HTMLElement>(".post-view-count").forEach((element) => {
-    const postUrl = element.dataset.postUrl;
-    if (!postUrl) return;
-    database.ref(`views/${encodeURIComponent(postUrl)}`).once("value", (snapshot: any) => {
-      const text = element.querySelector<HTMLElement>(".view-count-text");
-      if (text) text.textContent = formatCount(snapshot.val() || 0);
-      element.hidden = false;
-    });
-  });
+      for (const element of viewElements) {
+        const counter = byPath.get(element.dataset.walineViewPath || "");
+        const text = element.querySelector<HTMLElement>(".view-count-text");
+        if (text) text.textContent = formatViewCount(counter?.time || 0);
+        element.hidden = false;
+      }
 
-  const upvoteButton = document.querySelector<HTMLButtonElement>("#upvote-btn");
-  const upvoteCount = document.querySelector<HTMLElement>("#upvote-count");
-  const upvoteKey = `upvoted_${path}`;
-  const upvoteRef = database.ref(`upvotes/${encodeURIComponent(path)}`);
-  const syncUpvote = (count: number) => {
-    if (upvoteCount) upvoteCount.textContent = String(count);
-    upvoteButton?.classList.toggle("upvoted", localStorage.getItem(upvoteKey) === "true");
-  };
-  upvoteRef.once("value", (snapshot: any) => syncUpvote(snapshot.val() || 0));
-  upvoteButton?.addEventListener("click", () => {
-    const already = localStorage.getItem(upvoteKey) === "true";
-    upvoteRef.transaction((count: number | null) => already ? Math.max(0, (count || 0) - 1) : (count || 0) + 1, (error: unknown, committed: boolean, snapshot: any) => {
-      if (error || !committed) return;
-      already ? localStorage.removeItem(upvoteKey) : localStorage.setItem(upvoteKey, "true");
-      syncUpvote(snapshot.val() || 0);
+      const reactionPath = upvoteButton?.dataset.walineReactionPath;
+      syncUpvoteState(reactionPath ? byPath.get(reactionPath)?.reaction0 || 0 : 0);
+    } catch (error) {
+      console.error("Unable to load Waline article counters", error);
+    }
+  }
+
+  if (commentPaths.length) {
+    try {
+      const counts = await fetchCommentCount({ serverURL, lang, paths: commentPaths });
+      const byPath = new Map(commentPaths.map((path, index) => [path, counts[index] || 0]));
+
+      for (const element of commentElements) {
+        const count = byPath.get(element.dataset.walineCommentPath || "") || 0;
+        const text = element.querySelector<HTMLElement>(".comment-count-text");
+        if (text) text.textContent = formatCommentCount(count);
+        element.hidden = false;
+      }
+    } catch (error) {
+      console.error("Unable to load Waline comment counters", error);
+    }
+  }
+};
+
+migrateLegacyUpvote();
+void loadCounters();
+
+let voting = false;
+upvoteButton?.addEventListener("click", async () => {
+  const path = upvoteButton.dataset.walineReactionPath;
+  if (!path || voting) return;
+
+  voting = true;
+  upvoteButton.disabled = true;
+  const store = readReactionStore();
+  const active = store[path] === 0;
+
+  try {
+    const [counter] = await updateArticleCounter({
+      serverURL,
+      lang,
+      path,
+      type: "reaction0",
+      action: active ? "desc" : "inc",
     });
-  });
-}
+
+    if (active) delete store[path];
+    else store[path] = 0;
+    writeReactionStore(store);
+    syncUpvoteState(counter?.reaction0 || 0);
+  } catch (error) {
+    console.error("Unable to update Waline reaction", error);
+  } finally {
+    voting = false;
+    upvoteButton.disabled = false;
+  }
+});

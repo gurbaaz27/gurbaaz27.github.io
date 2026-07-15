@@ -12,15 +12,6 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/gurbaaznandra",
     instagram: "https://www.instagram.com/_gur.baaz_/",
   },
-  firebase: {
-    apiKey: "AIzaSyAFXNRAk0_lkYRG5Vipo39IgvjzewQR91A",
-    authDomain: "gurbaaz-xyz.firebaseapp.com",
-    databaseURL: "https://gurbaaz-xyz-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "gurbaaz-xyz",
-    storageBucket: "gurbaaz-xyz.firebasestorage.app",
-    messagingSenderId: "826877159682",
-    appId: "1:826877159682:web:52867988a769d97507fa1b",
-  },
   waline: {
     serverURL: "https://comments.gurbaaz.xyz",
   },

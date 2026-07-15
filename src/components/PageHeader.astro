@@ -1,4 +1,6 @@
 ---
+import { normalizeWalinePath } from "../lib/post-utils";
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -8,6 +10,7 @@ interface Props {
   postUrl?: string;
 }
 const { title, subtitle = "", type = "page", dateText, minutes, postUrl } = Astro.props;
+const walinePath = postUrl ? normalizeWalinePath(postUrl) : undefined;
 ---
 
 <header class="intro-header">
@@ -18,10 +21,11 @@ const { title, subtitle = "", type = "page", dateText, minutes, postUrl } = Astr
       {type === "post" && (
         <div class="post-header-meta">
           <span class="post-meta">{dateText}{minutes != null ? ` | ${minutes} minutes read` : ""}</span>
-          <span class="post-meta view-count" hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
+          <span class="post-meta view-count" data-waline-view-path={walinePath} hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
+          <span class="post-meta comment-count" data-waline-comment-path={walinePath} hidden><span class="middot">·</span> <span class="comment-count-text">Loading comments...</span></span>
           <span class="post-meta upvote-wrapper">
             <span class="middot">·</span>
-            <button class="upvote-button" id="upvote-btn" data-post-url={postUrl} aria-label="Upvote this post">
+            <button class="upvote-button" id="upvote-btn" data-waline-reaction-path={walinePath} aria-label="Upvote this post" aria-pressed="false">
               <svg class="upvote-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 10h3v10h10V10h3L12 2z"></path></svg>
             </button>
             <span class="upvote-count" id="upvote-count">0</span>
