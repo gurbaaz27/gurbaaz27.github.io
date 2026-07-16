@@ -57,11 +57,9 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .nav-toggle { @apply hidden border-0 bg-transparent p-2; }
 .nav-toggle span { @apply my-1 block h-0.5 w-6; background: var(--ink); }
 .skin-toggle {
-  @apply absolute right-4 cursor-pointer select-none rounded-full border px-px py-0 text-[.8125rem];
-  background: #fff;
-  border-color: #ccc;
-  transition: background .3s ease-in-out;
+  @apply absolute right-4 cursor-pointer select-none border-0 bg-transparent p-2 text-[.8125rem] leading-none;
 }
+.skin-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 .skin-toggle .skin-btn { display: block; margin-right: .8rem; transition: transform .3s ease-in-out; }
 .skin-toggle:hover .skin-btn { transform: translateX(.8rem); }
 .skin-toggle .dark-mode { display: none; }
@@ -106,6 +104,7 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .blog-tags a { color: var(--ink); text-decoration: none; padding: 0 .3125rem; opacity: .8; border: 1px solid transparent; border-radius: .1875rem; }
 .blog-tags a:hover { color: var(--ink); border-color: var(--ink); opacity: 1; }
 .post-preview .blog-tags { margin: .625rem 0 0; }
+.recent-posts { scroll-margin-top: 7rem; }
 
 /* Post content */
 .post-layout { width: 100%; }
@@ -181,7 +180,6 @@ footer a { color: var(--ink); }
 
 /* Dark mode */
 .dark-mode { --paper: #18191a; --ink: #e4e6eb; --chrome: #242526; --border: #393a3b; --muted: #999; --link: #139ee0; --hover: #28a9e6; color-scheme: dark; }
-.dark-mode .skin-toggle { background: #242526; border-color: #444; }
 .dark-mode .skin-toggle .dark-mode { display: block; }
 .dark-mode .skin-toggle .light-mode { display: none; }
 .dark-mode .post-preview { border-bottom-color: #444; }
@@ -281,6 +279,10 @@ footer a { color: var(--ink); }
   .post-outline a:hover { background: rgb(128 128 128 / 10%); color: var(--ink); }
   .post-outline a:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; color: var(--ink); }
   .post-outline a[aria-current="location"] { background: rgb(0 138 255 / 9%); color: var(--link); font-weight: 700; }
+}
+
+@media (min-width: 1600px) {
+  .post-layout.has-outline { max-width: 1320px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

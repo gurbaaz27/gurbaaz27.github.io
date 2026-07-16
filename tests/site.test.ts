@@ -86,10 +86,20 @@ describe("static build", () => {
     expect(post).toContain('id="planning-around-the-public-surface"');
   });
 
+  test("renders the reversible highlight control", () => {
+    const post = readFileSync("dist/2023-02-20-japan/index.html", "utf8");
+    expect(post).toContain('id="disable-highlights"');
+    expect(post).toContain('aria-pressed="false"');
+    expect(post).toContain("Disable the highlights");
+  });
+
   test("keeps same-date posts in the established display order", () => {
     const home = readFileSync("dist/index.html", "utf8");
     expect(home.indexOf("tally-and-nextjs-app-router")).toBeLessThan(home.indexOf("dynamic-arguments-argparse-subparser"));
     expect(home).not.toContain("Powered by");
+    expect(home).toContain('href="#recent-posts"');
+    expect(home).toContain('id="recent-posts"');
+    expect(home).toContain('href="/llms.txt"');
   });
 
   test("publishes nine posts and excludes drafts", () => {
