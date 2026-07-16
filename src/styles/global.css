@@ -57,12 +57,15 @@ hr.small { max-width: 6.25rem; margin: 1rem auto; border: 0; border-top: .25rem 
 .nav-toggle { @apply hidden border-0 bg-transparent p-2; }
 .nav-toggle span { @apply my-1 block h-0.5 w-6; background: var(--ink); }
 .skin-toggle {
-  @apply absolute right-4 cursor-pointer select-none border-0 bg-transparent p-2 text-[.8125rem] leading-none;
+  @apply absolute right-4 grid cursor-pointer select-none place-items-center border-0 bg-transparent p-2 text-[.8125rem] leading-none;
 }
 .skin-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-.skin-toggle .skin-btn { display: block; margin-right: .8rem; transition: transform .3s ease-in-out; }
-.skin-toggle:hover .skin-btn { transform: translateX(.8rem); }
-.skin-toggle .dark-mode { display: none; }
+.theme-icon {
+  grid-area: 1 / 1;
+  transition: opacity .4s cubic-bezier(.22, 1, .36, 1), transform .4s cubic-bezier(.22, 1, .36, 1), filter .4s cubic-bezier(.22, 1, .36, 1);
+}
+.theme-icon-moon { opacity: 0; filter: blur(2px); transform: rotate(-70deg) scale(.6); }
+.theme-icon-sun { opacity: 1; filter: blur(0); transform: rotate(0) scale(1); }
 .avatar-container { @apply absolute left-1/2 w-[6.25rem]; bottom: -1.9375rem; transition: opacity .5s ease-in-out; }
 .avatar-border { @apply block -translate-x-1/2 overflow-hidden rounded-full; box-shadow: 1px 1px 2px rgb(0 0 0 / 80%); }
 .avatar-border img { @apply block w-full rounded-full; }
@@ -180,8 +183,8 @@ footer a { color: var(--ink); }
 
 /* Dark mode */
 .dark-mode { --paper: #18191a; --ink: #e4e6eb; --chrome: #242526; --border: #393a3b; --muted: #999; --link: #139ee0; --hover: #28a9e6; color-scheme: dark; }
-.dark-mode .skin-toggle .dark-mode { display: block; }
-.dark-mode .skin-toggle .light-mode { display: none; }
+.dark-mode .theme-icon-moon { opacity: 1; filter: blur(0); transform: rotate(0) scale(1); }
+.dark-mode .theme-icon-sun { opacity: 0; filter: blur(2px); transform: rotate(70deg) scale(.6); }
 .dark-mode .post-preview { border-bottom-color: #444; }
 .dark-mode .pagination .page-link, .dark-mode .tag-btn { background: var(--paper); border-color: #444; color: var(--ink); }
 .dark-mode .pagination .page-link:hover, .dark-mode .tag-btn:hover { color: var(--paper); background: var(--hover); }

@@ -100,6 +100,8 @@ describe("static build", () => {
     expect(home).toContain('href="#recent-posts"');
     expect(home).toContain('id="recent-posts"');
     expect(home).toContain('href="/llms.txt"');
+    expect(home).not.toContain("post-view-count");
+    expect(home).not.toContain("post-comment-count");
   });
 
   test("publishes nine posts and excludes drafts", () => {

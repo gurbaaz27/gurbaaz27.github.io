@@ -1,7 +1,6 @@
 ---
 import type { Post } from "../lib/posts";
 import { formatDate } from "../lib/posts";
-import { normalizeWalinePath } from "../lib/post-utils";
 interface Props { posts: Post[] }
 const { posts } = Astro.props;
 ---
@@ -9,14 +8,11 @@ const { posts } = Astro.props;
 <div class="posts-list">
   {posts.map((post) => {
     const thumbnail = post.entry.data["thumbnail-img"];
-    const walinePath = normalizeWalinePath(post.url);
     return (
       <article class="post-preview">
         <a href={post.url}><h2 class="post-title">{post.entry.data.title}</h2>{post.entry.data.subtitle && <h3 class="post-subtitle" set:html={post.entry.data.subtitle}></h3>}</a>
         <p class="post-meta">
           {formatDate(post.date)}{post.entry.data.minutes_to_read != null ? ` | ${post.entry.data.minutes_to_read} minutes read` : ""}
-          <span class="post-view-count" data-waline-view-path={walinePath} hidden><span class="middot">·</span> <span class="view-count-text">Loading views...</span></span>
-          <span class="post-comment-count" data-waline-comment-path={walinePath} data-hide-when-zero hidden><span class="middot">·</span> <span class="comment-count-text">Loading comments...</span></span>
         </p>
         {thumbnail && <div class="post-image post-image-small"><a href={post.url} aria-label={`Read ${post.entry.data.title}`}><img src={thumbnail} alt="Post thumbnail" /></a></div>}
         {thumbnail && <div class="post-image post-image-short"><a href={post.url} aria-label={`Read ${post.entry.data.title}`}><img src={thumbnail} alt="Post thumbnail" /></a></div>}

@@ -11,7 +11,8 @@ import { siteConfig } from "../config";
       {siteConfig.nav.map(([label, href]) => <a href={href}>{label}</a>)}
     </div>
     <button id="change-skin" class="skin-toggle" type="button" title="Toggle Night Mode" aria-label="Toggle night mode">
-      <span class="dark-mode">🌙</span><span class="light-mode">☀️</span>
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
     </button>
     <div class="avatar-container">
       <a href="/" class="avatar-border">
