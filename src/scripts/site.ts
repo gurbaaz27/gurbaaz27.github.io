@@ -31,8 +31,12 @@ document.querySelector("#change-skin")?.addEventListener("click", () => {
   localStorage.setItem("bj-dark-mode", String(enabled));
 });
 
-document.querySelector("#disable-highlights")?.addEventListener("click", () => {
-  document.documentElement.classList.add("highlights-disabled");
+const highlightToggle = document.querySelector<HTMLButtonElement>("#disable-highlights");
+highlightToggle?.addEventListener("click", () => {
+  const disabled = document.documentElement.classList.toggle("highlights-disabled");
+  highlightToggle.setAttribute("aria-pressed", String(disabled));
+  const label = highlightToggle.querySelector<HTMLElement>("[data-highlight-label]");
+  if (label) label.textContent = disabled ? "Enable the highlights" : "Disable the highlights";
 });
 
 const outlineLinks = [...document.querySelectorAll<HTMLAnchorElement>(".post-outline a")];
