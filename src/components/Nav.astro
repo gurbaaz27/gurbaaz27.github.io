@@ -1,4 +1,5 @@
 ---
+import ThemeIcons from "./ThemeIcons";
 import { siteConfig } from "../config";
 ---
 
@@ -10,9 +11,9 @@ import { siteConfig } from "../config";
     <div id="main-navbar" class="nav-links">
       {siteConfig.nav.map(([label, href]) => <a href={href}>{label}</a>)}
     </div>
-    <button id="change-skin" class="skin-toggle" type="button" title="Toggle Night Mode" aria-label="Toggle night mode">
-      <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
-      <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+    <button id="change-skin" class="skin-toggle" type="button" title="Activate dark mode" aria-label="Activate dark mode" aria-pressed="false">
+      <ThemeIcons client:load />
+      <span class="sr-only" data-theme-label>Activate dark mode</span>
     </button>
     <div class="avatar-container">
       <a href="/" class="avatar-border">
