@@ -10,12 +10,16 @@ export default function ThemeIcons() {
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    const syncActiveTheme = (darkMode: boolean) => {
+      setActiveTheme(darkMode ? "dark" : "light");
+    };
     const handleThemeChange = (event: Event) => {
       const { darkMode } = (event as CustomEvent<{ darkMode: boolean }>).detail;
-      setActiveTheme(darkMode ? "dark" : "light");
+      syncActiveTheme(darkMode);
     };
 
     window.addEventListener("theme-change", handleThemeChange);
+    syncActiveTheme(document.documentElement.classList.contains("dark-mode"));
     return () => window.removeEventListener("theme-change", handleThemeChange);
   }, []);
 
