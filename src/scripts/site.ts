@@ -26,10 +26,26 @@ const syncNav = () => nav?.classList.toggle("short", window.scrollY > 50);
 window.addEventListener("scroll", syncNav, { passive: true });
 syncNav();
 
-document.querySelector("#change-skin")?.addEventListener("click", () => {
+const themeToggle = document.querySelector<HTMLButtonElement>("#change-skin");
+
+const syncThemeToggle = () => {
+  if (!themeToggle) return;
+  const darkMode = document.documentElement.classList.contains("dark-mode");
+  const label = darkMode ? "Activate light mode" : "Activate dark mode";
+  themeToggle.setAttribute("aria-label", label);
+  themeToggle.setAttribute("aria-pressed", String(darkMode));
+  themeToggle.title = label;
+  const labelElement = themeToggle.querySelector<HTMLElement>("[data-theme-label]");
+  if (labelElement) labelElement.textContent = label;
+};
+
+themeToggle?.addEventListener("click", () => {
   const enabled = document.documentElement.classList.toggle("dark-mode");
   localStorage.setItem("bj-dark-mode", String(enabled));
+  syncThemeToggle();
+  window.dispatchEvent(new CustomEvent("theme-change", { detail: { darkMode: enabled } }));
 });
+syncThemeToggle();
 
 const highlightToggle = document.querySelector<HTMLButtonElement>("#disable-highlights");
 highlightToggle?.addEventListener("click", () => {
